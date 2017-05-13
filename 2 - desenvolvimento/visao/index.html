@@ -218,7 +218,7 @@
                                 <span class="hora">HH:MM:SS</span>
                                 <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
                             </div>
-                            
+                          
                             <div class="col l3 s12 vaga center-align z-depth-2">
                                 <div class="descricao">
                                     <p class="numero">20</p>
@@ -233,14 +233,44 @@
                                 <div class="modal-content">
                                     <div class="row">
                                         <h4 class="col s12">buscar veículo (placa/cpf) </h4>
-                                        <div class="input-field col s8">
+                                        <div class="input-field col l11 s10">
                                               <input id="pesquisar" type="text">
                                         </div>
-                                        <a class="waves-effect waves-light btn col s1 pesquisar"><i class="material-icons left">search</i></a>
+                                        <a class="waves-effect waves-light btn col l1 s2 pesquisar"><i class="material-icons center">search</i></a>
+                                        
+                                        <div class="row">
+                                            <div class="input-field col s10">
+                                                <input id="proprietario" type="text">
+                                                <label for="proprietario">Proprietário:</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="input-field col s5">
+                                                <input id="veiculo" type="text">
+                                                <label for="veiculo">Veículo:</label>
+                                            </div>
+                                            <div class="input-field col s5">
+                                                <input id="placa" type="text">
+                                                <label for="placa">Placa:</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="input-field col s5">
+                                                <input id="data" type="date">
+                                            </div>
+                                            <div class="input-field col s5">
+                                                <input id="horai" type="text">
+                                                <label for="horai">Hora Inicial:</label>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-alocar">Ok</a>
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-alocar">Ok</a> 
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                 </div>
                             </form>
                             

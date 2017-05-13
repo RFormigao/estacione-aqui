@@ -2,7 +2,6 @@
     //Modal
      $('.modal').modal();
      
-     
     var vaga; 
     var hora; 
     var numero;
@@ -31,6 +30,14 @@
             numero.css("opacity", "1");
             status.css("visibility", "hidden");
         });
-    });      
+    });  
+     
+     
+     
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+      
   });
     

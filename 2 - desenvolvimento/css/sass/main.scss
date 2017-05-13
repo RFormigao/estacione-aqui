@@ -229,6 +229,10 @@ $cor4: #ebd63a;
             {
                 width: 40%;
                 
+                @media #{$small-and-down} {
+                    width: 95%;    
+                }
+                
                 h4
                 {
                     color: $cor1;
@@ -242,6 +246,7 @@ $cor4: #ebd63a;
                 {
                     margin-top: 20px;
                 }
+                
             }
         }
     }
