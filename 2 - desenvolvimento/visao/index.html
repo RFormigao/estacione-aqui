@@ -42,7 +42,13 @@
                 <div class="col l10 s12 bg-main">
                     <div class="row">
                         <header class="col s12 cabecalho">
-                            
+                            <h5>Vagas</h5>
+                             <div class=" col l4 s10 progress">
+                                  <div class="determinate" style="width: 70%" ></div>
+                              </div>
+                            <div class="col s2">
+                                <span>0/20</span>
+                            </div>
                         </header>
                     </div>
                     
@@ -239,29 +245,29 @@
                                         <a class="waves-effect waves-light btn col l1 s2 pesquisar"><i class="material-icons center">search</i></a>
                                         
                                         <div class="row">
-                                            <div class="input-field col s10">
-                                                <input id="proprietario" type="text">
+                                            <div class="input-field col s12 l10">
+                                                <input disabled id="proprietario" type="text">
                                                 <label for="proprietario">Proprietário:</label>
                                             </div>
                                         </div>
                                         
                                         <div class="row">
-                                            <div class="input-field col s5">
-                                                <input id="veiculo" type="text">
+                                            <div class="input-field col l5 s12">
+                                                <input disabled id="veiculo" type="text">
                                                 <label for="veiculo">Veículo:</label>
                                             </div>
-                                            <div class="input-field col s5">
-                                                <input id="placa" type="text">
+                                            <div class="input-field col l5 s12">
+                                                <input disabled id="placa" type="text">
                                                 <label for="placa">Placa:</label>
                                             </div>
                                         </div>
                                         
                                         <div class="row">
-                                            <div class="input-field col s5">
-                                                <input id="data" type="date">
+                                            <div class="input-field col l5 s12">
+                                                <input disabled id="data" type="date">
                                             </div>
-                                            <div class="input-field col s5">
-                                                <input id="horai" type="text">
+                                            <div class="input-field col l5 s12">
+                                                <input disabled id="horai" type="text">
                                                 <label for="horai">Hora Inicial:</label>
                                             </div>
                                         </div>
@@ -274,15 +280,57 @@
                                 </div>
                             </form>
                             
-                            <div id="liberar" class="modal">
+                            <form id="liberar" class="modal">
                                 <div class="modal-content">
-                                    <h4>Liberar</h4>
-                                    <p>A aqui voce ira liberar o veiculo</p>
-                                </div>
+                                    <h4>Liberar vaga</h4>
+                                    <div class="row">
+                                        <div class="input-field col s12 l10 ">
+                                            <input disabled id="proprietario" type="text">
+                                            <label for="proprietario">Proprietário:</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col s12 l5">
+                                            <input disabled id="veiculo" type="text">
+                                            <label for="veiculo">Veículo:</label>
+                                        </div>
+                                        <div class="input-field col s12 l5">
+                                            <input disabled id="placa" type="text">
+                                            <label for="placa">Placa:</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="input-field col l10 s12">
+                                            <input disabled id="data" type="date">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="input-field col l5 s12">
+                                            <input disabled id="horai" type="text">
+                                            <label for="horai">Hora Inicial:</label>
+                                        </div>
+                                        <div class="input-field col l5 s12">
+                                            <input disabled id="horaf" type="text">
+                                            <label for="horaf">Hora Final:</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="input-field col s12 valor">
+                                            <input disabled value="100,00" id="valor" type="text">
+                                            <label for="valor">Valor:</label>
+                                        </div>
+                                    </div>
+
+                                    </div>
                                 <div class="modal-footer">
                                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-liberar">Ok</a>
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a> 
                                 </div>
-                            </div>
+                            </form>
                             
                         </main>
                     </div>
@@ -291,6 +339,7 @@
                 
                 <footer class="page-footer rodape">
                     <div class="row">
+                        
                         <div class="col l8 s12 info-rodape">
                             <h4>Sobre nós</h4>
                             <div class="row">
@@ -305,7 +354,12 @@
 
                         <div class="col l4 s12 info-rodape">
                             <h4>Encontre-nos</h4>
+                            <a href="facebook.com"><img class="rede" src="../img/facebook.png"></a>  
+                            <a href="twitter.com"><img class="rede" src="../img/twitter.png"></a>  
+                            <a href="google.com"><img class="rede" src="../img/google.png"></a>  
+                            <a href="instagram.com"><img class="rede" src="../img/insta.png"></a>  
                         </div>
+                        
                     </div>                    
                     <div class="footer-copyright">
                     <div class="container">

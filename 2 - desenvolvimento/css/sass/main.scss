@@ -94,6 +94,10 @@ $cor4: #ebd63a;
         background: $cor2;
         height: 655px;
         
+        @media #{$small-and-down} {
+   height: auto;
+  }
+        
         img 
         {
             margin-top: 20px;
@@ -163,6 +167,15 @@ $cor4: #ebd63a;
         {
             background: $cor2;
             height: 100px;
+            
+            h5
+            {
+                color: $cor3;
+            }
+            span
+            {
+                color: $cor3;
+            }
         }
         
         .bg-vagas
@@ -262,7 +275,6 @@ $cor4: #ebd63a;
                 margin: 10px 0px 10px 25px;    
                 color: $cor3;
             }
-            
             
             
         }
