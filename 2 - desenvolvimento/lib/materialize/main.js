@@ -23,7 +23,7 @@
       });
         
         $('.confirmar-liberar').click(function () {
-            vaga.css("background","#52c1b6");
+            vaga.css("background","#26a69a");
             vaga.html("Alocar");
             vaga.attr("href","#alocar");
             hora.css("visibility", "hidden");
