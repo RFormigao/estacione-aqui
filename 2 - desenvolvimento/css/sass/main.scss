@@ -316,6 +316,7 @@ $cor4: #ebd63a;
                     th 
                     {
                         padding-left: 20px;
+                        border-radius: 0;
                     }
                 }
                 
@@ -350,13 +351,19 @@ $cor4: #ebd63a;
             color: $cor3;
             h4 
             {
-                margin: 10px 0px 10px 25px;    
+                margin: 10px 0px 10px 10px;    
                 color: $cor3;
             }
             .social
             {
                 font-size: 40px;
-                margin: 0px 10px 0px 15px;
+                margin: 0px 10px 0px 10px;
+                color: $cor3;
+            }
+            
+            .social:hover
+            {
+                color: $cor1;
             }
             
             
