@@ -259,17 +259,30 @@
                                                     <label for="senha">Senha:</label>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="input-field col s12 l10">
-                                                    <input id="tipo" type="text">
-                                                    <label for="tipo">Tipo:</label>
-                                                </div>
+                                            <div class="row input-field">
+                                                <select>
+                                                  <option value="" disabled selected>Choose your option</option>
+                                                  <option value="1">Option 1</option>
+                                                  <option value="2">Option 2</option>
+                                                  <option value="3">Option 3</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Ok</a> 
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
+                                    </div>
+                                </form>
+                                <form id="remover" class="modal">
+                                    <div class="modal-content">
+                                        <div class="row">
+                                           <h4>Você tem certeza que deseja remover este Funcionário?</h4>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Sim</a> 
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>   
                                     </div>
                                 </form>
                                 

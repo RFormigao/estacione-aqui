@@ -125,7 +125,42 @@
                                 <a class="waves-effect waves-light btn alocar col s12 l2" href="#alterar">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2" href="#remover">Remover</a>
                                 
-                            
+                                 <form id="inserir" class="modal">
+                                    <div class="modal-content">
+                                        <div class="row">
+                                            <h4 class="col s12">Cadastrar Preço </h4>
+                                            <br>
+                                            <br>
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="periodo" type="text">
+                                                    <label for="periodo">Período:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="valor" type="text">
+                                                    <label for="valor">Valor:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente">Ok</a> 
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
+                                    </div>
+                                </form>
+                                <form id="remover" class="modal">
+                                    <div class="modal-content">
+                                        <div class="row">
+                                           <h4>Você tem certeza que deseja remover este Preço?</h4>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Sim</a> 
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>   
+                                    </div>
+                                </form>
                             
                             </div>
                         </main>

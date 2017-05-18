@@ -132,8 +132,46 @@
                                 <a class="waves-effect waves-light btn alocar col s12 l2" href="#alterar">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2" href="#remover">Remover</a>
                                 
-                            
-                            
+                                <form id="inserir" class="modal">
+                                    <div class="modal-content">
+                                        <div class="row">
+                                            <h4 class="col s12">Cadastrar Veículo </h4>
+                                            <br>
+                                            <br>
+                                            <div class="row">
+                                                <div class="input-field col l5 s12">
+                                                    <input id="placa" type="text">
+                                                    <label for="placa">Placa:</label>
+                                                </div>
+                                                <div class="input-field col l5 s12">
+                                                    <input id="modelo" type="text">
+                                                    <label for="modelo">Modelo:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="prorietario" type="text">
+                                                    <label for="proprietario">Proprietário:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente">Ok</a> 
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
+                                    </div>
+                                </form>
+                                <form id="remover" class="modal">
+                                    <div class="modal-content">
+                                        <div class="row">
+                                           <h4>Você tem certeza que deseja remover este Veículo?</h4>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Sim</a> 
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>   
+                                    </div>
+                                </form>
                             </div>
                         </main>
                     </div>
