@@ -53,7 +53,7 @@
                     </div>
                     
                     <div class="row">
-                        <main class="col s12 bg-cadastros">
+                        <main class="col s12 bg-cadastros bg-funcionario">
                             <div class="row">
                                 <h4 class="titulos col s12">Gerenciar Funcionários</h4>
                                 <div class="input-field col l3 s10">
@@ -63,16 +63,17 @@
                             </div>
                             
                             <div class="row">
-                                <div class="auto">
-                                    <table class="highlight responsive-table col s12 tabela">
+                                <div class="auto-funcionario">
+                                    <table class="highlight responsive-table col s12 tabela funcionario">
                                     <thead>
                                         <tr>
                                             <th>Nome</th>
                                             <th>Cpf</th>
                                             <th>Celular</th>
                                             <th>Telefone</th>
-                                            <th>Logradouro</th>
                                             <th>Cep</th>
+                                            <th>Logradouro</th>
+                                            <th>Bairro</th>
                                             <th>Cidade</th>
                                             <th>UF</th>
                                             <th>Usuário</th>
@@ -88,6 +89,7 @@
                                                 <label for="id">Robson Formigão Gomes</label>
                                             </td>
                                             <td><label for="id">460.706.578-10</label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
@@ -113,21 +115,6 @@
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" id="id"/>
-                                                <label for="id">Robson Formigão Gomes</label>
-                                            </td>
-                                            <td><label for="id">460.706.578-10</label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                         </tr>
                                         <tr>
@@ -145,6 +132,7 @@
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -152,6 +140,24 @@
                                                 <label for="id">Robson Formigão Gomes</label>
                                             </td>
                                             <td><label for="id">460.706.578-10</label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" id="id"/>
+                                                <label for="id">Robson Formigão Gomes</label>
+                                            </td>
+                                            <td><label for="id">460.706.578-10</label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
@@ -178,6 +184,7 @@
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
+                                            <td><label for="id">(14) 99742-5930 </label></td>
                                         </tr>
                                         
                                     </tbody>
@@ -187,6 +194,84 @@
                                 <a class="waves-effect waves-light btn green alocar col s12 l2" href="#inserir">Inserir</a>
                                 <a class="waves-effect waves-light btn alocar col s12 l2" href="#alterar">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2" href="#remover">Remover</a>
+                                
+                                <form id="inserir" class="modal">
+                                    <div class="modal-content">
+                                        <div class="row">
+                                            <h4 class="col s12">Cadastrar Funcionário </h4>
+                                            <br>
+                                            <br>
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="nome" type="text">
+                                                    <label for="nome">Nome:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="cpf" type="text">
+                                                    <label for="cpf">Cpf:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col l5 s12">
+                                                    <input id="cpf" type="text">
+                                                    <label for="cpf">Celular:</label>
+                                                </div>
+                                                <div class="input-field col l5 s12">
+                                                    <input id="telefone" type="text">
+                                                    <label for="telefone">Telefone:</label>
+                                                </div>
+                                            </div>
+                                             <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="cep" type="text">
+                                                    <label for="cep">Cep:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col l5 s12">
+                                                    <input id="logradouro" type="text">
+                                                    <label for="logradouro">Logradouro:</label>
+                                                </div>
+                                                <div class="input-field col l5 s12">
+                                                    <input id="bairro" type="text">
+                                                    <label for="bairro">Bairro:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col l5 s12">
+                                                    <input id="cidade" type="text">
+                                                    <label for="cidade">Cidade:</label>
+                                                </div>
+                                                <div class="input-field col l5 s12">
+                                                    <input id="uf" type="text">
+                                                    <label for="uf">UF:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col l5 s12">
+                                                    <input id="usuario" type="text">
+                                                    <label for="usuario">Usuário:</label>
+                                                </div>
+                                                <div class="input-field col l5 s12">
+                                                    <input id="senha" type="text">
+                                                    <label for="senha">Senha:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="tipo" type="text">
+                                                    <label for="tipo">Tipo:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Ok</a> 
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
+                                    </div>
+                                </form>
                                 
                             
                             

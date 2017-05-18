@@ -61,6 +61,33 @@ $cor4: #ebd63a;
     margin-left: $px;
 }
 
+@mixin modal()
+{
+     .modal
+            {
+                width: 40%;
+                
+                @media #{$small-and-down} {
+                    width: 95%;    
+                }
+                
+                h4
+                {
+                    color: $cor1;
+                    text-transform: uppercase;
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 0 !important;
+                }
+                
+                .pesquisar
+                {
+                    margin-top: 20px;
+                }
+                
+            }
+}
+
 
 //Geral
 .titulos
@@ -248,36 +275,40 @@ $cor4: #ebd63a;
                 }
             }
             
-            .modal
-            {
-                width: 40%;
-                
-                @media #{$small-and-down} {
-                    width: 95%;    
-                }
-                
-                h4
-                {
-                    color: $cor1;
-                    text-transform: uppercase;
-                    font-size: 24px;
-                    font-weight: bold;
-                    margin-bottom: 0 !important;
-                }
-                
-                .pesquisar
-                {
-                    margin-top: 20px;
-                }
-                
+            @include modal();
+        }
+        
+        //Cadastros
+        
+        .bg-funcionario 
+        {
+            @media #{$small-and-down} {
+                    height: 630px !important;  
             }
         }
         
-        //Clientes
+        .bg-preco 
+        {
+            @media #{$small-and-down} {
+                    height: 420px !important;  
+            }
+        }
+        
+        .bg-veiculo 
+        {
+            @media #{$small-and-down} {
+                    height: 510px !important;  
+            }
+        }
+        
         .bg-cadastros
         {
             background: $cor3;
             height: 555px;
+            
+            @media #{$small-and-down} {
+                    height: 480px;  
+            }
             
             .pesquisar
             {
@@ -330,6 +361,22 @@ $cor4: #ebd63a;
                 }
             }
             
+            //Tabela de funcionario
+            .auto-funcionario
+            {
+                max-height: 300px; 
+                max-width: 2000px;
+                overflow-y: auto;
+                overflow-x: auto;
+                border: 1px solid $cor1; 
+                
+                .funcionario 
+                {
+                    width: 2000px !important;
+                }
+            }
+            
+            
             .btn 
             {
                 margin-top: 20px;
@@ -340,6 +387,8 @@ $cor4: #ebd63a;
                     margin-left: 0px;
               }
             }
+            
+            @include modal();
         }
     }
     
