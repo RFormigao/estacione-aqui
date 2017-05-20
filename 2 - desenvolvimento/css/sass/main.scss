@@ -80,6 +80,13 @@ $cor4: #ebd63a;
                     margin-bottom: 0 !important;
                 }
                 
+                .atencao 
+                {
+                    color: red;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+                
                 .pesquisar
                 {
                     margin-top: 20px;
@@ -357,6 +364,7 @@ $cor4: #ebd63a;
                     td 
                     {
                         padding-left: 20px;
+                        
                     }
                 }
                 
@@ -421,6 +429,7 @@ $cor4: #ebd63a;
     }
     
 }
+
 
 
 

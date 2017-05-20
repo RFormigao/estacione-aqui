@@ -56,10 +56,13 @@
                         <main class="col s12 bg-cadastros">
                             <div class="row">
                                 <h4 class="titulos col s12">Gerenciar Clientes</h4>
-                                <div class="input-field col l3 s10">
+                                <br>
+                                <br>
+                                <br>
+                                <div class="input-field col l4 s10">
                                     <input id="pesquisar" type="text">
+                                    <label for="pesquisar">Pesquisar:</label>
                                 </div>
-                                <a class="waves-effect waves-light btn col l1 pesquisar"><i class="material-icons center">search</i></a>
                             </div>
                             
                             <div class="row">
@@ -67,6 +70,7 @@
                                     <table class="highlight responsive-table col s12 tabela">
                                     <thead>
                                         <tr>
+                                            <th><i class="material-icons">done</i></th>
                                             <th>Nome</th>
                                             <th>Cpf</th>
                                             <th>Telefone</th>
@@ -75,62 +79,30 @@
 
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <input type="checkbox" id="id"/>
-                                                <label for="id">Robson Formigão Gomes</label>
-                                            </td>
+                                            <td><input type="checkbox" id="id"/><label for="id"></label></td>
+                                            <td><label for="id">Robson Formigão Gomes</label></td>
                                             <td><label for="id">460.706.578-10</label></td>
                                             <td><label for="id">(14) 99742-5930 </label></td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                <input type="checkbox" id="nome2"/>
-                                                <label for="nome2">Jaqueline Paschoal</label>
-                                            </td>
-                                            <td>689.479.403-69</td>
-                                            <td>(14) 99749-1790</td>
+                                            <td><input type="checkbox" id="id2"/><label for="id2"></label></td>
+                                            <td><label for="id2">Jaqueline Paschoal</label></td>
+                                            <td><label for="id2">160.706.578-10</label></td>
+                                            <td><label for="id2">(14) 99742-4546 </label></td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                <input type="checkbox" id="nome3"/>
-                                                <label for="nome3">Jonathan Gomes</label>
-                                            </td>
-                                            <td>369.743.971-03</td>
-                                            <td>(14) 99719-7903</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" id="nome3"/>
-                                                <label for="nome3">Jonathan Gomes</label>
-                                            </td>
-                                            <td>369.743.971-03</td>
-                                            <td>(14) 99719-7903</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" id="nome3"/>
-                                                <label for="nome3">Jonathan Gomes</label>
-                                            </td>
-                                            <td>369.743.971-03</td>
-                                            <td>(14) 99719-7903</td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" id="nome3"/>
-                                                <label for="nome3">Jonathan Gomes</label>
-                                            </td>
-                                            <td>369.743.971-03</td>
-                                            <td>(14) 99719-7903</td>
-                                        </tr>
-                                        
+                                            <td><input type="checkbox" id="id3"/><label for="id3"></label></td>
+                                            <td><label for="id3">Jonathan Gomes</label></td>
+                                            <td><label for="id3">260.706.578-10</label></td>
+                                            <td><label for="id3">(14) 99749-5930 </label></td>
+                                        </tr>                                        
                                     </tbody>
                                     </table>
                                 </div>
                                 
-                                <a class="waves-effect waves-light btn green alocar col s12 l2" href="#inserir">Inserir</a>
-                                <a class="waves-effect waves-light btn alocar col s12 l2" href="#alterar">Alterar</a>
-                                <a class="waves-effect waves-light btn red alocar col s12 l2" href="#remover">Remover</a>
+                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" href="#inserir">Inserir</a>
+                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#alterar">Alterar</a>
+                                <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
                                 
                                 <form id="inserir" class="modal">
                                     <div class="modal-content">
@@ -161,10 +133,12 @@
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                     </div>
                                 </form>
+                                
                                 <form id="remover" class="modal">
                                     <div class="modal-content">
                                         <div class="row">
-                                           <h4>Você tem certeza que deseja remover este Cliente?</h4>
+                                           <h4>Você tem certeza disso?</h4>
+                                            <p><span class="atencao">Atenção:</span> Ao clicar em "SIM" o cliente será removido para sempre.</p>    
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -221,6 +195,7 @@
         
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
+      <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
       <script type="text/javascript" src="../lib/materialize/main.js"></script>
       <script src="https://use.fontawesome.com/f79af210b2.js"></script>
     </body>
