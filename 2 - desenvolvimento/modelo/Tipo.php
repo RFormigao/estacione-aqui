@@ -1,7 +1,7 @@
 <?php
 
 
-class Tipo
+final class Tipo
 {
     private $descritivo;
     private $menu;

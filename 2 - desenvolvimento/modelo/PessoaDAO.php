@@ -6,7 +6,7 @@
  * Date: 26/05/2017
  * Time: 08:39
  */
-class PessoaDAO extends Conexao
+final class PessoaDAO extends Conexao
 {
     public function __construct()
     {
@@ -15,7 +15,7 @@ class PessoaDAO extends Conexao
 
     public function login($pessoa)
     {
-        $sql = "select * from pessoa where usuario = ? and senha = ?";
+        $sql = "call login (?,?)";
 
         try {
             $f = $this->db->prepare($sql);

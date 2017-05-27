@@ -1,7 +1,7 @@
 <?php
 
 
-class Menu
+final class Menu
 {
     private $nome;
     private $link;

@@ -1,4 +1,24 @@
-    <!DOCTYPE html>
+<?php
+require_once 'auto.php';
+
+    if($_GET)
+    {
+        $oper = $_GET["I"];
+
+    }
+
+    if($_POST)
+    {
+        if($oper == "I")
+        {
+            $cliente = new Cliente(null,$_POST["proprietario"],$_POST["cpf"],$_POST["telefone"]);
+            $clienteDAO = new ClienteDAO();
+            $clienteDAO ->inserirClientes($cliente);
+        }
+
+    }
+?>
+<!DOCTYPE html>
   <html>
     <head>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -68,43 +88,39 @@
                             <div class="row">
                                 <div class="auto">
                                     <table class="highlight responsive-table col s12 tabela">
-                                    <thead>
-                                        <tr>
-                                            <th><i class="material-icons">done</i></th>
-                                            <th>Nome</th>
-                                            <th>Cpf</th>
-                                            <th>Telefone</th>
-                                        </tr>
-                                    </thead>
+                                        <thead>
+                                            <tr>
+                                                <th><i class="material-icons">done</i></th>
+                                                <th>Nome</th>
+                                                <th>Cpf</th>
+                                                <th>Telefone</th>
+                                            </tr>
+                                        </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="checkbox" id="id"/><label for="id"></label></td>
-                                            <td><label for="id">Robson Formigão Gomes</label></td>
-                                            <td><label for="id">460.706.578-10</label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="checkbox" id="id2"/><label for="id2"></label></td>
-                                            <td><label for="id2">Jaqueline Paschoal</label></td>
-                                            <td><label for="id2">160.706.578-10</label></td>
-                                            <td><label for="id2">(14) 99742-4546 </label></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="checkbox" id="id3"/><label for="id3"></label></td>
-                                            <td><label for="id3">Jonathan Gomes</label></td>
-                                            <td><label for="id3">260.706.578-10</label></td>
-                                            <td><label for="id3">(14) 99749-5930 </label></td>
-                                        </tr>                                        
-                                    </tbody>
+                                        <tbody>
+                                            <?php
+                                                $clienteDAO = new ClienteDAO();
+                                                $listarCliente = $clienteDAO->listarClientes();
+
+                                                foreach($listarCliente as $dado){
+                                                    echo"<tr>";
+                                                    echo"<td><input type='checkbox' id={$dado->id_cliente} /><label for='{$dado->id_cliente}'></label></td>";
+                                                    echo"<td><label for='{$dado->id_cliente}'>{$dado->nome}</label></td>";
+                                                    echo"<td><label for='{$dado->id_cliente}'>{$dado->cpf}</label></td>";
+                                                    echo"<td><label for='{$dado->id_cliente}'>{$dado ->telefone}</label></td>";
+                                                    echo"</tr>";
+
+                                                }
+                                            ?>
+                                        </tbody>
                                     </table>
                                 </div>
                                 
-                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" href="#inserir">Inserir</a>
+                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" href="#inserir" id="I">Inserir</a>
                                 <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#alterar">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
                                 
-                                <form id="inserir" class="modal">
+                                <form id="inserir" class="modal" method="POST">
                                     <div class="modal-content">
                                         <div class="row">
                                             <h4 class="col s12">Cadastrar Cliente </h4>
@@ -112,17 +128,17 @@
                                             <br>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="nome" type="text">
+                                                    <input id="nome" name="proprietario" type="text">
                                                     <label for="nome">Nome:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input id="cpf" type="text">
+                                                    <input id="cpf" name="cpf" type="text">
                                                     <label for="cpf">Cpf:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input id="telefone" type="text">
+                                                    <input id="telefone" name="telefone" type="text">
                                                     <label for="telefone">Telefone:</label>
                                                 </div>
                                             </div>

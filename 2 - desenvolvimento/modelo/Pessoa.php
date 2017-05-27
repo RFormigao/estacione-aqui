@@ -1,7 +1,7 @@
 <?php
 
 
-class Pessoa
+final class Pessoa
 {
     private $nome;
     private $cpf;

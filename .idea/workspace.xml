@@ -15,39 +15,46 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/login.php">
+      <file leaf-file-name="Cliente.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Cliente.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="59">
+              <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PessoaDAO.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/PessoaDAO.php">
+      <file leaf-file-name="ClienteDAO.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/ClienteDAO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+            <state relative-caret-position="624">
+              <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
               <folding>
-                <marker date="1495801977376" expanded="true" signature="262:314" ph="select * fro... pessoa" />
+                <marker date="1495912731769" expanded="true" signature="182:213" ph="SELECT * FRO... vw_listarClientes" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Pessoa.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Pessoa.php">
+      <file leaf-file-name="cliente.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/cliente.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+            <state relative-caret-position="264">
+              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="REBASE" />
@@ -59,18 +66,21 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/Menu.php" />
-        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/Tipo.php" />
-        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/Pessoa.php" />
         <option value="$PROJECT_DIR$/2 - desenvolvimento/visao/auto.php" />
         <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/Conexao.php" />
-        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/PessoaDAO.php" />
         <option value="$PROJECT_DIR$/2 - desenvolvimento/visao/index.php" />
-        <option value="$PROJECT_DIR$/2 - desenvolvimento/visao/cliente.php" />
         <option value="$PROJECT_DIR$/2 - desenvolvimento/visao/funcionario.php" />
         <option value="$PROJECT_DIR$/2 - desenvolvimento/visao/preco.php" />
         <option value="$PROJECT_DIR$/2 - desenvolvimento/visao/veiculo.php" />
+        <option value="$PROJECT_DIR$/2 - desenvolvimento/lib/materialize/verificacao.js" />
         <option value="$PROJECT_DIR$/2 - desenvolvimento/visao/login.php" />
+        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/Menu.php" />
+        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/Pessoa.php" />
+        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/PessoaDAO.php" />
+        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/Tipo.php" />
+        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/Cliente.php" />
+        <option value="$PROJECT_DIR$/2 - desenvolvimento/modelo/ClienteDAO.php" />
+        <option value="$PROJECT_DIR$/2 - desenvolvimento/visao/cliente.php" />
       </list>
     </option>
   </component>
@@ -84,7 +94,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1378" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectView">
@@ -163,6 +173,28 @@
               <option name="myItemId" value="2 - desenvolvimento" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="materialize" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="estacione-aqui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="estacione-aqui" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2 - desenvolvimento" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -171,7 +203,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../loja" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PHP/Arquivos P2/Programacao Orientada Objeto/loja" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -247,17 +279,19 @@
       <workItem from="1495543751388" duration="1188000" />
       <workItem from="1495796784098" duration="11099000" />
       <workItem from="1495812876022" duration="312000" />
+      <workItem from="1495904928458" duration="6042000" />
+      <workItem from="1495911165383" duration="3704000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12599000" />
+    <option name="totallyTimeSpent" value="22345000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24229075" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24158126" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06466877" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -287,7 +321,25 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/login.php">
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Cliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/ClienteDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+          <folding>
+            <marker date="1495912731769" expanded="true" signature="182:213" ph="SELECT * FRO... vw_listarClientes" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/cliente.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -295,13 +347,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1495907621188" expanded="true" signature="440:441" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="440:517" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="568:597" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="579:597" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/PessoaDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Pessoa.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1495907621188" expanded="true" signature="440:441" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="440:517" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="568:597" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="579:597" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/PessoaDAO.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
           <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
-          <folding>
-            <marker date="1495801977376" expanded="true" signature="262:314" ph="select * fro... pessoa" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -317,31 +409,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Conexao.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Tipo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1495907621188" expanded="true" signature="440:441" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="440:517" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="568:597" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="579:597" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -384,14 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/cliente.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="32" column="48" lean-forward="false" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -400,28 +465,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/lib/materialize/verificacao.js" />
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="48" column="72" lean-forward="false" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="72" />
+          <folding>
+            <marker date="1495907621188" expanded="true" signature="440:441" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="440:517" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="568:597" ph="..." />
+            <marker date="1495907621188" expanded="true" signature="579:597" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/lib/materialize/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2552">
+          <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Conexao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Tipo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Pessoa.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+        <state relative-caret-position="66">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/PessoaDAO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+        <state relative-caret-position="482">
+          <caret line="36" column="8" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="38" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Cliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/ClienteDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
           <folding>
-            <marker date="1495801977376" expanded="true" signature="262:314" ph="select * fro... pessoa" />
+            <marker date="1495912731769" expanded="true" signature="182:213" ph="SELECT * FRO... vw_listarClientes" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/login.php">
+    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/cliente.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="264">
+          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
           <folding />
         </state>
       </provider>

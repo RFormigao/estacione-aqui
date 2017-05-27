@@ -47,7 +47,7 @@
                     <div class="input-field col s10 offset-s1">
                       <i class="material-icons prefix">perm_identity</i>
                       <input id="icon_prefix" name="usuario" type="text">
-                      <label for="icon_prefix">Usuário</label>
+                      <label for="icon_prefix" id="teste">Usuário</label>
                     </div>
                 </div>
                 
