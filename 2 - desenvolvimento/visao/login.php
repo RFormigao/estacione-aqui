@@ -1,3 +1,32 @@
+<?php
+    require_once 'auto.php';
+    if($_POST) {
+
+
+        $pessoa = new Pessoa(null, null,
+            null, null,
+            null, null,
+            null, null,
+            null, $_POST["usuario"], $_POST["senha"], null);
+
+        $pessoaDAO = new PessoaDAO();
+
+        $retorno = $pessoaDAO->login($pessoa);
+
+        if($retorno) {
+            header("location: index.php");
+        }
+        else
+        {
+            echo "<script>alert('Usuário/Senha não confere');window.location.href='login.php';</script>";
+        }
+
+
+
+    }
+
+
+?>
 <!DOCTYPE html>
   <html>
     <head>
@@ -12,12 +41,12 @@
         
         
         <div class="row">
-            <form class="col s10 l4 offset-l4 offset-s1 login z-depth-5">
+            <form class="col s10 l4 offset-l4 offset-s1 login z-depth-5" action="#" method="post">
                 <img class="responsive-img" src="../img/logo.jpg" alt="logo">
                 <div class="row">
                     <div class="input-field col s10 offset-s1">
                       <i class="material-icons prefix">perm_identity</i>
-                      <input id="icon_prefix" type="text">
+                      <input id="icon_prefix" name="usuario" type="text">
                       <label for="icon_prefix">Usuário</label>
                     </div>
                 </div>
@@ -25,14 +54,14 @@
                 <div class="row">
                     <div class="input-field col s10 offset-s1">
                       <i class="material-icons prefix">lock_outline</i>
-                      <input id="icon_telephone" type="password">
+                      <input id="icon_telephone" name="senha" type="password">
                       <label for="icon_telephone">Senha</label>
                     </div>
                 </div>
                 
                 <div class="row">
                     <div class="col offset-s4">
-                        <a class="waves-effect waves-light btn">Entrar</a>
+                        <input type="submit" value="Entrar" class="waves-effect waves-light btn"></input>
                     </div>
                 </div>
             </form>

@@ -27,10 +27,10 @@
                     
                     <h3>Cadastros</h3>
                     <ul class="itens-menu">
-                        <li><a href="cliente.html">Gerenciar Clientes</a></li>
-                        <li><a href="funcionario.html">Gerenciar Funcionários</a></li>
-                        <li><a href="preco.html">Gerenciar Preços</a></li>
-                        <li><a href="veiculo.html">Gerenciar Veículos</a></li>
+                        <li><a href="cliente.php">Gerenciar Clientes</a></li>
+                        <li><a href="funcionario.php">Gerenciar Funcionários</a></li>
+                        <li><a href="preco.php">Gerenciar Preços</a></li>
+                        <li><a href="veiculo.php">Gerenciar Veículos</a></li>
                     </ul>
                     
                     <h3>Relatórios</h3>
