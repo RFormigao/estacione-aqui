@@ -1,22 +1,12 @@
 <?php
-require_once 'auto.php';
+    require_once 'auto.php';
+    $id="";
 
-    if($_GET)
-    {
-        $oper = $_GET["I"];
-
+    if($_POST) {
+        $oper = $_POST["oper"];
+        echo $oper;
     }
 
-    if($_POST)
-    {
-        if($oper == "I")
-        {
-            $cliente = new Cliente(null,$_POST["proprietario"],$_POST["cpf"],$_POST["telefone"]);
-            $clienteDAO = new ClienteDAO();
-            $clienteDAO ->inserirClientes($cliente);
-        }
-
-    }
 ?>
 <!DOCTYPE html>
   <html>
@@ -116,10 +106,10 @@ require_once 'auto.php';
                                     </table>
                                 </div>
                                 
-                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" href="#inserir" id="I">Inserir</a>
+                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" href="#inserir">Inserir</a>
                                 <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#alterar">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
-                                
+
                                 <form id="inserir" class="modal" method="POST">
                                     <div class="modal-content">
                                         <div class="row">
@@ -145,8 +135,8 @@ require_once 'auto.php';
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente">Ok</a> 
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
+                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                                     </div>
                                 </form>
                                 
