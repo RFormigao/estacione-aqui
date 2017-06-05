@@ -11,19 +11,31 @@
 
     if($_POST) {
         $oper = $_POST["oper"];
-        switch ($oper) {
-            case "I":
-                $cliente = new cliente(null, $_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
-                $clienteDAO = new ClienteDAO();
-                $clienteDAO->inserirClientes($cliente);
-                break;
 
-            case "A":
-                $cliente = new cliente($_POST["id"],$_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
-                $clienteDAO = new ClienteDAO();
-                $clienteDAO->alterarClientes($cliente);
-                break;
+        if($_POST["proprietario"] == "")
+            echo "Insira o proprietário.";
+        else if($_POST["cpf"] == "")
+            echo "Insira o CPF.";
+        else if($_POST["telefone"] == "")
+            echo "Insira o telefone.";
+        else
+        {
+            switch ($oper) {
+                case "I":
+                    $cliente = new cliente(null, $_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
+                    $clienteDAO = new ClienteDAO();
+                    $clienteDAO->inserirClientes($cliente);
+                    break;
+
+                case "A":
+                    $cliente = new cliente($_POST["id"],$_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
+                    $clienteDAO = new ClienteDAO();
+                    $clienteDAO->alterarClientes($cliente);
+                    break;
+            }
         }
+
+
     }
 
 ?>
@@ -34,11 +46,9 @@
       <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="UTF-8">
-        <title>Home</title>
+        <title>Gerenciar Clientes</title>
 
         <script>
-
-
             function f1(oper, id, nome, cpf, telefone)
             {
                 document.getElementById("oper").value = oper;

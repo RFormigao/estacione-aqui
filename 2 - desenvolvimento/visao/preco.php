@@ -1,11 +1,56 @@
-  <!DOCTYPE html>
+<?php
+    require_once "auto.php";
+    $periodo = "";
+    $valor = "";
+
+    if($_GET) {
+        $oper = $_GET["oper"];
+        $id = (int)$_GET["id"];
+    }
+
+    if($_POST) {
+        $oper = $_POST["oper"];
+
+        if ($_POST["periodo"] == "")
+            echo "Insira o período.";
+        else if ($_POST["valor"] == "")
+            echo "Insira o valor.";
+        else {
+            switch ($oper) {
+                case "I":
+                    $preco = new Preco(null, $_POST["periodo"], $_POST["valor"]);
+                    $precoDAO = new PrecoDAO();
+                    $precoDAO->inserirPreco($preco);
+                    break;
+
+                case "A":
+                    echo"alterar";
+                    break;
+            }
+        }
+    }
+?>
+<!DOCTYPE html>
   <html>
     <head>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="UTF-8">    
-        <title>Home</title>
+        <title>Gerenciar Preços</title>
+
+        <script>
+            function f1(oper, id, periodo, valor)
+            {
+                document.getElementById("oper").value = oper;
+                if(oper == "A")
+                {
+                    document.getElementById("id").value = id;
+                    document.getElementById("periodo").value = periodo;
+                    document.getElementById("valor").value = valor;
+                }
+            }
+        </script>
     </head>
 
     <body class="bg-home">
@@ -77,25 +122,27 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td><input type="checkbox" id="id"/><label for="id"></label></td>
-                                            <td><label for="id">10 Minutos</label></td>
-                                            <td><label for="id">10,00</label></td>
-                                        </tr>  
-                                        <tr>
-                                            <td><input type="checkbox" id="id2"/><label for="id2"></label></td>
-                                            <td><label for="id2">20 Minutos</label></td>
-                                            <td><label for="id2">20,00</label></td>
-                                        </tr>   
+                                        <?php
+                                            $precoDAO = new PrecoDAO();
+                                            $listarPreco = $precoDAO ->listarPrecos();
+
+                                            foreach ($listarPreco as $dado){
+                                                echo "<tr>";
+                                                    echo"<td><input type='checkbox' id='{$dado-> id_periodo}'/><label for='{$dado->id_periodo}'></label></td>";
+                                                    echo"<td><label for='{$dado->id_periodo}'>{$dado->periodo}</label></td>";
+                                                    echo" <td><label for='{$dado->id_periodo}'>{$dado->valor}</label></td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
                                     </tbody>
                                     </table>
                                 </div>
                                 
-                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" href="#inserir">Inserir</a>
+                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1('I', null, null, null)" href="#inserir">Inserir</a>
                                 <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#alterar">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
                                 
-                                 <form id="inserir" class="modal">
+                                 <form action="#" id="inserir" class="modal" method="POST">
                                     <div class="modal-content">
                                         <div class="row">
                                             <h4 class="col s12">Cadastrar Preço </h4>
@@ -103,20 +150,26 @@
                                             <br>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="periodo" type="text">
+                                                    <input id="oper" name="oper" type="hidden">
+                                                    <input id="id" name="id" type="hidden">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="periodo" name="periodo" type="text">
                                                     <label for="periodo">Período:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="valor" type="text">
+                                                    <input id="valor" name="valor" type="text">
                                                     <label for="valor">Valor:</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente">Ok</a> 
+                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                     </div>
                                 </form>
