@@ -1,10 +1,29 @@
 <?php
     require_once 'auto.php';
-    $id="";
+    $nome = "";
+    $cpf = "";
+    $telefone = "";
+
+    if($_GET) {
+        $oper = $_GET["oper"];
+        $id = (int)$_GET["id"];
+    }
 
     if($_POST) {
         $oper = $_POST["oper"];
-        echo $oper;
+        switch ($oper) {
+            case "I":
+                $cliente = new cliente(null, $_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
+                $clienteDAO = new ClienteDAO();
+                $clienteDAO->inserirClientes($cliente);
+                break;
+
+            case "A":
+                $cliente = new cliente($_POST["id"],$_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
+                $clienteDAO = new ClienteDAO();
+                $clienteDAO->alterarClientes($cliente);
+                break;
+        }
     }
 
 ?>
@@ -14,16 +33,33 @@
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta charset="UTF-8">    
+      <meta charset="UTF-8">
         <title>Home</title>
+
+        <script>
+
+
+            function f1(oper, id, nome, cpf, telefone)
+            {
+                document.getElementById("oper").value = oper;
+                if(oper == "A")
+                {
+                    document.getElementById("id").value = id;
+                    document.getElementById("nome").value = nome;
+                    document.getElementById("cpf").value = cpf;
+                    document.getElementById("telefone").value = telefone;
+
+                }
+            }
+        </script>
     </head>
 
     <body class="bg-home">
-        
+
         <div class="row">
             <div class="z-depth-5">
                 <nav class="col l2 s12 menu">
-                    
+
                     <div class="center-align">
                         <img class="img-responsive" src="../img/perfil.png">
                         <h1>José Almeida</h1>
@@ -94,7 +130,7 @@
 
                                                 foreach($listarCliente as $dado){
                                                     echo"<tr>";
-                                                    echo"<td><input type='checkbox' id={$dado->id_cliente} /><label for='{$dado->id_cliente}'></label></td>";
+                                                    echo"<td><input type='checkbox' onchange='f2(null, null, null, null,null)' id={$dado->id_cliente} /><label for='{$dado->id_cliente}'></label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado->nome}</label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado->cpf}</label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado ->telefone}</label></td>";
@@ -106,11 +142,11 @@
                                     </table>
                                 </div>
                                 
-                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" href="#inserir">Inserir</a>
+                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1('I', null, null, null,null)" href="#inserir">Inserir</a>
                                 <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#alterar">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
 
-                                <form id="inserir" class="modal" method="POST">
+                                <form action="#" id="inserir" class="modal" method="POST">
                                     <div class="modal-content">
                                         <div class="row">
                                             <h4 class="col s12">Cadastrar Cliente </h4>
@@ -118,8 +154,14 @@
                                             <br>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="nome" name="proprietario" type="text">
-                                                    <label for="nome">Nome:</label>
+                                                    <input id="oper" name="oper" type="hidden">
+                                                    <input id="id" name="id" type="hidden">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="proprietario" name="proprietario" type="text">
+                                                    <label for="proprietario">Nome:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
