@@ -9,7 +9,7 @@ final class ClienteDAO extends Conexao
     }
 
     public function listarClientes (){
-        $sql = "SELECT * FROM vw_listarClientes";
+        $sql = "SELECT * FROM vw_listarclientes";
 
         try
         {

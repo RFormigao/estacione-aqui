@@ -1,11 +1,14 @@
-    <!DOCTYPE html>
+<?php
+    require_once 'auto.php';
+?>
+<!DOCTYPE html>
   <html>
     <head>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="UTF-8">    
-        <title>Home</title>
+        <title>Gerenciar Funcionários</title>
     </head>
 
     <body class="bg-home">
@@ -87,37 +90,29 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td><input type="checkbox" id="id"/><label for="id"></label></td>
-                                            <td><label for="id">Robson Formigão Gomes</label></td>
-                                            <td><label for="id">460.706.578-10</label></td>
-                                            <td><label for="id">(14) 99742-5930 </label></td>
-                                            <td><label for="id">(14) 3624-7391 </label></td>
-                                            <td><label for="id">17204670</label></td>
-                                            <td><label for="id">Rua Deolindo de Oliveira e Souza</label></td>
-                                            <td><label for="id">Jardim Sanzovo</label></td>
-                                            <td><label for="id">Jau</label></td>
-                                            <td><label for="id">SP</label></td>
-                                            <td><label for="id">RFormigao</label></td>
-                                            <td><label for="id">knop01234</label></td>
-                                            <td><label for="id">administrador</label></td>
-                                        </tr>  
-                                        
-                                        <tr>
-                                            <td><input type="checkbox" id="id2"/><label for="id2"></label></td>
-                                            <td><label for="id2">Jaqueline Paschoal</label></td>
-                                            <td><label for="id2">597.462.715-80</label></td>
-                                            <td><label for="id2">(14) 99749-1485 </label></td>
-                                            <td><label for="id2">(14) 3646-7265 </label></td>
-                                            <td><label for="id2">17215632</label></td>
-                                            <td><label for="id2">Rua Abolição</label></td>
-                                            <td><label for="id2">Centro</label></td>
-                                            <td><label for="id2">Mineiros do Tiete</label></td>
-                                            <td><label for="id2">SP</label></td>
-                                            <td><label for="id2">JaquePaschoal</label></td>
-                                            <td><label for="id2">jaque123</label></td>
-                                            <td><label for="id2">administrador</label></td>
-                                        </tr> 
+                                    <?php
+
+                                        $pessoaDAO = new PessoaDAO();
+                                        $listarPessoa = $pessoaDAO->listarPessoas();
+
+                                        foreach($listarPessoa as $dado){
+                                            echo "<tr>";
+                                                echo "<td><input type='checkbox' name='check' id={$dado->id_pessoa} /><label for='{$dado->id_pessoa}'></label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->nome}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->cpf}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->cel}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->tel}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->logradouro}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->bairro}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->cep}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->cidade}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->uf}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->usuario}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->senha}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->descritivo}</label></td>";
+                                            echo "</tr>";
+                                        }
+                                    ?>
                                     </tbody>
                                     </table>
                                 </div>

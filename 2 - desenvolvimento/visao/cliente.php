@@ -20,6 +20,7 @@
             echo "Insira o telefone.";
         else
         {
+
             switch ($oper) {
                 case "I":
                     $cliente = new cliente(null, $_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
@@ -37,6 +38,7 @@
 
 
     }
+
 
 ?>
 <!DOCTYPE html>
@@ -60,6 +62,21 @@
                     document.getElementById("telefone").value = telefone;
 
                 }
+            }
+            function f2() {
+                var check = document.getElementsByName("check");
+                var id;
+                for(var x=0;x<check.length;x++){
+
+                    if(check[x].checked){
+                        id = check[x].id;
+                        break;
+                    }
+                }
+
+                var bla = <?php echo json_encode($listarCliente);?>;
+                alert(bla[0].proprietario);
+
             }
         </script>
     </head>
@@ -140,7 +157,7 @@
 
                                                 foreach($listarCliente as $dado){
                                                     echo"<tr>";
-                                                    echo"<td><input type='checkbox' onchange='f2(null, null, null, null,null)' id={$dado->id_cliente} /><label for='{$dado->id_cliente}'></label></td>";
+                                                    echo"<td><input type='checkbox' name='check' id={$dado->id_cliente} /><label for='{$dado->id_cliente}'></label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado->nome}</label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado->cpf}</label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado ->telefone}</label></td>";
@@ -153,7 +170,7 @@
                                 </div>
                                 
                                 <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1('I', null, null, null,null)" href="#inserir">Inserir</a>
-                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#alterar">Alterar</a>
+                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" onclick="f2()" href="#inserir">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
 
                                 <form action="#" id="inserir" class="modal" method="POST">
@@ -249,8 +266,8 @@
 
             </div>
         </div>
-      
-        
+
+
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
       <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>

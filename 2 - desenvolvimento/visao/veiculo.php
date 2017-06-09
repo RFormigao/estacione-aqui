@@ -1,11 +1,14 @@
-    <!DOCTYPE html>
+<?php
+    require_once 'auto.php';
+?>
+<!DOCTYPE html>
   <html>
     <head>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="UTF-8">    
-        <title>Home</title>
+        <title>Gerenciar Veiculo</title>
     </head>
 
     <body class="bg-home">
@@ -78,20 +81,20 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td><input type="checkbox" id="id"/><label for="id"></label></td>
-                                            <td><label for="id">FGK-1226</label></td>
-                                            <td><label for="id">Fiesta</label></td>
-                                            <td><label for="id">Jaqueline Paschoal</label></td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td><input type="checkbox" id="id2"/><label for="id2"></label></td>
-                                            <td><label for="id2">FGB-4626</label></td>
-                                            <td><label for="id2">Titan</label></td>
-                                            <td><label for="id2">Robson Formigão Gomes</label></td>
-                                        </tr>
-                                        
+                                        <?php
+                                            $veiculoDAO = new VeiculoDAO();
+                                            $listarVeiculo = $veiculoDAO->listatVeiculos();
+
+                                            foreach($listarVeiculo as $dado){
+                                                echo"<tr>";
+                                                echo"<td><input type='checkbox' name='check' id={$dado->id_veiculo} /><label for='{$dado->id_veiculo}'></label></td>";
+                                                echo"<td><label for='{$dado->id_veiculo}'>{$dado->placa}</label></td>";
+                                                echo"<td><label for='{$dado->id_veiculo}'>{$dado->modelo}</label></td>";
+                                                echo"<td><label for='{$dado->id_veiculo}'>{$dado ->nome}</label></td>";
+                                                echo"</tr>";
+
+                                            }
+                                        ?>
                                     </tbody>
                                     </table>
                                 </div>

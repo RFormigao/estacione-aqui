@@ -1,6 +1,6 @@
 /*
 SQLyog Enterprise - MySQL GUI v8.12 
-MySQL - 5.5.5-10.1.16-MariaDB : Database - estacione_aqui
+MySQL - 5.5.5-10.1.13-MariaDB : Database - estacione_aqui
 *********************************************************************
 */
 
@@ -60,13 +60,15 @@ DROP TABLE IF EXISTS `cliente`;
 
 CREATE TABLE `cliente` (
   `id_cliente` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) DEFAULT NULL,
+  `nome` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `cpf` char(13) DEFAULT NULL,
   `telefone` varchar(14) DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `cliente` */
+
+insert  into `cliente`(`id_cliente`,`nome`,`cpf`,`telefone`) values (1,'Jaqueline Paschoal','465.212.508-9','(14) 3646-3263'),(2,'Robson Gomes','460.706.578-1','(14) 99742-593'),(3,'Roberto da Silva','283.292.290-9','(14) 3657-3839');
 
 /*Table structure for table `menu` */
 
@@ -90,9 +92,11 @@ CREATE TABLE `periodo` (
   `periodo` time DEFAULT NULL,
   `valor` float DEFAULT NULL,
   PRIMARY KEY (`id_periodo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `periodo` */
+
+insert  into `periodo`(`id_periodo`,`periodo`,`valor`) values (1,'00:10:00',2),(2,'00:15:00',3),(3,'00:20:00',4),(4,'00:25:00',5),(5,'00:30:00',6);
 
 /*Table structure for table `pessoa` */
 
@@ -149,17 +153,82 @@ CREATE TABLE `veiculo` (
 
 /*Data for the table `veiculo` */
 
+/* Procedure structure for procedure `inserirClientes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirClientes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirClientes`(in nome varchar(50), cpf char(13) ,telefone varchar(14))
+begin
+	insert into cliente (nome,cpf,telefone) values ( nome,cpf,telefone);
+end */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `inserirPrecos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirPrecos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirPrecos`(in periodo time, valor float)
+BEGIN
+	INSERT INTO periodo (periodo,valor) VALUES (periodo,valor);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `login` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `login` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `login`(in person varchar(10), pass varchar(8))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `login`(in pessoa varchar(10),pass varchar (8))
 begin
-	select usuario, senha from pessoa where usuario = person and senha = pass; 
+		SELECT * FROM pessoa WHERE usuario = pessoa AND senha = pass;
 end */$$
 DELIMITER ;
+
+/*Table structure for table `vw_listarclientes` */
+
+DROP TABLE IF EXISTS `vw_listarclientes`;
+
+/*!50001 DROP VIEW IF EXISTS `vw_listarclientes` */;
+/*!50001 DROP TABLE IF EXISTS `vw_listarclientes` */;
+
+/*!50001 CREATE TABLE `vw_listarclientes` (
+  `id_cliente` int(10) unsigned NOT NULL,
+  `nome` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `cpf` char(13) DEFAULT NULL,
+  `telefone` varchar(14) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+
+/*Table structure for table `vw_listarprecos` */
+
+DROP TABLE IF EXISTS `vw_listarprecos`;
+
+/*!50001 DROP VIEW IF EXISTS `vw_listarprecos` */;
+/*!50001 DROP TABLE IF EXISTS `vw_listarprecos` */;
+
+/*!50001 CREATE TABLE `vw_listarprecos` (
+  `id_periodo` int(10) unsigned NOT NULL,
+  `periodo` time DEFAULT NULL,
+  `valor` varchar(51) CHARACTER SET utf8 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+
+/*View structure for view vw_listarclientes */
+
+/*!50001 DROP TABLE IF EXISTS `vw_listarclientes` */;
+/*!50001 DROP VIEW IF EXISTS `vw_listarclientes` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listarclientes` AS select `cliente`.`id_cliente` AS `id_cliente`,`cliente`.`nome` AS `nome`,`cliente`.`cpf` AS `cpf`,`cliente`.`telefone` AS `telefone` from `cliente` */;
+
+/*View structure for view vw_listarprecos */
+
+/*!50001 DROP TABLE IF EXISTS `vw_listarprecos` */;
+/*!50001 DROP VIEW IF EXISTS `vw_listarprecos` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listarprecos` AS select `periodo`.`id_periodo` AS `id_periodo`,`periodo`.`periodo` AS `periodo`,concat('R$',format(`periodo`.`valor`,2,'de_DE')) AS `valor` from `periodo` */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

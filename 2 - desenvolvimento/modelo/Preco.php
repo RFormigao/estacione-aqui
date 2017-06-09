@@ -1,7 +1,7 @@
 <?php
 
 
-class Preco
+final class Preco
 {
     private $idPeriodo;
     private $periodo;

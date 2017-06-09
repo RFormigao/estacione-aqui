@@ -39,4 +39,24 @@ final class PessoaDAO extends Conexao
         }
     }
 
+    public function listarPessoas(){
+        $sql = "SELECT * FROM vw_listarfuncionarios";
+
+        try {
+            $f = $this->db->prepare($sql);
+            $ret = $f->execute();
+
+            $this->db = null;
+
+            if(!$ret){
+                die ("Erro ao listar pessoa.");
+            } else {
+                return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
+            }
+        }
+        catch (Exception $e){
+            die ($e->getMessage());
+        }
+    }
+
 }
