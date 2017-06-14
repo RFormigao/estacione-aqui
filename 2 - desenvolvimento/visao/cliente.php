@@ -3,16 +3,28 @@
     if($_POST)
 	{
         $oper = $_POST["oper"];
-		//testar se oper != de E ou excluir via ajax
-        if($_POST["proprietario"] == "")
-            echo "Insira o proprietário.";
-        else if($_POST["cpf"] == "")
-            echo "Insira o CPF.";
-        else if($_POST["telefone"] == "")
-            echo "Insira o telefone.";
-        else
-        {
+        $erro = 0;
 
+		//testar se oper != de E ou excluir via ajax
+        if($oper != "E"){
+            if($_POST["proprietario"] == ""){
+                echo "Insira o proprietário.";
+                $erro++;
+            }
+
+            else if($_POST["cpf"] == ""){
+                echo "Insira o CPF.";
+                $erro++;
+            }
+
+            else if($_POST["telefone"] == ""){
+                echo "Insira o telefone.";
+                $erro++;
+            }
+
+        }
+
+        if($erro == 0){
             switch ($oper) {
                 case "I":
                     $cliente = new cliente(null, $_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
@@ -25,15 +37,15 @@
                     $clienteDAO = new ClienteDAO();
                     $clienteDAO->alterarClientes($cliente);
                     break;
-				case "E":
-				$cliente = new cliente($_POST["id"]);
-				$clienteDAO = new ClienteDAO();
-				$clienteDAO->excluirClientes($cliente);
-				break;
+
+                case "E":
+                    echo"<script>alert('oi')</script>";
+                    $cliente = new cliente($_POST["id"]);
+                    $clienteDAO = new ClienteDAO();
+                    $clienteDAO->excluirClientes($cliente);
+                    break;
             }
         }
-
-
     }
 
 
@@ -86,8 +98,8 @@
 			});
 	    }
 		function f3()
-		{
-			document.getElementById("oper").value = "E";
+        {
+			document.getElementById("opera").value = "E";
 			var check = document.getElementsByName("check");
 			var id;
 			for(var x=0;x<check.length;x++){
@@ -96,8 +108,29 @@
 					break;
 				}
 			}
-			document.getElementById("id").value = id;
+			document.getElementById("id2").value = id;
 		}
+
+		function f4() {
+            var id2  = document.getElementById("id2").value;
+            alert(id2);
+            $(function(){
+                $.ajax({
+                    //Tipo de envio POST ou GET
+                    type: "POST",
+                    //Caminho do arquivo
+                    url: "excluir.php",
+                    //dados passados via POST
+                    data: "id="+id2,
+                    //Se der tudo ok
+
+                    success: function(resposta){
+                        var cli = JSON.parse(resposta);
+                        alert(cli);
+                    }
+                });
+            });
+        }
         </script>
     </head>
 
@@ -229,15 +262,21 @@
                                     </div>
                                 </form>
                                 
-                                <form id="remover" class="modal">
+                                <form method="post" id="remover" class="modal">
                                     <div class="modal-content">
+                                        <div class="row">
+                                            <div class="input-field col s12 l10">
+                                                <input id="opera" name="opera" type="text">
+                                                <input id="id2" name="id2" type="text">
+                                            </div>
+                                        </div>
                                         <div class="row">
                                            <h4>Você tem certeza disso?</h4>
                                             <p><span class="atencao">Atenção:</span> Ao clicar em "SIM" o cliente será removido para sempre.</p>    
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Sim</a> 
+                                        <input type="button" value="Sim" onclick="f4()" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>   
                                     </div>
                                 </form>
