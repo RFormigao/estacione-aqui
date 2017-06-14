@@ -55,7 +55,7 @@ final class ClienteDAO extends Conexao
     }
 
     public function alterarClientes ($cliente){
-        $sql = "call alterarClientes(?,?,?,?)";
+	        $sql = "call alterarClientes(?,?,?,?)";
         try {
             $f = $this->db->prepare($sql);
 
@@ -75,4 +75,26 @@ final class ClienteDAO extends Conexao
             die($e->getMessage());
         }
     }
+	function buscar_um_cliente($cliente)
+	{
+		 $sql = "SELECT * FROM cliente WHERE id_cliente = ?";
+
+        try
+        {
+            $f = $this->db->prepare($sql);
+			$f->bindValue(1, $cliente->getIdCliente());
+            $ret = $f->execute();
+
+            $this -> db = null;
+
+            if(!$ret){
+                die ("Erro ao buscar um cliente.");
+            } else {
+                return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
+            }
+        }
+        catch (Exception $e) {
+            die ($e->getMessage());
+        }
+	}
 }

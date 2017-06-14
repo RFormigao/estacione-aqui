@@ -1,17 +1,9 @@
 <?php
     require_once 'auto.php';
-    $nome = "";
-    $cpf = "";
-    $telefone = "";
-
-    if($_GET) {
-        $oper = $_GET["oper"];
-        $id = (int)$_GET["id"];
-    }
-
-    if($_POST) {
+    if($_POST)
+	{
         $oper = $_POST["oper"];
-
+		//testar se oper != de E ou excluir via ajax
         if($_POST["proprietario"] == "")
             echo "Insira o proprietário.";
         else if($_POST["cpf"] == "")
@@ -33,6 +25,11 @@
                     $clienteDAO = new ClienteDAO();
                     $clienteDAO->alterarClientes($cliente);
                     break;
+				case "E":
+				$cliente = new cliente($_POST["id"]);
+				$clienteDAO = new ClienteDAO();
+				$clienteDAO->excluirClientes($cliente);
+				break;
             }
         }
 
@@ -44,6 +41,7 @@
 <!DOCTYPE html>
   <html>
     <head>
+	  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -51,33 +49,55 @@
         <title>Gerenciar Clientes</title>
 
         <script>
-            function f1(oper, id, nome, cpf, telefone)
+            function f1()
             {
-                document.getElementById("oper").value = oper;
-                if(oper == "A")
-                {
-                    document.getElementById("id").value = id;
-                    document.getElementById("nome").value = nome;
-                    document.getElementById("cpf").value = cpf;
-                    document.getElementById("telefone").value = telefone;
-
-                }
+                document.getElementById("oper").value = "I";
+               
             }
             function f2() {
+				document.getElementById("oper").value = "A";
                 var check = document.getElementsByName("check");
                 var id;
                 for(var x=0;x<check.length;x++){
 
                     if(check[x].checked){
                         id = check[x].id;
-                        break;
+						break;
                     }
                 }
-
-                var bla = <?php echo json_encode($listarCliente);?>;
-                alert(bla[0].proprietario);
-
-            }
+				$(function(){
+					$.ajax({
+					//Tipo de envio POST ou GET
+					type: "POST",
+					//Caminho do arquivo 
+					url: "atualizar.php",
+					//dados passados via POST 
+					data: "id="+id,
+					//Se der tudo ok 
+					
+					success: function(resposta){
+						var cli = JSON.parse(resposta);
+						document.getElementById("id").value = cli[0].id_cliente;
+						document.getElementById("proprietario").value = cli[0].nome;
+						document.getElementById("cpf").value = cli[0].cpf;
+						document.getElementById("telefone").value = cli[0].telefone;
+					}
+				});
+			});
+	    }
+		function f3()
+		{
+			document.getElementById("oper").value = "E";
+			var check = document.getElementsByName("check");
+			var id;
+			for(var x=0;x<check.length;x++){
+				if(check[x].checked){
+					id = check[x].id;
+					break;
+				}
+			}
+			document.getElementById("id").value = id;
+		}
         </script>
     </head>
 
@@ -157,7 +177,7 @@
 
                                                 foreach($listarCliente as $dado){
                                                     echo"<tr>";
-                                                    echo"<td><input type='checkbox' name='check' id={$dado->id_cliente} /><label for='{$dado->id_cliente}'></label></td>";
+                                                    echo"<td><input type='checkbox' name='check' id='{$dado->id_cliente}'  /><label for='{$dado->id_cliente}'></label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado->nome}</label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado->cpf}</label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado ->telefone}</label></td>";
@@ -169,9 +189,9 @@
                                     </table>
                                 </div>
                                 
-                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1('I', null, null, null,null)" href="#inserir">Inserir</a>
-                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" onclick="f2()" href="#inserir">Alterar</a>
-                                <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
+                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1()" href="#inserir">Inserir</a>
+                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" onclick="f2()"  href="#inserir">Alterar</a>
+                                <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" onclick="f3()"href="#remover">Remover</a>
 
                                 <form action="#" id="inserir" class="modal" method="POST">
                                     <div class="modal-content">
@@ -188,17 +208,17 @@
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
                                                     <input id="proprietario" name="proprietario" type="text">
-                                                    <label for="proprietario">Nome:</label>
+                                                    <!--label for="proprietario">Nome:</label-->
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
                                                     <input id="cpf" name="cpf" type="text">
-                                                    <label for="cpf">Cpf:</label>
+                                                    <!--label for="cpf">Cpf:</label-->
                                                 </div>
                                                 <div class="input-field col l5 s12">
                                                     <input id="telefone" name="telefone" type="text">
-                                                    <label for="telefone">Telefone:</label>
+                                                    <!--label for="telefone">Telefone:</label-->
                                                 </div>
                                             </div>
                                         </div>
