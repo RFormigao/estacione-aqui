@@ -99,8 +99,9 @@
 	    }
 		function f3()
         {
-			document.getElementById("opera").value = "E";
-			var check = document.getElementsByName("check");
+			var oper = document.getElementsByName("oper");
+            oper[1].value = "E";
+			var check = document.getElementById("check");
 			var id;
 			for(var x=0;x<check.length;x++){
 				if(check[x].checked){
@@ -108,29 +109,10 @@
 					break;
 				}
 			}
-			document.getElementById("id2").value = id;
+			var id1 = document.getElementsByName("id");
+                id1[2].value = "xota";
 		}
 
-		function f4() {
-            var id2  = document.getElementById("id2").value;
-            alert(id2);
-            $(function(){
-                $.ajax({
-                    //Tipo de envio POST ou GET
-                    type: "POST",
-                    //Caminho do arquivo
-                    url: "excluir.php",
-                    //dados passados via POST
-                    data: "id="+id2,
-                    //Se der tudo ok
-
-                    success: function(resposta){
-                        var cli = JSON.parse(resposta);
-                        alert(cli);
-                    }
-                });
-            });
-        }
         </script>
     </head>
 
@@ -262,12 +244,12 @@
                                     </div>
                                 </form>
                                 
-                                <form method="post" id="remover" class="modal">
+                                <form method="post" action="#" id="remover" class="modal">
                                     <div class="modal-content">
                                         <div class="row">
                                             <div class="input-field col s12 l10">
-                                                <input id="opera" name="opera" type="text">
-                                                <input id="id2" name="id2" type="text">
+                                                <input id="oper" name="oper" type="text">
+                                                <input id="id" name="id" type="text">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -276,7 +258,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="button" value="Sim" onclick="f4()" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
+                                        <input type="submit" value="Sim" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>   
                                     </div>
                                 </form>
@@ -326,7 +308,7 @@
             </div>
         </div>
 
-
+        <script>console.log(id[0])</script>
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
       <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
