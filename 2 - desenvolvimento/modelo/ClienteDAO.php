@@ -55,7 +55,7 @@ final class ClienteDAO extends Conexao
     }
 
     public function alterarClientes ($cliente){
-	        $sql = "call alterarClientes(?,?,?,?)";
+        $sql = "CALL alterarClientes(?,?,?,?)";
         try {
             $f = $this->db->prepare($sql);
 
@@ -75,6 +75,26 @@ final class ClienteDAO extends Conexao
             die($e->getMessage());
         }
     }
+
+    public function excluirClientes($cliente){
+        $sql = "CALL excluirClientes(?)";
+        try {
+            $f = $this->db->prepare($sql);
+
+            $f->bindValue(1,$cliente->getIdCliente());
+
+            $ret = $f->execute();
+            $this->db = null;
+
+            if(!$ret){
+                die("Erro ao excluir cliente");
+            }
+        }
+        catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 	function buscar_um_cliente($cliente)
 	{
 		 $sql = "SELECT * FROM cliente WHERE id_cliente = ?";

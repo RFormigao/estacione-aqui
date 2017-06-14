@@ -3,15 +3,7 @@
     if($_POST)
 	{
         $oper = $_POST["oper"];
-		//testar se oper != de E ou excluir via ajax
-        if($_POST["proprietario"] == "")
-            echo "Insira o proprietário.";
-        else if($_POST["cpf"] == "")
-            echo "Insira o CPF.";
-        else if($_POST["telefone"] == "")
-            echo "Insira o telefone.";
-        else
-        {
+
 
             switch ($oper) {
                 case "I":
@@ -26,13 +18,11 @@
                     $clienteDAO->alterarClientes($cliente);
                     break;
 				case "E":
-				$cliente = new cliente($_POST["id"]);
-				$clienteDAO = new ClienteDAO();
-				$clienteDAO->excluirClientes($cliente);
-				break;
+                    $cliente = new cliente($_POST["id"]);
+                    $clienteDAO = new ClienteDAO();
+                    $clienteDAO->excluirClientes($cliente);
+                    break;
             }
-        }
-
 
     }
 
@@ -51,11 +41,14 @@
         <script>
             function f1()
             {
-                document.getElementById("oper").value = "I";
-               
+                var operacao = document.getElementsByName("oper");
+                operacao[0].value = "I";
             }
             function f2() {
-				document.getElementById("oper").value = "A";
+
+                var operacao = document.getElementsByName("oper");
+                operacao[0].value = "A";
+
                 var check = document.getElementsByName("check");
                 var id;
                 for(var x=0;x<check.length;x++){
@@ -87,7 +80,10 @@
 	    }
 		function f3()
 		{
-			document.getElementById("oper").value = "E";
+
+			var operacao = document.getElementsByName("oper");
+            operacao[1].value = "E";
+
 			var check = document.getElementsByName("check");
 			var id;
 			for(var x=0;x<check.length;x++){
@@ -97,6 +93,8 @@
 				}
 			}
 			document.getElementById("id").value = id;
+            var identificador = document.getElementsByName("id");
+            identificador[1].value = id;
 		}
         </script>
     </head>
@@ -229,15 +227,21 @@
                                     </div>
                                 </form>
                                 
-                                <form id="remover" class="modal">
+                                <form id="remover" method="post" action="#" class="modal">
                                     <div class="modal-content">
+                                        <div class="row">
+                                            <div class="input-field col s12 l10">
+                                                <input id="oper" name="oper" type="hidden">
+                                                <input id="id" name="id" type="hidden">
+                                            </div>
+                                        </div>
                                         <div class="row">
                                            <h4>Você tem certeza disso?</h4>
                                             <p><span class="atencao">Atenção:</span> Ao clicar em "SIM" o cliente será removido para sempre.</p>    
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Sim</a> 
+                                        <input type="submit" value="Sim" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>   
                                     </div>
                                 </form>
