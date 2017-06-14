@@ -99,18 +99,14 @@
 	    }
 		function f3()
         {
+
 			var oper = document.getElementsByName("oper");
             oper[1].value = "E";
 			var check = document.getElementById("check");
-			var id;
-			for(var x=0;x<check.length;x++){
-				if(check[x].checked){
-					id = check[x].id;
-					break;
-				}
-			}
-			var id1 = document.getElementsByName("id");
-                id1[2].value = "xota";
+
+			var id2 = document.getElementsByName("id");
+                id2[1].value = "xota";
+
 		}
 
         </script>
@@ -192,7 +188,7 @@
 
                                                 foreach($listarCliente as $dado){
                                                     echo"<tr>";
-                                                    echo"<td><input type='checkbox' name='check' id='{$dado->id_cliente}'  /><label for='{$dado->id_cliente}'></label></td>";
+                                                    echo"<td><input type='checkbox' name='check' class='{$dado->id_cliente}'  /><label for='{$dado->id_cliente}'></label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado->nome}</label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado->cpf}</label></td>";
                                                     echo"<td><label for='{$dado->id_cliente}'>{$dado ->telefone}</label></td>";
