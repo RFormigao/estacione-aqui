@@ -7,12 +7,11 @@
 
             switch ($oper) {
                 case "I":
-                    $cliente = new cliente(null, $_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
+                    $cliente = new cliente(null, $_POST["proprietario"], $_POST["cpf"], $_POST["telefone"], "A");
                     $clienteDAO = new ClienteDAO();
                     $retorno =  $clienteDAO->inserirClientes($cliente);
-                    $msg = $retorno[0] -> msg;
-                    if($msg){
-                        echo $msg ;
+                    if($retorno[0] -> msg){
+                        echo $retorno[0] -> msg ;
                     }
 
                     break;
@@ -21,9 +20,9 @@
                     $cliente = new cliente($_POST["id"],$_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
                     $clienteDAO = new ClienteDAO();
                     $retorno =  $clienteDAO->alterarClientes($cliente);
-                    $msg = $retorno[0] -> msg;
-                    if($msg){
-                        echo $msg ;
+
+                    if($retorno[0] -> msg){
+                        echo $retorno[0] -> msg ;
                     }
 
                     break;
@@ -33,8 +32,7 @@
                     $retorno = $clienteDAO->excluirClientes($cliente);
 
                     if($retorno[0] -> msg){
-                      $msg = $retorno[0]->msg;
-                        echo $msg;
+                        echo $retorno[0] -> msg ;
                     }
 
                     break;
@@ -49,72 +47,11 @@
 <!DOCTYPE html>
   <html>
     <head>
-	  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta charset="UTF-8">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8">
         <title>Gerenciar Clientes</title>
-
-        <script>
-            function f1()
-            {
-                var operacao = document.getElementsByName("oper");
-                operacao[0].value = "I";
-            }
-            function f2() {
-
-                var operacao = document.getElementsByName("oper");
-                operacao[0].value = "A";
-
-                var check = document.getElementsByName("check");
-                var id;
-                for(var x=0;x<check.length;x++){
-
-                    if(check[x].checked){
-                        id = check[x].id;
-						break;
-                    }
-                }
-				$(function(){
-					$.ajax({
-					//Tipo de envio POST ou GET
-					type: "POST",
-					//Caminho do arquivo 
-					url: "atualizar.php",
-					//dados passados via POST 
-					data: "id="+id,
-					//Se der tudo ok 
-					
-					success: function(resposta){
-						var cli = JSON.parse(resposta);
-						document.getElementById("id").value = cli[0].id_cliente;
-						document.getElementById("proprietario").value = cli[0].nome;
-						document.getElementById("cpf").value = cli[0].cpf;
-						document.getElementById("telefone").value = cli[0].telefone;
-					}
-				});
-			});
-	    }
-		function f3()
-		{
-
-			var operacao = document.getElementsByName("oper");
-            operacao[1].value = "E";
-
-			var check = document.getElementsByName("check");
-			var id;
-			for(var x=0;x<check.length;x++){
-				if(check[x].checked){
-					id = check[x].id;
-					break;
-				}
-			}
-			document.getElementById("id").value = id;
-            var identificador = document.getElementsByName("id");
-            identificador[1].value = id;
-		}
-        </script>
     </head>
 
     <body class="bg-home">
@@ -138,7 +75,7 @@
                     <ul class="itens-menu">
                         <li class="ativo"><a href="cliente.php">Gerenciar Clientes</a></li>
                         <li><a href="funcionario.php">Gerenciar Funcionários</a></li>
-                        <li><a href="preco.php">Gerenciar Preços</a></li>
+                        <li><a href="periodo.php">Gerenciar Preços</a></li>
                         <li><a href="veiculo.php">Gerenciar Veículos</a></li>
                     </ul>
                     
@@ -223,18 +160,18 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="proprietario" name="proprietario" type="text">
-                                                    <!--label for="proprietario">Nome:</label-->
+                                                    <input placeholder="João Pedro" id="proprietario" name="proprietario" type="text">
+                                                    <label for="proprietario">Nome:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input id="cpf" name="cpf" type="text">
-                                                    <!--label for="cpf">Cpf:</label-->
+                                                    <input placeholder="999.999.999-99" id="cpf" name="cpf" type="text">
+                                                    <label for="cpf">Cpf:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input id="telefone" name="telefone" type="text">
-                                                    <!--label for="telefone">Telefone:</label-->
+                                                    <input placeholder="(99) 99999-9999" id="telefone" name="telefone" type="text">
+                                                    <label for="telefone">Telefone:</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -309,12 +246,73 @@
             </div>
         </div>
 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/main.js"></script>
+        <script src="https://use.fontawesome.com/f79af210b2.js"></script>
 
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/main.js"></script>
-      <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+
+        <script>
+            function f1()
+            {
+                var operacao = document.getElementsByName("oper");
+                operacao[0].value = "I";
+            }
+            function f2() {
+
+                var operacao = document.getElementsByName("oper");
+                operacao[0].value = "A";
+
+                var check = document.getElementsByName("check");
+                var id;
+                for(var x=0;x<check.length;x++){
+
+                    if(check[x].checked){
+                        id = check[x].id;
+                        break;
+                    }
+                }
+                $(function(){
+                    $.ajax({
+                        //Tipo de envio POST ou GET
+                        type: "POST",
+                        //Caminho do arquivo
+                        url: "atualizarCliente.php",
+                        //dados passados via POST
+                        data: "id="+id,
+                        //Se der tudo ok
+
+                        success: function(resposta){
+                            var cli = JSON.parse(resposta);
+                            document.getElementById("id").value = cli[0].id_cliente;
+                            document.getElementById("proprietario").value = cli[0].nome;
+                            document.getElementById("cpf").value = cli[0].cpf;
+                            document.getElementById("telefone").value = cli[0].telefone;
+                        }
+                    });
+                });
+            }
+            function f3()
+            {
+
+                var operacao = document.getElementsByName("oper");
+                operacao[1].value = "E";
+
+                var check = document.getElementsByName("check");
+                var id;
+                for(var x=0;x<check.length;x++){
+                    if(check[x].checked){
+                        id = check[x].id;
+                        break;
+                    }
+                }
+                document.getElementById("id").value = id;
+                var identificador = document.getElementsByName("id");
+                identificador[1].value = id;
+            }
+        </script>
     </body>
   </html>
 

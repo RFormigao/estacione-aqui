@@ -32,7 +32,7 @@
                     <ul class="itens-menu">
                         <li ><a href="cliente.php">Gerenciar Clientes</a></li>
                         <li><a href="funcionario.php">Gerenciar Funcionários</a></li>
-                        <li><a href="preco.php">Gerenciar Preços</a></li>
+                        <li><a href="periodo.php">Gerenciar Preços</a></li>
                         <li class="ativo"><a href="veiculo.php">Gerenciar Veículos</a></li>
                     </ul>
                     

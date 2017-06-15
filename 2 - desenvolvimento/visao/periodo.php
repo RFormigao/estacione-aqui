@@ -1,56 +1,55 @@
 <?php
     require_once "auto.php";
-    $periodo = "";
-    $valor = "";
 
-    if($_GET) {
-        $oper = $_GET["oper"];
-        $id = (int)$_GET["id"];
-    }
 
     if($_POST) {
         $oper = $_POST["oper"];
 
-        if ($_POST["periodo"] == "")
-            echo "Insira o período.";
-        else if ($_POST["valor"] == "")
-            echo "Insira o valor.";
-        else {
-            switch ($oper) {
-                case "I":
-                    $preco = new Preco(null, $_POST["periodo"], $_POST["valor"]);
-                    $precoDAO = new PrecoDAO();
-                    $precoDAO->inserirPreco($preco);
-                    break;
+        switch ($oper) {
+            case "I":
+                $periodo = new Periodo(null, $_POST["periodo"], $_POST["valor"], "A");
+                $periodoDAO = new PeriodoDAO();
+                $retorno = $periodoDAO->inserirPeriodos($periodo);
 
-                case "A":
-                    echo"alterar";
-                    break;
-            }
+                if($retorno[0] -> msg){
+                    echo $retorno[0] -> msg ;
+                }
+                break;
+
+            case "A":
+                $periodo = new Periodo($_POST["id"],$_POST["periodo"], $_POST["valor"]);
+                $periodoDAO = new PeriodoDAO();
+                $retorno =  $periodoDAO->alterarPeriodos($periodo);
+
+                if($retorno[0] -> msg){
+                    echo $retorno[0] -> msg ;
+                }
+                break;
+
+            case "E":
+                $periodo = new Periodo($_POST["id"]);
+                $periodoDAO = new PeriodoDAO();
+                $retorno = $periodoDAO->excluirPeriodos($periodo);
+
+                if($retorno[0] -> msg){
+                    echo $retorno[0] -> msg ;
+                }
+
+                break;
         }
+
+        header("Location:periodo.php");
+
     }
 ?>
 <!DOCTYPE html>
   <html>
     <head>
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta charset="UTF-8">    
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8">
         <title>Gerenciar Preços</title>
-
-        <script>
-            function f1(oper, id, periodo, valor)
-            {
-                document.getElementById("oper").value = oper;
-                if(oper == "A")
-                {
-                    document.getElementById("id").value = id;
-                    document.getElementById("periodo").value = periodo;
-                    document.getElementById("valor").value = valor;
-                }
-            }
-        </script>
     </head>
 
     <body class="bg-home">
@@ -74,7 +73,7 @@
                     <ul class="itens-menu">
                         <li ><a href="cliente.php">Gerenciar Clientes</a></li>
                         <li><a href="funcionario.php">Gerenciar Funcionários</a></li>
-                        <li class="ativo"><a href="preco.php">Gerenciar Preços</a></li>
+                        <li class="ativo"><a href="periodo.php">Gerenciar Preços</a></li>
                         <li><a href="veiculo.php">Gerenciar Veículos</a></li>
                     </ul>
                     
@@ -123,12 +122,12 @@
 
                                     <tbody>
                                         <?php
-                                            $precoDAO = new PrecoDAO();
-                                            $listarPreco = $precoDAO ->listarPrecos();
+                                            $precoDAO = new PeriodoDAO();
+                                            $listarPreco = $precoDAO ->listarPeriodos();
 
                                             foreach ($listarPreco as $dado){
                                                 echo "<tr>";
-                                                    echo"<td><input type='checkbox' id='{$dado-> id_periodo}'/><label for='{$dado->id_periodo}'></label></td>";
+                                                    echo"<td><input type='checkbox' name='check' id='{$dado->id_periodo}'  /><label for='{$dado->id_periodo}'></label></td>";
                                                     echo"<td><label for='{$dado->id_periodo}'>{$dado->periodo}</label></td>";
                                                     echo" <td><label for='{$dado->id_periodo}'>{$dado->valor}</label></td>";
                                                 echo "</tr>";
@@ -138,9 +137,9 @@
                                     </table>
                                 </div>
                                 
-                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1('I', null, null, null)" href="#inserir">Inserir</a>
-                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#alterar">Alterar</a>
-                                <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
+                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1()" href="#inserir">Inserir</a>
+                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" onclick="f2()" href="#inserir">Alterar</a>
+                                <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled"  onclick="f3()" href="#remover">Remover</a>
                                 
                                  <form action="#" id="inserir" class="modal" method="POST">
                                     <div class="modal-content">
@@ -156,13 +155,13 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="periodo" name="periodo" type="text">
+                                                    <input placeholder="00:00:00" id="periodo" name="periodo" type="text">
                                                     <label for="periodo">Período:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="valor" name="valor" type="text">
+                                                    <input placeholder="00,00" id="valor" name="valor" type="text">
                                                     <label for="valor">Valor:</label>
                                                 </div>
                                             </div>
@@ -173,15 +172,21 @@
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                     </div>
                                 </form>
-                                <form id="remover" class="modal">
+                                <form id="remover" class="modal" method="post" action="#">
                                     <div class="modal-content">
+                                        <div class="row">
+                                            <div class="input-field col s12 l10">
+                                                <input id="oper" name="oper" type="hidden">
+                                                <input id="id" name="id" type="hidden">
+                                            </div>
+                                        </div>
                                         <div class="row">
                                            <h4>Você tem certeza disso?</h4>
                                             <p><span class="atencao">Atenção:</span> Ao clicar em "SIM" o preço será removido para sempre.</p>  
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Sim</a> 
+                                        <input type="submit" value="Sim" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>   
                                     </div>
                                 </form>
@@ -197,6 +202,12 @@
                         
                         <div class="col l8 s12 info-rodape">
                             <h4>Sobre nós</h4>
+                            <div class="row">
+                                <div class="input-field col s12 l10">
+                                    <input id="oper" name="oper" type="hidden">
+                                    <input id="id" name="id" type="hidden">
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col s12 l2 center-align">
                                     <img class="responsive-img" src="../img/mini-logo.png">
@@ -227,13 +238,74 @@
 
             </div>
         </div>
-      
-        
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/main.js"></script>
-     <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/main.js"></script>
+        <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+
+        <script>
+            function f1()
+            {
+                var operacao = document.getElementsByName("oper");
+                operacao[0].value = "I";
+            }
+
+            function f2() {
+
+                var operacao = document.getElementsByName("oper");
+                operacao[0].value = "A";
+
+                var check = document.getElementsByName("check");
+                var id;
+                for(var x=0;x<check.length;x++){
+
+                    if(check[x].checked){
+                        id = check[x].id;
+                        break;
+                    }
+                }
+                $(function(){
+                    $.ajax({
+                        //Tipo de envio POST ou GET
+                        type: "POST",
+                        //Caminho do arquivo
+                        url: "atualizarPeriodo.php",
+                        //dados passados via POST
+                        data: "id="+id,
+                        //Se der tudo ok
+
+                        success: function(resposta){
+                            var peri = JSON.parse(resposta);
+                            document.getElementById("id").value = peri[0].id_periodo;
+                            document.getElementById("periodo").value = peri[0].periodo;
+                            document.getElementById("valor").value = peri[0].valor;
+                        }
+                    });
+                });
+            }
+
+            function f3()
+            {
+
+                var operacao = document.getElementsByName("oper");
+                operacao[1].value = "E";
+
+                var check = document.getElementsByName("check");
+                var id;
+                for(var x=0;x<check.length;x++){
+                    if(check[x].checked){
+                        id = check[x].id;
+                        break;
+                    }
+                }
+                document.getElementById("id").value = id;
+                var identificador = document.getElementsByName("id");
+                identificador[1].value = id;
+            }
+        </script>
     </body>
   </html>
 

@@ -1,17 +1,19 @@
 <?php
 
 
-final class Preco
+final class Periodo
 {
     private $idPeriodo;
     private $periodo;
     private $valor;
+    private $status;
 
-    public function __construct($idPeriodo=null, $periodo=null, $valor=null)
+    public function __construct($idPeriodo=null, $periodo=null, $valor=null, $status=null)
     {
         $this->idPeriodo = $idPeriodo;
         $this->periodo = $periodo;
         $this->valor = $valor;
+        $this->status = $status;
     }
 
     public function getIdPeriodo()
@@ -40,6 +42,16 @@ final class Preco
     {
         $this->valor = $valor;
     }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
 
 
 }

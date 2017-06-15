@@ -1,15 +1,14 @@
 <?php
 
-final class ClienteDAO extends Conexao
+final class PeriodoDAO extends Conexao
 {
-
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function listarClientes (){
-        $sql = "SELECT * FROM vw_listarclientes";
+    public function listarPeriodos (){
+        $sql = "SELECT * FROM vw_listarPrecos";
 
         try
         {
@@ -19,7 +18,7 @@ final class ClienteDAO extends Conexao
             $this -> db = null;
 
             if(!$ret){
-                die ("Erro ao listar clientes.");
+                die ("Erro ao listar os periodo.");
             } else {
                 return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
             }
@@ -29,47 +28,44 @@ final class ClienteDAO extends Conexao
         }
     }
 
-    public function inserirClientes ($cliente){
-        $sql = "CALL inserirClientes(?,?,?,?)";
+    public function inserirPeriodos ($periodo)
+    {
+        $sql = "CALL inserirPeriodos(?,?,?)";
 
-        try
-        {
-            $f = $this->db->prepare ($sql);
-            $f->bindValue(1,$cliente->getProprietario());
-            $f->bindValue(2,$cliente->getCpf()) ;
-            $f->bindValue(3,$cliente->getTelefone()) ;
-            $f->bindValue(4,$cliente->getStatus()) ;
+        try {
+            $f = $this->db->prepare($sql);
+            $f->bindValue(1, $periodo->getPeriodo());
+            $f->bindValue(2, $periodo->getValor());
+            $f->bindValue(3, $periodo->getStatus());
 
             $ret = $f->execute();
 
-            $this -> db = null;
+            $this->db = null;
 
-            if(!$ret){
-                die ("Erro ao inserir cliente.");
+            if (!$ret) {
+                die ("Erro ao inserir periodo.");
             } else {
                 return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
             }
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             die ($e->getMessage());
         }
     }
 
-    public function alterarClientes ($cliente){
-        $sql = "CALL alterarClientes(?,?,?,?)";
+    public function alterarPeriodos ($periodo){
+        $sql = "CALL alterarPeriodos(?,?,?)";
         try {
             $f = $this->db->prepare($sql);
 
-            $f->bindValue(1,$cliente->getIdCliente());
-            $f->bindValue(2,$cliente->getProprietario());
-            $f->bindValue(3,$cliente->getCpf());
-            $f->bindValue(4,$cliente->getTelefone());
+            $f->bindValue(1,$periodo->getIdPeriodo());
+            $f->bindValue(2,$periodo->getPeriodo());
+            $f->bindValue(3,$periodo->getValor());
 
             $ret = $f->execute();
             $this->db = null;
 
             if(!$ret){
-                die("Erro ao alterar cliente");
+                die("Erro ao alterar periodo");
             } else {
                 return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
             }
@@ -79,18 +75,18 @@ final class ClienteDAO extends Conexao
         }
     }
 
-    public function excluirClientes($cliente){
-        $sql = "CALL excluirClientes(?)";
+    public function excluirPeriodos($periodo){
+        $sql = "CALL excluirPeriodos(?)";
         try {
             $f = $this->db->prepare($sql);
 
-            $f->bindValue(1,$cliente->getIdCliente());
+            $f->bindValue(1,$periodo->getIdPeriodo());
 
             $ret = $f->execute();
             $this->db = null;
 
             if(!$ret){
-                die("Erro ao excluir cliente");
+                die("Erro ao excluir periodo");
             }else {
                 return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
             }
@@ -100,20 +96,20 @@ final class ClienteDAO extends Conexao
         }
     }
 
-	public function buscarClientes($cliente)
-	{
-		 $sql = "SELECT * FROM cliente WHERE id_cliente = ?";
+    public function buscarPeriodos($peri)
+    {
+        $sql = "SELECT * FROM periodo WHERE id_periodo = ?";
 
         try
         {
             $f = $this->db->prepare($sql);
-			$f->bindValue(1, $cliente->getIdCliente());
+            $f->bindValue(1, $peri->getIdPeriodo());
             $ret = $f->execute();
 
             $this -> db = null;
 
             if(!$ret){
-                die ("Erro ao buscar um cliente.");
+                die ("Erro ao buscar um preço.");
             } else {
                 return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
             }
@@ -121,5 +117,5 @@ final class ClienteDAO extends Conexao
         catch (Exception $e) {
             die ($e->getMessage());
         }
-	}
+    }
 }

@@ -7,13 +7,15 @@ final class Cliente
     private $proprietario;
     private $cpf;
     private $telefone;
+    private $status;
 
-    public function __construct($idCliente=null, $proprietario=null, $cpf=null, $telefone=null)
+    public function __construct($idCliente=null, $proprietario=null, $cpf=null, $telefone=null, $status=null)
     {
         $this->idCliente = $idCliente;
         $this->proprietario = $proprietario;
         $this->cpf = $cpf;
         $this->telefone = $telefone;
+        $this->status = $status;
     }
 
     public function getIdCliente()
@@ -51,6 +53,15 @@ final class Cliente
     public function setTelefone($telefone)
     {
         $this->telefone = $telefone;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
 
