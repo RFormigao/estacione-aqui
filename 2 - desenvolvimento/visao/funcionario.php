@@ -1,5 +1,52 @@
 <?php
     require_once 'auto.php';
+    if($_POST) {
+        $oper = $_POST["oper"];
+        echo"<script>alert('oi')</script>";
+        switch ($oper) {
+            case "I":
+                $tipo = new Tipo ($_POST["tipo"]);
+                $pessoa = new Pessoa (null, $_POST["nome"], $_POST["cpf"], $_POST["celular"],
+                                        $_POST["telefone"], $_POST["cep"], $_POST["logradouro"],
+                                        $_POST["bairro"], $_POST["cidade"], $_POST["uf"],
+                                        $_POST["usuario"], $_POST["senha"], $tipo,"A");
+                $pessoaDAO = new PessoaDAO();
+                $retorno = $pessoaDAO->inserirPessoas($pessoa);
+                if ($retorno[0]->msg) {
+                    echo $retorno[0]->msg;
+                }
+                break;
+            case "A":
+                $tipo = new Tipo ($_POST["tipo"]);
+                $pessoa = new pessoa($_POST["id"],$_POST["nome"], $_POST["cpf"], $_POST["celular"],
+                                        $_POST["telefone"], $_POST["cep"], $_POST["logradouro"],
+                                        $_POST["bairro"], $_POST["cidade"], $_POST["uf"],
+                                        $_POST["usuario"], $_POST["senha"], $tipo);
+                $pessoaDAO = new PessoaDAO();
+                $retorno =  $pessoaDAO->alterarPessoas($pessoa);
+
+                if($retorno[0] -> msg){
+                    echo $retorno[0] -> msg ;
+                }
+
+                break;
+
+            case "E":
+                $pessoa = new Pessoa($_POST["id"]);
+                $pessoaDAO = new PessoaDAO();
+                $retorno = $pessoaDAO->excluirPessoas($pessoa);
+
+                if($retorno[0] -> msg){
+                    echo $retorno[0] -> msg ;
+                }
+
+                break;
+
+        }
+
+        header("Location:funcionario.php");
+    }
+
 ?>
 <!DOCTYPE html>
   <html>
@@ -102,9 +149,9 @@
                                                 echo "<td><label for='{$dado->id_pessoa}'>{$dado->cpf}</label></td>";
                                                 echo "<td><label for='{$dado->id_pessoa}'>{$dado->cel}</label></td>";
                                                 echo "<td><label for='{$dado->id_pessoa}'>{$dado->tel}</label></td>";
+                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->cep}</label></td>";
                                                 echo "<td><label for='{$dado->id_pessoa}'>{$dado->logradouro}</label></td>";
                                                 echo "<td><label for='{$dado->id_pessoa}'>{$dado->bairro}</label></td>";
-                                                echo "<td><label for='{$dado->id_pessoa}'>{$dado->cep}</label></td>";
                                                 echo "<td><label for='{$dado->id_pessoa}'>{$dado->cidade}</label></td>";
                                                 echo "<td><label for='{$dado->id_pessoa}'>{$dado->uf}</label></td>";
                                                 echo "<td><label for='{$dado->id_pessoa}'>{$dado->usuario}</label></td>";
@@ -117,11 +164,31 @@
                                     </table>
                                 </div>
                                 
-                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" href="#inserir">Inserir</a>
-                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled " href="#alterar">Alterar</a>
-                                <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
-                                
-                                <form id="inserir" class="modal">
+                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir"  onclick="f1()" href="#inserir">Inserir</a>
+                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled " onclick="f2()" href="#inserir">Alterar</a>
+                                <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" onclick="f3()" href="#remover">Remover</a>
+
+
+                                <form id="remover" method="post" action="#" class="modal">
+                                    <div class="modal-content">
+                                        <div class="row">
+                                            <div class="input-field col s12 l10">
+                                                <input id="oper" name="oper" type="hidden">
+                                                <input id="id" name="id" type="hidden">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <h4>Você tem certeza disso?</h4>
+                                            <p><span class="atencao">Atenção:</span> Ao clicar em "SIM" o cliente será removido para sempre.</p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" value="Sim" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>
+                                    </div>
+                                </form>
+
+                                <form action="#" id="inserir" class="modal" method="POST">
                                     <div class="modal-content">
                                         <div class="row">
                                             <h4 class="col s12">Cadastrar Funcionário </h4>
@@ -129,91 +196,90 @@
                                             <br>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="nome" type="text">
+                                                    <input id="oper" name="oper" type="text">
+                                                    <input id="id" name="id" type="text">
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input placeholder="João Pedro" id="nome" name ="nome" type="text">
                                                     <label for="nome">Nome:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="cpf" type="text">
+                                                    <input placeholder="João Pedro" id="cpf" name ="cpf" type="text">
                                                     <label for="cpf">Cpf:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input id="cpf" type="text">
-                                                    <label for="cpf">Celular:</label>
+                                                    <input placeholder="João Pedro"  id="celular" name ="celular" type="text">
+                                                    <label for="celular">Celular:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input id="telefone" type="text">
+                                                    <input placeholder="João Pedro"  id="telefone" name ="telefone" type="text">
                                                     <label for="telefone">Telefone:</label>
                                                 </div>
                                             </div>
                                              <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="cep" type="text">
+                                                    <input placeholder="João Pedro" id="cep" name ="cep" type="text">
                                                     <label for="cep">Cep:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input id="logradouro" type="text">
+                                                    <input placeholder="João Pedro" id="logradouro" name ="logradouro" type="text">
                                                     <label for="logradouro">Logradouro:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input id="bairro" type="text">
+                                                    <input placeholder="João Pedro" id="bairro" name ="bairro" type="text">
                                                     <label for="bairro">Bairro:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input id="cidade" type="text">
+                                                    <input placeholder="João Pedro" id="cidade" name ="cidade" type="text">
                                                     <label for="cidade">Cidade:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input id="uf" type="text">
+                                                    <input placeholder="João Pedro" id="uf" name ="uf" type="text">
                                                     <label for="uf">UF:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input id="usuario" type="text">
+                                                    <input placeholder="João Pedro" id="usuario" name ="usuario" type="text">
                                                     <label for="usuario">Usuário:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input id="senha" type="text">
+                                                    <input placeholder="João Pedro" id="senha" name ="senha" type="text">
                                                     <label for="senha">Senha:</label>
                                                 </div>
                                             </div>
                                             <div class="row input-field">
-                                                <select>
-                                                  <option value="1">Administrador</option>
-                                                  <option value="2">Funcionário</option>
+                                                <select name="tipo">
+                                                    <?php
+                                                    $tipoDAO = new TipoDAO();
+                                                    $listarTipo = $tipoDAO->listarTipo();
+
+                                                    foreach($listarTipo as $dado) {
+                                                        echo"<option value='{$dado-> id_tipo}'>{$dado-> descritivo}</option>";
+                                                    }
+
+                                                    ?>
                                                 </select>
-                                                <label>Tipo:</label>
+
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Ok</a> 
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
+                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                                     </div>
                                 </form>
-                                <form id="remover" class="modal">
-                                    <div class="modal-content">
-                                        <div class="row">
-                                           <h4><h4>Você tem certeza disso?</h4>
-                                            <p><span class="atencao">Atenção:</span> Ao clicar em "SIM" o funcionário será removido para sempre.</p>  
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Sim</a> 
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>   
-                                    </div>
-                                </form>
-                                
-                            
-                            
+
+
                             </div>
                         </main>
                     </div>
@@ -256,13 +322,81 @@
 
             </div>
         </div>
-      
-        
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
       <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
       <script type="text/javascript" src="../lib/materialize/main.js"></script>
       <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+    <script>
+        function f1()
+        {
+            var operacao = document.getElementsByName("oper");
+            operacao[1].value = "I";
+        }
+
+        function f2() {
+
+            var operacao = document.getElementsByName("oper");
+            operacao[1].value = "A";
+
+            var check = document.getElementsByName("check");
+            var id;
+            for(var x=0;x<check.length;x++){
+
+                if(check[x].checked){
+                    id = check[x].id;
+                    break;
+                }
+            }
+            $(function(){
+                $.ajax({
+                    //Tipo de envio POST ou GET
+                    type: "POST",
+                    //Caminho do arquivo
+                    url: "atualizarFuncionario.php",
+                    //dados passados via POST
+                    data: "id="+id,
+                    //Se der tudo ok
+
+                    success: function(resposta){
+                        var pessoa = JSON.parse(resposta);
+                        document.getElementById("id").value = pessoa[0].id_pessoa;
+                        document.getElementById("nome").value = pessoa[0].nome;
+                        document.getElementById("cpf").value = pessoa[0].cpf;
+                        document.getElementById("celular").value = pessoa[0].cel;
+                        document.getElementById("telefone").value = pessoa[0].tel;
+                        document.getElementById("cep").value = pessoa[0].cep;
+                        document.getElementById("logradouro").value = pessoa[0].logradouro;
+                        document.getElementById("bairro").value = pessoa[0].bairro;
+                        document.getElementById("cidade").value = pessoa[0].cidade;
+                        document.getElementById("uf").value = pessoa[0].uf;
+                        document.getElementById("usuario").value = pessoa[0].usuario;
+                        document.getElementById("senha").value = pessoa[0].senha;
+                    }
+                });
+            });
+        }
+        function f3()
+        {
+
+            var operacao = document.getElementsByName("oper");
+            operacao[0].value = "E";
+
+            var check = document.getElementsByName("check");
+            var id;
+            for(var x=0;x<check.length;x++){
+                if(check[x].checked){
+                    id = check[x].id;
+                    break;
+                }
+            }
+            document.getElementById("id").value = id;
+            var identificador = document.getElementsByName("id");
+            identificador[0].value = id;
+        }
+    </script>
             
     </body>
   </html>

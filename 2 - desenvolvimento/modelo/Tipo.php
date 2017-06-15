@@ -3,11 +3,13 @@
 
 final class Tipo
 {
+    private $idTipo;
     private $descritivo;
     private $menu;
 
-    public function __construct($descritivo, $menu)
+    public function __construct($idTipo=null,$descritivo=null, $menu=null)
     {
+        $this->idTipo = $idTipo;
         $this->descritivo = $descritivo;
         $this->menu[] = $menu;
     }
@@ -29,6 +31,17 @@ final class Tipo
     {
         $this->menu[] = $menu;
     }
+
+    public function getIdTipo()
+    {
+        return $this->idTipo;
+    }
+
+    public function setIdTipo($idTipo)
+    {
+        $this->idTipo = $idTipo;
+    }
+
 
 
 

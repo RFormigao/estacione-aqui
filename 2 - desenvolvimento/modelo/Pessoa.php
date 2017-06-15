@@ -3,6 +3,7 @@
 
 final class Pessoa
 {
+    private $idPessoa;
     private $nome;
     private $cpf;
     private $telefone;
@@ -15,13 +16,15 @@ final class Pessoa
     private $usuario;
     private $senha;
     private $tipo;
+    private $status;
 
-    public function __construct($nome = null, $cpf = null, $telefone = null,
+    public function __construct($idPessoa=null,$nome = null, $cpf = null, $telefone = null,
                                 $celular = null, $logradouro = null,
                                 $bairro = null, $cep = null, $cidade = null,
                                 $uf = null, $usuario = null,
-                                $senha = null, $tipo = null)
+                                $senha = null, $tipo = null,$status = null)
     {
+        $this->idPessoa = $idPessoa;
         $this->nome = $nome;
         $this->cpf = $cpf;
         $this->telefone = $telefone;
@@ -34,6 +37,7 @@ final class Pessoa
         $this->usuario = $usuario;
         $this->senha = $senha;
         $this->tipo = $tipo;
+        $this->status = $status;
     }
 
     public function getNome()
@@ -143,6 +147,26 @@ final class Pessoa
     {
         $this->tipo = $tipo;
     }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    public function getIdPessoa()
+    {
+        return $this->idPessoa;
+    }
+
+    public function setIdPessoa($idPessoa)
+    {
+        $this->idPessoa = $idPessoa;
+    }
+
 
 
 
