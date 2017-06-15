@@ -9,21 +9,39 @@
                 case "I":
                     $cliente = new cliente(null, $_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
                     $clienteDAO = new ClienteDAO();
-                    $clienteDAO->inserirClientes($cliente);
+                    $retorno =  $clienteDAO->inserirClientes($cliente);
+                    $msg = $retorno[0] -> msg;
+                    if($msg){
+                        echo $msg ;
+                    }
+
                     break;
 
                 case "A":
                     $cliente = new cliente($_POST["id"],$_POST["proprietario"], $_POST["cpf"], $_POST["telefone"]);
                     $clienteDAO = new ClienteDAO();
-                    $clienteDAO->alterarClientes($cliente);
+                    $retorno =  $clienteDAO->alterarClientes($cliente);
+                    $msg = $retorno[0] -> msg;
+                    if($msg){
+                        echo $msg ;
+                    }
+
                     break;
 				case "E":
                     $cliente = new cliente($_POST["id"]);
                     $clienteDAO = new ClienteDAO();
-                    $clienteDAO->excluirClientes($cliente);
+                    $retorno = $clienteDAO->excluirClientes($cliente);
+
+                    if($retorno[0] -> msg){
+                      $msg = $retorno[0]->msg;
+                        echo $msg;
+                    }
+
                     break;
             }
 
+
+        header("Location:cliente.php");
     }
 
 

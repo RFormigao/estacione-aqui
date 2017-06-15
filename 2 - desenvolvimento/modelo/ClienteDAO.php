@@ -69,6 +69,8 @@ final class ClienteDAO extends Conexao
 
             if(!$ret){
                 die("Erro ao alterar cliente");
+            } else {
+                return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
             }
         }
         catch (Exception $e) {
@@ -88,6 +90,8 @@ final class ClienteDAO extends Conexao
 
             if(!$ret){
                 die("Erro ao excluir cliente");
+            }else {
+                return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
             }
         }
         catch (Exception $e) {
