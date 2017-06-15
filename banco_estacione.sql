@@ -11,7 +11,7 @@ MySQL - 5.5.5-10.1.16-MariaDB : Database - estacione_aqui
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`estacione_aqui` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`estacione_aqui` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `estacione_aqui`;
 
@@ -62,15 +62,16 @@ DROP TABLE IF EXISTS `cliente`;
 
 CREATE TABLE `cliente` (
   `id_cliente` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `nome` varchar(50) DEFAULT NULL,
   `cpf` char(14) DEFAULT NULL,
   `telefone` varchar(15) DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 /*Data for the table `cliente` */
 
-insert  into `cliente`(`id_cliente`,`nome`,`cpf`,`telefone`) values (1,'Jaqueline Paschoal','465.212.508-9','(14) 3646-3263'),(2,'Robson Gomes','460.706.578-1','(14) 99742-593'),(3,'Roberto da Silva','283.292.290-9','(14) 3657-3839');
+insert  into `cliente`(`id_cliente`,`nome`,`cpf`,`telefone`,`status`) values (2,'Robson Formigão Gomes','460.706.578-17','(14) 99742-5938','A'),(3,'Roberto da Silva','283.292.990-80','(14) 3657-3839','A'),(6,'Roberta Maria ','178.190.180-10','(19) 3647-2920','A'),(23,'nhjhjhu','454','54454','I');
 
 /*Table structure for table `menu` */
 
@@ -92,13 +93,14 @@ DROP TABLE IF EXISTS `periodo`;
 CREATE TABLE `periodo` (
   `id_periodo` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `periodo` time DEFAULT NULL,
-  `valor` float DEFAULT NULL,
+  `valor` decimal(8,2) DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_periodo`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `periodo` */
 
-insert  into `periodo`(`id_periodo`,`periodo`,`valor`) values (1,'00:10:00',2),(2,'00:15:00',3),(3,'00:20:00',4),(4,'00:25:00',5),(5,'00:30:00',6),(6,'00:35:00',7),(7,'00:40:00',8);
+insert  into `periodo`(`id_periodo`,`periodo`,`valor`,`status`) values (1,'00:10:00','2.00','A'),(2,'00:15:00','3.00','A'),(3,'00:20:00','4.00','A'),(4,'00:25:00','5.00','A'),(5,'00:30:00','6.00','A'),(6,'00:35:00','7.00','A'),(7,'00:40:00','8.00','A'),(8,'00:45:00','9.00','A'),(9,'00:00:10','10.00','I');
 
 /*Table structure for table `pessoa` */
 
@@ -157,7 +159,7 @@ CREATE TABLE `veiculo` (
 
 /*Data for the table `veiculo` */
 
-insert  into `veiculo`(`id_veiculo`,`placa`,`modelo`,`id_cliente`) values (1,'FND-1226','Palio',3),(2,'FGB-4679','Fiesta',2),(3,'HDB-9103','Corsa',1);
+insert  into `veiculo`(`id_veiculo`,`placa`,`modelo`,`id_cliente`) values (1,'FND-1226','Palio',3),(2,'FGB-4679','Fiesta',2);
 
 /* Procedure structure for procedure `alterarClientes` */
 
@@ -165,9 +167,73 @@ insert  into `veiculo`(`id_veiculo`,`placa`,`modelo`,`id_cliente`) values (1,'FN
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `alterarClientes`(in id int, proprietario varchar(50), c char(14), t varchar(15))
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `alterarClientes`(IN id INT, proprietario VARCHAR(50), c CHAR(14), t VARCHAR(15))
+begin 
+	if (proprietario = "" ) then
+		select "Preencha o nome. (Atenção:Todos os campos precisam ser preenchidos!)" msg;
+	else
+		IF (c = "") THEN
+			SELECT "Preencha o CPF. (Atenção:Todos os campos precisam ser preenchidos!)" msg;
+		else
+			IF(t = "") THEN
+				SELECT "Preencha o telefone. (Atenção:Todos os campos precisam ser preenchidos!)" msg;
+			else
+				UPDATE cliente SET nome = proprietario, cpf = c, telefone = t WHERE id_cliente = id;
+			END IF;
+		END IF;
+	end if;
+end */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `alterarPeriodos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `alterarPeriodos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `alterarPeriodos`(in id int, p time, v DECIMAL(8,2))
 begin
-	update cliente set nome = proprietario, cpf = c, telefone = t where id_cliente = id;
+	if (p = "") then
+		SELECT "Preencha o periodo. (Atenção:Todos os campos precisam ser preenchidos!)" msg;
+	else
+		if (v = "") then
+			SELECT "Preencha o valor. (Atenção:Todos os campos precisam ser preenchidos!)" msg;
+		else
+			UPDATE periodo SET periodo = p, valor = v WHERE id_periodo = id;
+		end if;
+	end if;
+end */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `excluirClientes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `excluirClientes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `excluirClientes`(in id int)
+begin 
+	if exists ( select id_cliente from veiculo where id_cliente = id) then
+		select "Este cliente não pode ser excluido, exclua o seu veículo primeiro." msg;
+	else 
+		UPDATE cliente SET status = "I" WHERE id_cliente = id;
+	end if;
+end */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `excluirPeriodos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `excluirPeriodos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `excluirPeriodos`(in id int)
+begin
+	IF EXISTS ( SELECT id_periodo FROM alocacao WHERE id_periodo = id) THEN
+		SELECT "Este periodo não pode ser excluido, pois possui alocações pendentes a ela." msg;
+	ELSE 
+		UPDATE periodo SET STATUS = "I" WHERE id_periodo = id;
+	END IF;
 end */$$
 DELIMITER ;
 
@@ -177,21 +243,42 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirClientes`(in nome varchar(50), cpf char(14) ,telefone varchar(15))
-begin
-	insert into cliente (nome,cpf,telefone) values ( nome,cpf,telefone);
-end */$$
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirClientes`(IN nome VARCHAR(50), cpf CHAR(14) ,telefone VARCHAR(15), st char(1))
+BEGIN
+	if(nome = "") then
+		select "Preencha o nome. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+	else 
+		if (cpf = "") then
+			select "Preencha o CPF. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+		else 
+			if(telefone = "") then
+				SELECT "Preencha o telefone. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+			else
+				INSERT INTO cliente  (nome,cpf,telefone,status) VALUES (nome,cpf,telefone,st);
+			end if;
+		end if;
+	end if;
+END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `inserirPrecos` */
+/* Procedure structure for procedure `inserirPeriodos` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `inserirPrecos` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirPeriodos` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirPrecos`(in periodo time, valor float)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirPeriodos`(in periodo time, valor float, st char(1))
 BEGIN
-	INSERT INTO periodo (periodo,valor) VALUES (periodo,valor);
+	if(periodo = "") then
+		SELECT "Preencha o periodo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+	else
+		if(valor = "") then
+			SELECT "Preencha o valor. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+		else
+			INSERT INTO periodo (periodo,valor,STATUS) VALUES (periodo,valor,st);
+		end if;
+	end if;
+	
 END */$$
 DELIMITER ;
 
@@ -216,10 +303,10 @@ DROP TABLE IF EXISTS `vw_listarclientes`;
 
 /*!50001 CREATE TABLE `vw_listarclientes` (
   `id_cliente` int(10) unsigned NOT NULL,
-  `nome` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `cpf` char(14) DEFAULT NULL,
-  `telefone` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+  `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `cpf` char(14) CHARACTER SET latin1 DEFAULT NULL,
+  `telefone` varchar(15) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*Table structure for table `vw_listarfuncionarios` */
 
@@ -230,19 +317,19 @@ DROP TABLE IF EXISTS `vw_listarfuncionarios`;
 
 /*!50001 CREATE TABLE `vw_listarfuncionarios` (
   `id_pessoa` int(10) unsigned NOT NULL,
-  `nome` varchar(50) DEFAULT NULL,
-  `cpf` char(14) DEFAULT NULL,
-  `cel` char(15) DEFAULT NULL,
-  `tel` char(14) DEFAULT NULL,
-  `logradouro` varchar(50) DEFAULT NULL,
-  `bairro` varchar(50) DEFAULT NULL,
-  `cep` char(9) DEFAULT NULL,
-  `cidade` varchar(30) DEFAULT NULL,
-  `uf` char(2) DEFAULT NULL,
-  `usuario` varchar(10) DEFAULT NULL,
-  `senha` varchar(8) DEFAULT NULL,
-  `descritivo` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+  `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `cpf` char(14) CHARACTER SET latin1 DEFAULT NULL,
+  `cel` char(15) CHARACTER SET latin1 DEFAULT NULL,
+  `tel` char(14) CHARACTER SET latin1 DEFAULT NULL,
+  `logradouro` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `bairro` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `cep` char(9) CHARACTER SET latin1 DEFAULT NULL,
+  `cidade` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
+  `uf` char(2) CHARACTER SET latin1 DEFAULT NULL,
+  `usuario` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `senha` varchar(8) CHARACTER SET latin1 DEFAULT NULL,
+  `descritivo` varchar(15) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*Table structure for table `vw_listarprecos` */
 
@@ -254,8 +341,8 @@ DROP TABLE IF EXISTS `vw_listarprecos`;
 /*!50001 CREATE TABLE `vw_listarprecos` (
   `id_periodo` int(10) unsigned NOT NULL,
   `periodo` time DEFAULT NULL,
-  `valor` varchar(51) CHARACTER SET utf8 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+  `valor` varchar(48) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*Table structure for table `vw_listarveiculos` */
 
@@ -266,17 +353,17 @@ DROP TABLE IF EXISTS `vw_listarveiculos`;
 
 /*!50001 CREATE TABLE `vw_listarveiculos` (
   `id_veiculo` int(10) unsigned NOT NULL,
-  `placa` char(8) DEFAULT NULL,
-  `modelo` varchar(20) DEFAULT NULL,
-  `nome` varchar(50) CHARACTER SET utf8 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+  `placa` char(8) CHARACTER SET latin1 DEFAULT NULL,
+  `modelo` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
+  `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*View structure for view vw_listarclientes */
 
 /*!50001 DROP TABLE IF EXISTS `vw_listarclientes` */;
 /*!50001 DROP VIEW IF EXISTS `vw_listarclientes` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listarclientes` AS select `cliente`.`id_cliente` AS `id_cliente`,`cliente`.`nome` AS `nome`,`cliente`.`cpf` AS `cpf`,`cliente`.`telefone` AS `telefone` from `cliente` */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listarclientes` AS select `cliente`.`id_cliente` AS `id_cliente`,`cliente`.`nome` AS `nome`,`cliente`.`cpf` AS `cpf`,`cliente`.`telefone` AS `telefone` from `cliente` where (`cliente`.`status` = 'A') */;
 
 /*View structure for view vw_listarfuncionarios */
 
@@ -290,7 +377,7 @@ DROP TABLE IF EXISTS `vw_listarveiculos`;
 /*!50001 DROP TABLE IF EXISTS `vw_listarprecos` */;
 /*!50001 DROP VIEW IF EXISTS `vw_listarprecos` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listarprecos` AS select `periodo`.`id_periodo` AS `id_periodo`,`periodo`.`periodo` AS `periodo`,concat('R$',format(`periodo`.`valor`,2,'de_DE')) AS `valor` from `periodo` */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listarprecos` AS select `periodo`.`id_periodo` AS `id_periodo`,`periodo`.`periodo` AS `periodo`,concat('R$',format(`periodo`.`valor`,2,'de_DE')) AS `valor` from `periodo` where (`periodo`.`status` = 'A') */;
 
 /*View structure for view vw_listarveiculos */
 
