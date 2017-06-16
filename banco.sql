@@ -1,6 +1,6 @@
 /*
 SQLyog Enterprise - MySQL GUI v8.12 
-MySQL - 5.5.5-10.1.22-MariaDB : Database - estacione_aqui
+MySQL - 5.5.5-10.1.16-MariaDB : Database - estacione_aqui
 *********************************************************************
 */
 
@@ -11,7 +11,7 @@ MySQL - 5.5.5-10.1.22-MariaDB : Database - estacione_aqui
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`estacione_aqui` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`estacione_aqui` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `estacione_aqui`;
 
@@ -71,7 +71,7 @@ CREATE TABLE `cliente` (
 
 /*Data for the table `cliente` */
 
-insert  into `cliente`(`id_cliente`,`nome`,`cpf`,`telefone`,`status`) values (2,'Robson Formigão Gomes','460.706.578-17','(14) 99742-5938','A'),(3,'Roberto da Silva','283.292.990-80','(14) 3657-3839','A'),(6,'Roberta Maria ','178.190.180-10','(19) 3647-2920','A'),(23,'nhjhjhu','454','54454','I');
+insert  into `cliente`(`id_cliente`,`nome`,`cpf`,`telefone`,`status`) values (2,'Robson Formigão Gomes','460.706.578-17','(14) 99742-5938','A'),(3,'Roberto da Silva','283.292.990-80','(14) 3657-3839','a'),(6,'Roberta Maria ','178.190.180-10','(19) 3647-2920','A'),(23,'nhjhjhu','454','54454','I');
 
 /*Table structure for table `menu` */
 
@@ -124,11 +124,11 @@ CREATE TABLE `pessoa` (
   PRIMARY KEY (`id_pessoa`),
   KEY `pessoa_FKTipo` (`id_tipo`),
   CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipo` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pessoa` */
 
-insert  into `pessoa`(`id_pessoa`,`nome`,`cpf`,`cel`,`tel`,`logradouro`,`bairro`,`cep`,`cidade`,`uf`,`usuario`,`senha`,`id_tipo`,`status`) values (2,'Maria dos Santos','497.793.130-74','(14) 99746-1367','(14) 3624-8514','Rua Luiz Augusto 679','Jardim Odette','16470-670','Jau','SP','maria','maria123',2,'A'),(5,'bulinar','asasa','as','as','as','as','as','as','as','jaq','as',1,'I'),(12,'Robson Formigão Gomes','178.190.200-10','(14) 9983-9083','(14) 3674-9080','13289-000','Rua Pachedo Soares 123','Centro','Jaú','SP','rob','rob123',2,'A'),(13,'oi','oi','oi','oi','oi','oi','oi','oi','oi','oi','oi',1,'I');
+insert  into `pessoa`(`id_pessoa`,`nome`,`cpf`,`cel`,`tel`,`logradouro`,`bairro`,`cep`,`cidade`,`uf`,`usuario`,`senha`,`id_tipo`,`status`) values (2,'Maria dos Santos','497.793.130-74','(14) 99746-1367','(14) 3624-8514','16470-670','Rua Luiz Augusto 679','Jardim Od','Jau','SP','maria','maria123',2,'A'),(5,'bulinar','asasa','as','as','as','as','as','as','as','jaq','as',1,'I'),(12,'Robson Formigão Gomes','178.190.200-10','(14) 9983-9083','(14) 3674-9080','Centro','13289-000','Rua Pache','Jaú','SP','rob','rob123',1,'A'),(13,'oi','oi','oi','oi','oi','oi','oi','oi','oi','oi','oi',1,'I'),(14,'jdsjidsj','111','11','11','111','111','11','111','11','1111','1111',1,'I');
 
 /*Table structure for table `tipo` */
 
@@ -153,14 +153,15 @@ CREATE TABLE `veiculo` (
   `placa` char(8) DEFAULT NULL,
   `modelo` varchar(20) DEFAULT NULL,
   `id_cliente` int(10) unsigned DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_veiculo`),
   KEY `veiculo_FKCliente` (`id_cliente`),
   CONSTRAINT `veiculo_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `veiculo` */
 
-insert  into `veiculo`(`id_veiculo`,`placa`,`modelo`,`id_cliente`) values (1,'FND-1226','Palio',3),(2,'FGB-4679','Fiesta',2);
+insert  into `veiculo`(`id_veiculo`,`placa`,`modelo`,`id_cliente`,`status`) values (1,'FND-1226','Palio',3,'A'),(2,'FGB-4679','Fiesta',2,'A'),(3,'FND-2020','Fusion',2,'A'),(4,'KDL-5930','Uno',6,'A'),(5,'KGK-1493','Fusca',3,'A');
 
 /* Procedure structure for procedure `alterarClientes` */
 
@@ -288,11 +289,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `excluirPeriodos`(in id int)
 begin
-	IF EXISTS ( SELECT id_periodo FROM alocacao WHERE id_periodo = id) THEN
-		SELECT "Este periodo não pode ser excluido, pois possui alocações pendentes a ela." msg;
-	ELSE 
-		UPDATE periodo SET STATUS = "I" WHERE id_periodo = id;
-	END IF;
+	UPDATE periodo SET STATUS = "I" WHERE id_periodo = id;
 end */$$
 DELIMITER ;
 
@@ -351,6 +348,30 @@ BEGIN
 	end if;
 	
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `inserirVeiculos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirVeiculos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirVeiculos`(in p varchar(8), m varchar(20), id_c int, st char(1))
+begin
+	if(p = "") then
+		SELECT "Preencha a placa do veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+	else
+		if (m = "") then
+			SELECT "Preencha o modelo do veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+		else
+			if (id_c = "") then
+				SELECT "Preencha o proprietário do veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+			else
+				insert into veiculo (placa, modelo, id_cliente, status) values (p, m, id_c, st);
+			end if;
+		end if;
+	end if;
+end */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `login` */
@@ -432,10 +453,10 @@ DROP TABLE IF EXISTS `vw_listarclientes`;
 
 /*!50001 CREATE TABLE `vw_listarclientes` (
   `id_cliente` int(10) unsigned NOT NULL,
-  `nome` varchar(50) DEFAULT NULL,
-  `cpf` char(14) DEFAULT NULL,
-  `telefone` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+  `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `cpf` char(14) CHARACTER SET latin1 DEFAULT NULL,
+  `telefone` varchar(15) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*Table structure for table `vw_listarfuncionarios` */
 
@@ -446,19 +467,19 @@ DROP TABLE IF EXISTS `vw_listarfuncionarios`;
 
 /*!50001 CREATE TABLE `vw_listarfuncionarios` (
   `id_pessoa` int(10) unsigned NOT NULL,
-  `nome` varchar(50) DEFAULT NULL,
-  `cpf` char(14) DEFAULT NULL,
-  `cel` char(15) DEFAULT NULL,
-  `tel` char(14) DEFAULT NULL,
-  `logradouro` varchar(50) DEFAULT NULL,
-  `bairro` varchar(50) DEFAULT NULL,
-  `cep` char(9) DEFAULT NULL,
-  `cidade` varchar(30) DEFAULT NULL,
-  `uf` char(2) DEFAULT NULL,
-  `usuario` varchar(10) DEFAULT NULL,
-  `senha` varchar(8) DEFAULT NULL,
-  `descritivo` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+  `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `cpf` char(14) CHARACTER SET latin1 DEFAULT NULL,
+  `cel` char(15) CHARACTER SET latin1 DEFAULT NULL,
+  `tel` char(14) CHARACTER SET latin1 DEFAULT NULL,
+  `logradouro` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `bairro` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `cep` char(9) CHARACTER SET latin1 DEFAULT NULL,
+  `cidade` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
+  `uf` char(2) CHARACTER SET latin1 DEFAULT NULL,
+  `usuario` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `senha` varchar(8) CHARACTER SET latin1 DEFAULT NULL,
+  `descritivo` varchar(15) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*Table structure for table `vw_listarprecos` */
 
@@ -470,8 +491,8 @@ DROP TABLE IF EXISTS `vw_listarprecos`;
 /*!50001 CREATE TABLE `vw_listarprecos` (
   `id_periodo` int(10) unsigned NOT NULL,
   `periodo` time DEFAULT NULL,
-  `valor` varchar(48) CHARACTER SET utf8 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+  `valor` varchar(48) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*Table structure for table `vw_listartipo` */
 
@@ -482,8 +503,8 @@ DROP TABLE IF EXISTS `vw_listartipo`;
 
 /*!50001 CREATE TABLE `vw_listartipo` (
   `id_tipo` int(10) unsigned NOT NULL,
-  `descritivo` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+  `descritivo` varchar(15) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*Table structure for table `vw_listarveiculos` */
 
@@ -494,10 +515,10 @@ DROP TABLE IF EXISTS `vw_listarveiculos`;
 
 /*!50001 CREATE TABLE `vw_listarveiculos` (
   `id_veiculo` int(10) unsigned NOT NULL,
-  `placa` char(8) DEFAULT NULL,
-  `modelo` varchar(20) DEFAULT NULL,
-  `nome` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
+  `placa` char(8) CHARACTER SET latin1 DEFAULT NULL,
+  `modelo` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
+  `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*View structure for view vw_listarclientes */
 
@@ -532,7 +553,7 @@ DROP TABLE IF EXISTS `vw_listarveiculos`;
 /*!50001 DROP TABLE IF EXISTS `vw_listarveiculos` */;
 /*!50001 DROP VIEW IF EXISTS `vw_listarveiculos` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listarveiculos` AS select `v`.`id_veiculo` AS `id_veiculo`,`v`.`placa` AS `placa`,`v`.`modelo` AS `modelo`,`c`.`nome` AS `nome` from (`veiculo` `v` join `cliente` `c` on((`c`.`id_cliente` = `v`.`id_cliente`))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listarveiculos` AS select `v`.`id_veiculo` AS `id_veiculo`,`v`.`placa` AS `placa`,`v`.`modelo` AS `modelo`,`c`.`nome` AS `nome` from (`veiculo` `v` join `cliente` `c` on((`c`.`id_cliente` = `v`.`id_cliente`))) where (`v`.`status` = 'A') */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

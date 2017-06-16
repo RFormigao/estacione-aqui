@@ -7,13 +7,15 @@ final class Veiculo
     private $placa;
     private $modelo;
     private $cliente;
+    private $status;
 
-    public function __construct($id_veiculo=null, $placa=null, $modelo=null, $cliente=null)
+    public function __construct($id_veiculo=null, $placa=null, $modelo=null, $cliente=null, $status=null)
     {
         $this->id_veiculo = $id_veiculo;
         $this->placa = $placa;
         $this->modelo = $modelo;
         $this->cliente = $cliente;
+        $this->status = $status;
     }
 
     public function getIdVeiculo()
@@ -50,6 +52,15 @@ final class Veiculo
     public function setCliente($cliente)
     {
         $this->cliente = $cliente;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
 

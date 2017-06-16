@@ -196,8 +196,8 @@
                                             <br>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="oper" name="oper" type="text">
-                                                    <input id="id" name="id" type="text">
+                                                    <input id="oper" name="oper" type="hidden">
+                                                    <input id="id" name="id" type="hidden">
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
@@ -207,43 +207,43 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input placeholder="João Pedro" id="cpf" name ="cpf" type="text">
+                                                    <input placeholder="999.999.999.99" id="cpf" name ="cpf" type="text">
                                                     <label for="cpf">Cpf:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input placeholder="João Pedro"  id="celular" name ="celular" type="text">
+                                                    <input placeholder="(99) 99999-9999"  id="celular" name ="celular" type="text">
                                                     <label for="celular">Celular:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input placeholder="João Pedro"  id="telefone" name ="telefone" type="text">
+                                                    <input placeholder="(99) 9999-9999"  id="telefone" name ="telefone" type="text">
                                                     <label for="telefone">Telefone:</label>
                                                 </div>
                                             </div>
                                              <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input placeholder="João Pedro" id="cep" name ="cep" type="text">
+                                                    <input placeholder="99999-999" id="cep" name ="cep" type="text">
                                                     <label for="cep">Cep:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input placeholder="João Pedro" id="logradouro" name ="logradouro" type="text">
+                                                    <input placeholder="Rua Domingos Salvador 999" id="logradouro" name ="logradouro" type="text">
                                                     <label for="logradouro">Logradouro:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input placeholder="João Pedro" id="bairro" name ="bairro" type="text">
+                                                    <input placeholder="Jardim Nova Esperança" id="bairro" name ="bairro" type="text">
                                                     <label for="bairro">Bairro:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input placeholder="João Pedro" id="cidade" name ="cidade" type="text">
+                                                    <input placeholder="Jau" id="cidade" name ="cidade" type="text">
                                                     <label for="cidade">Cidade:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input placeholder="João Pedro" id="uf" name ="uf" type="text">
+                                                    <input placeholder="SP" id="uf" name ="uf" type="text">
                                                     <label for="uf">UF:</label>
                                                 </div>
                                             </div>
@@ -253,23 +253,23 @@
                                                     <label for="usuario">Usuário:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input placeholder="João Pedro" id="senha" name ="senha" type="text">
+                                                    <input placeholder="999999" id="senha" name ="senha" type="text">
                                                     <label for="senha">Senha:</label>
                                                 </div>
                                             </div>
-                                            <div class="row input-field">
-                                                <select name="tipo">
-                                                    <?php
-                                                    $tipoDAO = new TipoDAO();
-                                                    $listarTipo = $tipoDAO->listarTipo();
+                                            <div class="row">
+                                                <div class="input-field col l10 s12">
+                                                    <select name="tipo">
+                                                        <?php
+                                                        $tipoDAO = new TipoDAO();
+                                                        $listarTipo = $tipoDAO->listarTipo();
 
-                                                    foreach($listarTipo as $dado) {
-                                                        echo"<option value='{$dado-> id_tipo}'>{$dado-> descritivo}</option>";
-                                                    }
-
-                                                    ?>
-                                                </select>
-
+                                                        foreach($listarTipo as $dado) {
+                                                            echo"<option value='{$dado-> id_tipo}'>{$dado-> descritivo}</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -324,82 +324,83 @@
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/main.js"></script>
-      <script src="https://use.fontawesome.com/f79af210b2.js"></script>
-    <script>
-        function f1()
-        {
-            var operacao = document.getElementsByName("oper");
-            operacao[1].value = "I";
-        }
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/main.js"></script>
+        <script src="https://use.fontawesome.com/f79af210b2.js"></script>
 
-        function f2() {
-
-            var operacao = document.getElementsByName("oper");
-            operacao[1].value = "A";
-
-            var check = document.getElementsByName("check");
-            var id;
-            for(var x=0;x<check.length;x++){
-
-                if(check[x].checked){
-                    id = check[x].id;
-                    break;
-                }
+        <script>
+            function f1()
+            {
+                var operacao = document.getElementsByName("oper");
+                operacao[1].value = "I";
             }
-            $(function(){
-                $.ajax({
-                    //Tipo de envio POST ou GET
-                    type: "POST",
-                    //Caminho do arquivo
-                    url: "atualizarFuncionario.php",
-                    //dados passados via POST
-                    data: "id="+id,
-                    //Se der tudo ok
 
-                    success: function(resposta){
+            function f2() {
 
-                        var pessoa = JSON.parse(resposta);
-                        var id = document.getElementsByName("id");
-                        id[1].value = pessoa[0].id_pessoa;
-                        document.getElementById("nome").value = pessoa[0].nome;
-                        document.getElementById("cpf").value = pessoa[0].cpf;
-                        document.getElementById("celular").value = pessoa[0].cel;
-                        document.getElementById("telefone").value = pessoa[0].tel;
-                        document.getElementById("cep").value = pessoa[0].cep;
-                        document.getElementById("logradouro").value = pessoa[0].logradouro;
-                        document.getElementById("bairro").value = pessoa[0].bairro;
-                        document.getElementById("cidade").value = pessoa[0].cidade;
-                        document.getElementById("uf").value = pessoa[0].uf;
-                        document.getElementById("usuario").value = pessoa[0].usuario;
-                        document.getElementById("senha").value = pessoa[0].senha;
+                var operacao = document.getElementsByName("oper");
+                operacao[1].value = "A";
+
+                var check = document.getElementsByName("check");
+                var id;
+                for(var x=0;x<check.length;x++){
+
+                    if(check[x].checked){
+                        id = check[x].id;
+                        break;
                     }
-                });
-            });
-        }
-        function f3()
-        {
-
-            var operacao = document.getElementsByName("oper");
-            operacao[0].value = "E";
-
-            var check = document.getElementsByName("check");
-            var id;
-            for(var x=0;x<check.length;x++){
-                if(check[x].checked){
-                    id = check[x].id;
-                    break;
                 }
+                $(function(){
+                    $.ajax({
+                        //Tipo de envio POST ou GET
+                        type: "POST",
+                        //Caminho do arquivo
+                        url: "atualizarFuncionario.php",
+                        //dados passados via POST
+                        data: "id="+id,
+                        //Se der tudo ok
+
+                        success: function(resposta){
+
+                            var pessoa = JSON.parse(resposta);
+                            var id = document.getElementsByName("id");
+                            id[1].value = pessoa[0].id_pessoa;
+                            document.getElementById("nome").value = pessoa[0].nome;
+                            document.getElementById("cpf").value = pessoa[0].cpf;
+                            document.getElementById("celular").value = pessoa[0].cel;
+                            document.getElementById("telefone").value = pessoa[0].tel;
+                            document.getElementById("cep").value = pessoa[0].cep;
+                            document.getElementById("logradouro").value = pessoa[0].logradouro;
+                            document.getElementById("bairro").value = pessoa[0].bairro;
+                            document.getElementById("cidade").value = pessoa[0].cidade;
+                            document.getElementById("uf").value = pessoa[0].uf;
+                            document.getElementById("usuario").value = pessoa[0].usuario;
+                            document.getElementById("senha").value = pessoa[0].senha;
+                        }
+                    });
+                });
             }
-            document.getElementById("id").value = id;
-            var identificador = document.getElementsByName("id");
-            identificador[0].value = id;
-        }
-    </script>
-            
+            function f3()
+            {
+
+                var operacao = document.getElementsByName("oper");
+                operacao[0].value = "E";
+
+                var check = document.getElementsByName("check");
+                var id;
+                for(var x=0;x<check.length;x++){
+                    if(check[x].checked){
+                        id = check[x].id;
+                        break;
+                    }
+                }
+                document.getElementById("id").value = id;
+                var identificador = document.getElementsByName("id");
+                identificador[0].value = id;
+            }
+        </script>
+
     </body>
   </html>
 

@@ -168,7 +168,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente"/>
+                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-periodo"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                     </div>
                                 </form>
@@ -202,12 +202,6 @@
                         
                         <div class="col l8 s12 info-rodape">
                             <h4>Sobre nós</h4>
-                            <div class="row">
-                                <div class="input-field col s12 l10">
-                                    <input id="oper" name="oper" type="hidden">
-                                    <input id="id" name="id" type="hidden">
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="col s12 l2 center-align">
                                     <img class="responsive-img" src="../img/mini-logo.png">

@@ -30,4 +30,30 @@ final class VeiculoDAO extends Conexao
             $e->getMessage();
         }
     }
+
+
+    public function inserirVeiculos($veiculo){
+
+        $sql = "CALL inserirVeiculos(?,?,?,?)";
+
+        try {
+            $f = $this->db->prepare($sql);
+            $f->bindValue(1, $veiculo->getPlaca());
+            $f->bindValue(2, $veiculo->getModelo());
+            $f->bindValue(3, $veiculo->getCliente()->getIdCliente());
+            $f->bindValue(4, $veiculo->getStatus());
+
+            $ret = $f->execute();
+
+            $this->db = null;
+
+            if (!$ret) {
+                die ("Erro ao inserir veiculo.");
+            } else {
+                return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
+            }
+        } catch (Exception $e) {
+            die ($e->getMessage());
+        }
+    }
 }

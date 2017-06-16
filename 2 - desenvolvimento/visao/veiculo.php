@@ -1,5 +1,25 @@
 <?php
     require_once 'auto.php';
+
+    if($_POST){
+
+        $oper = $_POST["oper"];
+
+        switch ($oper) {
+            case "I":
+                $cliente = new Cliente($_POST["cliente"]);
+                $veiculo = new Veiculo(null,$_POST["placa"], $_POST["modelo"], $cliente, "A");
+                $veiculoDAO = new VeiculoDAO();
+                $retorno = $veiculoDAO->inserirVeiculos($veiculo);
+                if ($retorno[0]->msg) {
+                    echo $retorno[0]->msg;
+                }
+                break;
+        }
+
+        header("Location:veiculo.php");
+
+    }
 ?>
 <!DOCTYPE html>
   <html>
@@ -99,36 +119,50 @@
                                     </table>
                                 </div>
                                 
-                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" href="#inserir">Inserir</a>
-                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#alterar">Alterar</a>
+                                <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1()" href="#inserir">Inserir</a>
+                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#inserir">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
                                 
-                                <form id="inserir" class="modal">
+                                <form id="inserir" class="modal" method="post" action="#">
                                     <div class="modal-content">
                                         <div class="row">
                                             <h4 class="col s12">Cadastrar Veículo </h4>
                                             <br>
                                             <br>
                                             <div class="row">
+                                                <div class="input-field col s12 l10">
+                                                    <input id="oper" name="oper" type="hidden">
+                                                    <input id="id" name="id" type="hidden">
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input id="placa" type="text">
+                                                    <input id="placa" name="placa" type="text">
                                                     <label for="placa">Placa:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input id="modelo" type="text">
+                                                    <input id="modelo" name="modelo" type="text">
                                                     <label for="modelo">Modelo:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="input-field col s12 l10">
-                                                    <input id="prorietario" type="text">
-                                                    <label for="proprietario">Proprietário:</label>
+                                                <div class="input-field col l10 s12">
+                                                    <select name="cliente">
+                                                        <?php
+                                                        $clienteDAO = new ClienteDAO();
+                                                        $listarCliente = $clienteDAO->listarClientes();
+
+                                                        foreach($listarCliente as $dado) {
+                                                            echo"<option value='{$dado-> id_cliente}'>{$dado-> nome}</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-cliente">Ok</a> 
+                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-periodo"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                     </div>
                                 </form>
@@ -186,13 +220,21 @@
 
             </div>
         </div>
-      
-        
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/main.js"></script>
-      <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/main.js"></script>
+        <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+
+        <script>
+            function f1(){
+                var operacao = document.getElementsByName("oper");
+                operacao[0].value = "I";
+            }
+        </script>
     </body>
   </html>
 
