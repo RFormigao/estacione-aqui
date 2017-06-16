@@ -2,7 +2,7 @@
     require_once 'auto.php';
     if($_POST) {
         $oper = $_POST["oper"];
-        echo"<script>alert('oi')</script>";
+
         switch ($oper) {
             case "I":
                 $tipo = new Tipo ($_POST["tipo"]);
@@ -361,8 +361,10 @@
                     //Se der tudo ok
 
                     success: function(resposta){
+
                         var pessoa = JSON.parse(resposta);
-                        document.getElementById("id").value = pessoa[0].id_pessoa;
+                        var id = document.getElementsByName("id");
+                        id[1].value = pessoa[0].id_pessoa;
                         document.getElementById("nome").value = pessoa[0].nome;
                         document.getElementById("cpf").value = pessoa[0].cpf;
                         document.getElementById("celular").value = pessoa[0].cel;

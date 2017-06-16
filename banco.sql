@@ -124,11 +124,11 @@ CREATE TABLE `pessoa` (
   PRIMARY KEY (`id_pessoa`),
   KEY `pessoa_FKTipo` (`id_tipo`),
   CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipo` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pessoa` */
 
-insert  into `pessoa`(`id_pessoa`,`nome`,`cpf`,`cel`,`tel`,`logradouro`,`bairro`,`cep`,`cidade`,`uf`,`usuario`,`senha`,`id_tipo`,`status`) values (2,'Maria dos Santos','497.793.130-74','(14) 99746-1367','(14) 3624-8514','Rua Luiz Augusto 679','Jardim Odette','16470-670','Jau','SP','maria','maria123',2,'A'),(5,'bulinar','asasa','as','as','as','as','as','as','as','jaq','as',1,'I'),(10,'asjaque','daw','daw','awd','da','ad','ad','da','da','ad','ad',1,'I'),(12,'afgrgr','grgr','g','rg','rg','rg','g','rg','rg','rg','rg',2,'A');
+insert  into `pessoa`(`id_pessoa`,`nome`,`cpf`,`cel`,`tel`,`logradouro`,`bairro`,`cep`,`cidade`,`uf`,`usuario`,`senha`,`id_tipo`,`status`) values (2,'Maria dos Santos','497.793.130-74','(14) 99746-1367','(14) 3624-8514','Rua Luiz Augusto 679','Jardim Odette','16470-670','Jau','SP','maria','maria123',2,'A'),(5,'bulinar','asasa','as','as','as','as','as','as','as','jaq','as',1,'I'),(12,'Robson Formigão Gomes','178.190.200-10','(14) 9983-9083','(14) 3674-9080','13289-000','Rua Pachedo Soares 123','Centro','Jaú','SP','rob','rob123',2,'A'),(13,'oi','oi','oi','oi','oi','oi','oi','oi','oi','oi','oi',1,'I');
 
 /*Table structure for table `tipo` */
 
@@ -156,7 +156,7 @@ CREATE TABLE `veiculo` (
   PRIMARY KEY (`id_veiculo`),
   KEY `veiculo_FKCliente` (`id_cliente`),
   CONSTRAINT `veiculo_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `veiculo` */
 
