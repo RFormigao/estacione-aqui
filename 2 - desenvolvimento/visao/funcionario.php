@@ -265,7 +265,7 @@
                                                         $listarTipo = $tipoDAO->listarTipo();
 
                                                         foreach($listarTipo as $dado) {
-                                                            echo"<option value='{$dado-> id_tipo}'>{$dado-> descritivo}</option>";
+                                                            echo"<option  value='{$dado-> id_tipo}'>{$dado-> descritivo}</option>";
                                                         }
                                                         ?>
                                                     </select>

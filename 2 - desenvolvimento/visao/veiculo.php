@@ -15,8 +15,24 @@
                     echo $retorno[0]->msg;
                 }
                 break;
-        }
 
+            case "A":
+                $cliente = new Cliente($_POST["cliente"]);
+                $veiculo = new Veiculo($_POST["id"], $_POST["placa"], $_POST["modelo"], $cliente);
+                $veiculoDAO = new VeiculoDAO();
+                $retorno = $veiculoDAO->alterarVeiculos($veiculo);
+                if ($retorno[0]->msg) {
+                    echo $retorno[0]->msg;
+                }
+                break;
+
+            case "E":
+                $veiculo = new Veiculo($_POST["id"]);
+                $veiculoDAO = new VeiculoDAO();
+                $retorno = $veiculoDAO->excluirVeiculos($veiculo);
+
+                break;
+        }
         header("Location:veiculo.php");
 
     }
@@ -29,6 +45,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="UTF-8">    
         <title>Gerenciar Veiculo</title>
+
+
     </head>
 
     <body class="bg-home">
@@ -120,8 +138,8 @@
                                 </div>
                                 
                                 <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1()" href="#inserir">Inserir</a>
-                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" href="#inserir">Alterar</a>
-                                <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" href="#remover">Remover</a>
+                                <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" onclick="f2()" href="#inserir">Alterar</a>
+                                <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" onclick="f3()" href="#remover">Remover</a>
                                 
                                 <form id="inserir" class="modal" method="post" action="#">
                                     <div class="modal-content">
@@ -137,17 +155,17 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input id="placa" name="placa" type="text">
+                                                    <input id="placa" placeholder="XXX-9999" name="placa" type="text">
                                                     <label for="placa">Placa:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input id="modelo" name="modelo" type="text">
+                                                    <input id="modelo" placeholder="UNO" name="modelo" type="text">
                                                     <label for="modelo">Modelo:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l10 s12">
-                                                    <select name="cliente">
+                                                    <select name="cliente" class="js-example-basic-single">
                                                         <?php
                                                         $clienteDAO = new ClienteDAO();
                                                         $listarCliente = $clienteDAO->listarClientes();
@@ -162,19 +180,25 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-periodo"/>
+                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-veiculo"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                     </div>
                                 </form>
-                                <form id="remover" class="modal">
+                                <form id="remover" class="modal" method="post" action="#">
                                     <div class="modal-content">
+                                        <div class="row">
+                                            <div class="input-field col s12 l10">
+                                                <input id="oper" name="oper" type="hidden">
+                                                <input id="id" name="id" type="hidden">
+                                            </div>
+                                        </div>
                                         <div class="row">
                                            <h4>Você tem certeza disso?</h4>
                                             <p><span class="atencao">Atenção:</span> Ao clicar em "SIM" o veículo será removido para sempre.</p>  
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat inserir-funcionario">Sim</a> 
+                                        <input type="submit" value="Sim" class="modal-action modal-close waves-effect waves-green btn-flat inserir-veiculo"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>   
                                     </div>
                                 </form>
@@ -228,13 +252,70 @@
         <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/main.js"></script>
         <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
         <script>
             function f1(){
                 var operacao = document.getElementsByName("oper");
                 operacao[0].value = "I";
             }
+            
+            function f2() {
+                var operacao = document.getElementsByName("oper");
+                operacao[0].value = "A";
+
+                var check = document.getElementsByName("check");
+                var id;
+                for(var x=0;x<check.length;x++){
+
+                    if(check[x].checked){
+                        id = check[x].id;
+                        break;
+                    }
+                }
+                $(function(){
+                    $.ajax({
+                        //Tipo de envio POST ou GET
+                        type: "POST",
+                        //Caminho do arquivo
+                        url: "atualizarVeiculo.php",
+                        //dados passados via POST
+                        data: "id="+id,
+                        //Se der tudo ok
+
+                        success: function(resposta){
+                            var veiculo = JSON.parse(resposta);
+                            document.getElementById("id").value = veiculo[0].id_veiculo;
+                            document.getElementById("placa").value = veiculo[0].placa;
+                            document.getElementById("modelo").value = veiculo[0].modelo;
+                        }
+                    });
+                });
+            }
+
+            function f3()
+            {
+
+                var operacao = document.getElementsByName("oper");
+                operacao[1].value = "E";
+
+                var check = document.getElementsByName("check");
+                var id;
+                for(var x=0;x<check.length;x++){
+                    if(check[x].checked){
+                        id = check[x].id;
+                        break;
+                    }
+                }
+                document.getElementById("id").value = id;
+                var identificador = document.getElementsByName("id");
+                identificador[1].value = id;
+            }
+
         </script>
+
+
     </body>
   </html>
 

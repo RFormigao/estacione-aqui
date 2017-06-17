@@ -31,10 +31,6 @@
                 $periodoDAO = new PeriodoDAO();
                 $retorno = $periodoDAO->excluirPeriodos($periodo);
 
-                if($retorno[0] -> msg){
-                    echo $retorno[0] -> msg ;
-                }
-
                 break;
         }
 
