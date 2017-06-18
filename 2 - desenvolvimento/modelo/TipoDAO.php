@@ -25,5 +25,30 @@ final class TipoDAO extends Conexao
             die ($e->getMessage());
         }
     }
+
+    public function buscarPermissoes($tipo)
+    {
+        $sql = "CALL buscarPermissoes(?)";
+        try
+        {
+            $f = $this->db->prepare($sql);
+            $f->bindValue(1, $tipo->getIdTipo());
+            $ret = $f->execute();
+            $this->db = null;
+            if(!$ret)
+            {
+                die("Erro ao buscar o tipo do usuário");
+            }
+            else
+            {
+                $resultado = $f->fetchAll(PDO::FETCH_OBJ);
+                return $resultado;
+            }
+        }
+        catch (PDOException $e)
+        {
+            die ($e->getMessage());
+        }
+    }
 }
 ?>

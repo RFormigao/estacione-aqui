@@ -1,5 +1,5 @@
 <?php
-    require_once 'auto.php';
+    require_once 'menu.php';
     if($_POST) {
 
 
@@ -7,25 +7,34 @@
             null, null,
             null, null,
             null, null,
-            null, $_POST["usuario"], $_POST["senha"], null);
+            null, null, $_POST["usuario"], $_POST["senha"], null);
 
         $pessoaDAO = new PessoaDAO();
 
-        $retorno = $pessoaDAO->login($pessoa);
+        $ret = $pessoaDAO->login($pessoa);
 
-        if($retorno) {
-            header("location: index.php");
+        if(count($ret) > 0)
+        {
+            //se for identificado
+            //session_start();
+            $_SESSION["tipo"] = $ret[0]->id_tipo;
+            $_SESSION["id"] = $ret[0]->id_pessoa;
+            $_SESSION["nome"] = $ret[0]->nome;
+            $_SESSION["descritivo"] = $ret[0]->descritivo;
+
+            //buscar as permissoes de acordo com o acesso
+            $tipo = new Tipo( $ret[0]->id_tipo);
+            $tipoDAO = new TipoDAO();
+            $retorno=$tipoDAO->buscarPermissoes($tipo);
+            $_SESSION["menu"]= $retorno;
+            echo "<script>alert('Bem-Vindo!');window.location.href='index.php'</script>";
         }
         else
         {
-            echo "<script>alert('Usuário/Senha não confere');window.location.href='login.php';</script>";
+            echo "<script>alert('email/senha não conferem');window.location.href='login.php'</script>";
         }
 
-
-
     }
-
-
 ?>
 <!DOCTYPE html>
   <html>

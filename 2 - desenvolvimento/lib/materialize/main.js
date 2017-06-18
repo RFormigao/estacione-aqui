@@ -1,15 +1,30 @@
  $(document).ready(function() {
 
     //Modal
-     $('.modal').modal();
-     
-    var vaga; 
+     $('.modal').modal({
+             dismissible: true, // Modal can be dismissed by clicking outside of the modal
+             opacity: .5, // Opacity of modal background
+             inDuration: 300, // Transition in duration
+             outDuration: 200, // Transition out duration
+             startingTop: '4%', // Starting top style attribute
+             endingTop: '10%', // Ending top style attribute
+             ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                 alert("Ready");
+                 console.log(modal, trigger);
+             },
+             complete: function() { alert('Closed'); } // Callback for Modal close
+         }
+     );
+
+
+     var vaga;
     var hora; 
     var numero;
     var status;
      
     $('.alocar').click(function (){
         vaga = $(this);
+        console.log("oi");
         hora = $(this).siblings('.hora');
         numero = $(this).siblings('.descricao').children('.numero');
         status = $(this).siblings('.descricao').children('.status');

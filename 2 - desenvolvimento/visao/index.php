@@ -12,32 +12,8 @@
         
         <div class="row">
             <div class="z-depth-5">
-                <nav class="col l2 s12 menu">
-                    
-                    <div class="center-align">
-                        <img class="img-responsive" src="../img/perfil.png">
-                        <h1>José Almeida</h1>
-                        <h2>Administrador</h2>
-                    </div>
-                    
-                    <h3>Dashboard</h3>
-                    <ul class="itens-menu">
-                        <li class="ativo">Gerenciar Vagas</li>
-                    </ul>
-                    
-                    <h3>Cadastros</h3>
-                    <ul class="itens-menu">
-                        <li><a href="cliente.php">Gerenciar Clientes</a></li>
-                        <li><a href="funcionario.php">Gerenciar Funcionários</a></li>
-                        <li><a href="periodo.php">Gerenciar Preços</a></li>
-                        <li><a href="veiculo.php">Gerenciar Veículos</a></li>
-                    </ul>
-                    
-                    <h3>Relatórios</h3>
-                    <ul class="itens-menu">
-                        <li>Faturamento</li>
-                    </ul>                    
-                </nav>
+
+                <?php include "menu.php" ?>
                 
                 <div class="col l10 s12 bg-main">
                     <div class="row">
@@ -238,36 +214,28 @@
                             <form id="alocar" class="modal">
                                 <div class="modal-content">
                                     <div class="row">
-                                        <h4 class="col s12">buscar veículo (placa/cpf) </h4>
-                                        <div class="input-field col l11 s10">
+                                        <h4 class="col s12">buscar veículo (placa) </h4>
+                                        <div class="input-field offset-l1 col l9 s10">
                                               <input id="pesquisar" type="text">
                                         </div>
-                                        <a class="waves-effect waves-light btn col l1 s2 pesquisar"><i class="material-icons center">search</i></a>
+                                        <a class="waves-effect waves-light btn col l1 s2 pesquisar" onclick="f1()"><i class="material-icons center">search</i></a>
                                         
                                         <div class="row">
-                                            <div class="input-field col s12 l10">
+                                            <div class="input-field offset-l1 col s12 l10">
                                                 <input disabled id="proprietario" type="text">
                                                 <label for="proprietario">Proprietário:</label>
                                             </div>
                                         </div>
                                         
                                         <div class="row">
-                                            <div class="col l5 s12 input-field">
-                                                <select>
-                                                  <option value="1" selected>Option 1</option>
-                                                  <option value="2">Option 2</option>
-                                                  <option value="3">Option 3</option>
-                                                </select>
-                                                 <label>Veículo:</label>
-                                            </div>
-                                            <div class="input-field col l5 s12">
-                                                <input disabled id="placa" type="text">
-                                                <label for="placa">Placa:</label>
+                                            <div class="input-field offset-l1 col l10 s12">
+                                                <input disabled id="veiculo" type="text">
+                                                <label for="veiculo">Veículo:</label>
                                             </div>
                                         </div>
                                         
                                         <div class="row">
-                                            <div class="input-field col l5 s12">
+                                            <div class="input-field col offset-l1 l5 s12">
                                                 <input disabled id="data" type="date">
                                             </div>
                                             <div class="input-field col l5 s12">
@@ -380,10 +348,36 @@
         </div>
       
         
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
-      <script type="text/javascript" src="../lib/materialize/main.js"></script>
-    <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
+        <script type="text/javascript" src="../lib/materialize/main.js"></script>
+        <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+
+        <script>
+            function f1() {
+
+                var placa = document.getElementById("pesquisar").value;
+
+                $(function(){
+                    $.ajax({
+                        //Tipo de envio POST ou GET
+                        type: "POST",
+                        //Caminho do arquivo
+                        url: "carregarVeiculo.php",
+                        //dados passados via POST
+                        data: "placa="+placa,
+                        //Se der tudo ok
+
+                        success: function(resposta){
+                            var peri = JSON.parse(resposta);
+                            document.getElementById("id").value = peri[0].id_periodo;
+                            document.getElementById("periodo").value = peri[0].periodo;
+                            document.getElementById("valor").value = peri[0].valor;
+                        }
+                    });
+                });
+            }
+        </script>
     </body>
   </html>
 

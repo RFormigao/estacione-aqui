@@ -53,32 +53,8 @@
         
         <div class="row">
             <div class="z-depth-5">
-                <nav class="col l2 s12 menu">
-                    
-                    <div class="center-align">
-                        <img class="img-responsive" src="../img/perfil.png">
-                        <h1>José Almeida</h1>
-                        <h2>Administrador</h2>
-                    </div>
-                    
-                    <h3>Dashboard</h3>
-                    <ul class="itens-menu">
-                        <li><a href="index.php">Gerenciar Vagas</a></li>
-                    </ul>
-                    
-                    <h3>Cadastros</h3>
-                    <ul class="itens-menu">
-                        <li ><a href="cliente.php">Gerenciar Clientes</a></li>
-                        <li><a href="funcionario.php">Gerenciar Funcionários</a></li>
-                        <li><a href="periodo.php">Gerenciar Preços</a></li>
-                        <li class="ativo"><a href="veiculo.php">Gerenciar Veículos</a></li>
-                    </ul>
-                    
-                    <h3>Relatórios</h3>
-                    <ul class="itens-menu">
-                        <li>Faturamento</li>
-                    </ul>                    
-                </nav>
+
+                <?php include "menu.php" ?>
                 
                 <div class="col l10 s12 bg-main">
                     <div class="row">
@@ -155,17 +131,17 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l5 s12">
-                                                    <input id="placa" placeholder="XXX-9999" name="placa" type="text">
+                                                    <input id="placa" placeholder="XXX-9999" name="placa" type="text" required>
                                                     <label for="placa">Placa:</label>
                                                 </div>
                                                 <div class="input-field col l5 s12">
-                                                    <input id="modelo" placeholder="UNO" name="modelo" type="text">
+                                                    <input id="modelo" placeholder="UNO" name="modelo" type="text" required>
                                                     <label for="modelo">Modelo:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l10 s12">
-                                                    <select name="cliente" class="js-example-basic-single">
+                                                    <select name="cliente">
                                                         <?php
                                                         $clienteDAO = new ClienteDAO();
                                                         $listarCliente = $clienteDAO->listarClientes();
@@ -180,7 +156,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-veiculo"/>
+                                        <input type="submit" value="Ok" class="modal-action waves-effect waves-green btn-flat inserir-veiculo"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                     </div>
                                 </form>

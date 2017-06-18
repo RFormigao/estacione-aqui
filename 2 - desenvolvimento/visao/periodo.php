@@ -52,32 +52,8 @@
         
         <div class="row">
             <div class="z-depth-5">
-                <nav class="col l2 s12 menu">
-                    
-                    <div class="center-align">
-                        <img class="img-responsive" src="../img/perfil.png">
-                        <h1>José Almeida</h1>
-                        <h2>Administrador</h2>
-                    </div>
-                    
-                    <h3>Dashboard</h3>
-                    <ul class="itens-menu">
-                        <li><a href="index.php">Gerenciar Vagas</a></li>
-                    </ul>
-                    
-                    <h3>Cadastros</h3>
-                    <ul class="itens-menu">
-                        <li ><a href="cliente.php">Gerenciar Clientes</a></li>
-                        <li><a href="funcionario.php">Gerenciar Funcionários</a></li>
-                        <li class="ativo"><a href="periodo.php">Gerenciar Preços</a></li>
-                        <li><a href="veiculo.php">Gerenciar Veículos</a></li>
-                    </ul>
-                    
-                    <h3>Relatórios</h3>
-                    <ul class="itens-menu">
-                        <li>Faturamento</li>
-                    </ul>                    
-                </nav>
+
+                <?php include "menu.php" ?>
                 
                 <div class="col l10 s12 bg-main">
                     <div class="row">
@@ -151,20 +127,20 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input placeholder="00:00:00" id="periodo" name="periodo" type="text">
+                                                    <input placeholder="00:00:00" id="periodo" name="periodo" type="text" required>
                                                     <label for="periodo">Período:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input placeholder="00,00" id="valor" name="valor" type="text">
+                                                    <input placeholder="00,00" id="valor" name="valor" type="text" required>
                                                     <label for="valor">Valor:</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="submit" value="Ok" class="modal-action modal-close waves-effect waves-green btn-flat inserir-periodo"/>
+                                        <input type="submit" value="Ok" class="modal-action waves-effect waves-green btn-flat inserir-periodo"/>
                                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                     </div>
                                 </form>
