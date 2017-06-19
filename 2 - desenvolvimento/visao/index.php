@@ -211,19 +211,24 @@
                             </div>
                             
                             
-                            <form id="alocar" class="modal">
+                            <form id="alocar" class="modal" method="post" action="#">
                                 <div class="modal-content">
+                                    <div class="row">
+                                        <div class="input-field col s12 l10">
+                                            <input id="vaga" name="vaga" type="hidden">
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <h4 class="col s12">buscar veículo (placa) </h4>
                                         <div class="input-field offset-l1 col l9 s10">
                                               <input id="pesquisar" type="text">
                                         </div>
-                                        <a class="waves-effect waves-light btn col l1 s2 pesquisar" onclick="f1()"><i class="material-icons center">search</i></a>
+                                        <a class="waves-effect waves-light btn col l1 s2 pesquisar" onclick="f1()" ><i class="material-icons center">search</i></a>
                                         
                                         <div class="row">
                                             <div class="input-field offset-l1 col s12 l10">
-                                                <input disabled id="proprietario" type="text">
-                                                <label for="proprietario">Proprietário:</label>
+                                                <input  id="nome" type="text">
+                                                <label for="nome">Proprietário:</label>
                                             </div>
                                         </div>
                                         
@@ -346,8 +351,8 @@
 
             </div>
         </div>
-      
-        
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/main.js"></script>
@@ -369,11 +374,10 @@
                         //Se der tudo ok
 
                         success: function(resposta){
-                            var peri = JSON.parse(resposta);
-                            document.getElementById("id").value = peri[0].id_periodo;
-                            document.getElementById("periodo").value = peri[0].periodo;
-                            document.getElementById("valor").value = peri[0].valor;
+                            var alocar = JSON.parse(resposta);
+                            document.getElementById("nome").value = alocar[0].nome;
                         }
+
                     });
                 });
             }
