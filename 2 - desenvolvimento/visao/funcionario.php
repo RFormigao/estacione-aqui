@@ -235,13 +235,13 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l10 s12">
-                                                    <select name="tipo">
+                                                    <select name="tipo" id="op">
                                                         <?php
                                                         $tipoDAO = new TipoDAO();
                                                         $listarTipo = $tipoDAO->listarTipo();
 
                                                         foreach($listarTipo as $dado) {
-                                                            echo"<option  value='{$dado-> id_tipo}'>{$dado-> descritivo}</option>";
+                                                            echo"<option id='{}' value='{$dado-> id_tipo}'>{$dado-> descritivo}</option>";
                                                         }
                                                         ?>
                                                     </select>
@@ -353,6 +353,9 @@
                             document.getElementById("uf").value = pessoa[0].uf;
                             document.getElementById("usuario").value = pessoa[0].usuario;
                             document.getElementById("senha").value = pessoa[0].senha;
+                            var op = pessoa[0].id_tipo;
+                            document.getElementById("op").selected = op;
+
                         }
                     });
                 });

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
   <html>
     <head>
@@ -6,6 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="UTF-8">    
         <title>Home</title>
+
     </head>
 
     <body class="bg-home">
@@ -14,7 +16,23 @@
             <div class="z-depth-5">
 
                 <?php include "menu.php" ?>
-                
+                <?php
+                if($_POST){
+                    $oper = $_POST["oper"];
+
+                    switch ($oper){
+                        case "I":
+                            $veiculo = new Veiculo($_POST["idveiculo"]);
+                            $alocar = new Alocar(null,$_POST["vaga"],$_POST["horai"],$_POST["data"],$veiculo);
+                            $alocarDAO = new AlocarDAO();
+                            $retorno = $alocarDAO->inserirAlocacao($alocar);
+                            if($retorno[0] -> msg){
+                                echo $retorno[0] -> msg ;
+                            }
+                            break;
+                    }
+                }
+                ?>
                 <div class="col l10 s12 bg-main">
                     <div class="row">
                         <header class="col s12 cabecalho">
@@ -216,6 +234,8 @@
                                     <div class="row">
                                         <div class="input-field col s12 l10">
                                             <input id="vaga" name="vaga" type="hidden">
+                                            <input id="oper" name="oper" type="hidden">
+                                            <input id="idveiculo" name="idveiculo" type="hidden">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -227,32 +247,29 @@
                                         
                                         <div class="row">
                                             <div class="input-field offset-l1 col s12 l10">
-                                                <input  id="nome" type="text">
-                                                <label for="nome">Proprietário:</label>
+                                                <input disabled id="nome" type="text" placeholder="Proprietario">
                                             </div>
                                         </div>
                                         
                                         <div class="row">
                                             <div class="input-field offset-l1 col l10 s12">
-                                                <input disabled id="veiculo" type="text">
-                                                <label for="veiculo">Veículo:</label>
+                                                <input disabled id="veiculo" type="text" placeholder="Veículo">
                                             </div>
                                         </div>
                                         
                                         <div class="row">
                                             <div class="input-field col offset-l1 l5 s12">
-                                                <input disabled id="data" type="date">
+                                                <input disabled id="data" name="data" type="date">
                                             </div>
                                             <div class="input-field col l5 s12">
-                                                <input disabled id="horai" type="text">
-                                                <label for="horai">Hora Inicial:</label>
+                                                <input disabled id="horai" name="horai" type="time">
                                             </div>
                                         </div>
                                         
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-alocar">Ok</a> 
+                                    <input type="submit" value="Ok" class="modal-action waves-effect waves-green btn-flat confirmar-alocar"/>
                                     <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                 </div>
                             </form>
@@ -262,7 +279,7 @@
                                     <h4>Liberar vaga</h4>
                                     <div class="row">
                                         <div class="input-field col s12 l10 ">
-                                            <input disabled id="proprietario" type="text">
+                                            <input disabled id="proprietario" placeholder="João da Silva" type="text">
                                             <label for="proprietario">Proprietário:</label>
                                         </div>
                                     </div>
@@ -374,11 +391,33 @@
                         //Se der tudo ok
 
                         success: function(resposta){
-                            var alocar = JSON.parse(resposta);
-                            document.getElementById("nome").value = alocar[0].nome;
-                        }
+                            var peri = JSON.parse(resposta);
+                            document.getElementById("nome").value = peri[0].nome;
 
+                        }
                     });
+                });
+
+                $.ajax({
+                    url: "carregarVeiculo.php",
+                    type: "POST",
+                    data: "placa="+placa,
+                    dataType: "html"
+
+                }).done(function(resposta) {
+                    console.log(resposta);
+                    var alocar = JSON.parse(resposta);
+                    document.getElementById("nome").value = alocar[0].nome;
+                    document.getElementById("veiculo").value = alocar[0].modelo;
+                    document.getElementById("data").value = alocar[0].datai;
+                    document.getElementById("horai").value = alocar[0].horai;
+                    document.getElementById("idveiculo").value = alocar[0].id_veiculo;
+
+                }).fail(function(jqXHR, textStatus ) {
+                    console.log("Request failed: " + textStatus);
+
+                }).always(function() {
+                    console.log("completou");
                 });
             }
         </script>

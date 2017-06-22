@@ -9,10 +9,10 @@ final class Alocar
     private $hora_saida;
     private $dataa;
     private $valor;
-    private $id_periodo;
-    private $id_veiculo;
+    private $periodo;
+    private $veiculo;
 
-    public function __construct($id_alocar=null, $vaga=null, $hora_entrada=null, $hora_saida=null, $dataa=null, $valor=null, $id_periodo=null, $id_veiculo=null)
+    public function __construct($id_alocar=null, $vaga=null, $hora_entrada=null, $hora_saida=null, $dataa=null, $valor=null, $periodo=null, $veiculo=null)
     {
         $this->id_alocar = $id_alocar;
         $this->vaga = $vaga;
@@ -20,8 +20,8 @@ final class Alocar
         $this->hora_saida = $hora_saida;
         $this->dataa = $dataa;
         $this->valor = $valor;
-        $this->id_periodo = $id_periodo;
-        $this->id_veiculo = $id_veiculo;
+        $this->periodo = $periodo;
+        $this->veiculo = $veiculo;
     }
 
     public function getIdAlocar()
@@ -78,22 +78,22 @@ final class Alocar
         $this->valor = $valor;
     }
 
-    public function getIdPeriodo()
+    public function getPeriodo()
     {
-        return $this->id_periodo;
+        return $this->periodo;
     }
-    public function setIdPeriodo($id_periodo)
+    public function setPeriodo($periodo)
     {
-        $this->id_periodo = $id_periodo;
+        $this->periodo = $periodo;
     }
 
-    public function getIdVeiculo()
+    public function getVeiculo()
     {
-        return $this->id_veiculo;
+        return $this->veiculo;
     }
-    public function setIdVeiculo($id_veiculo)
+    public function setVeiculo($veiculo)
     {
-        $this->id_veiculo = $id_veiculo;
+        $this->veiculo = $veiculo;
     }
 
 }

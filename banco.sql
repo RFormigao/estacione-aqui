@@ -316,7 +316,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarVeiculos`(in p char(8))
 begin
-	select c.nome, v.modelo, date_format(current_date, "%d/%m/%Y") "datai", current_time "horai" from veiculo v inner join cliente c on (v.id_cliente = c.id_cliente) where v.placa = p and v.status = "A";
+	select c.nome, v.modelo,v.id_veiculo,current_date "datai", current_time "horai" from veiculo v inner join cliente c on (v.id_cliente = c.id_cliente) where v.placa = p and v.status = "A";
 end */$$
 DELIMITER ;
 
@@ -372,6 +372,34 @@ begin
 end */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `inserirAlocacao` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirAlocacao` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirAlocacao`(in vaga int, horae time, dataa date, idveiculo int)
+begin
+	if(vaga = "") then
+		SELECT "Preencha a vaga. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+	else 
+		if(horae = "")then
+			SELECT "Preencha a hora de entrada. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+		else 
+			if(dataa = "")then
+				SELECT "Preencha a data. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+			else 
+				if(idveiculo = "")then
+					SELECT "Preencha o veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+				else
+					insert into alocacao (vaga,hora_entrada,dataa,id_veiculo) values (vaga,horae,dataa,idveiculo);
+				end if;
+			end if;
+		end if;
+	end if;
+end */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `inserirClientes` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `inserirClientes` */;
@@ -415,30 +443,6 @@ BEGIN
 	end if;
 	
 END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `inserirVeiculos` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `inserirVeiculos` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirVeiculos`(in p varchar(8), m varchar(20), id_c int, st char(1))
-begin
-	if(p = "") then
-		SELECT "Preencha a placa do veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-	else
-		if (m = "") then
-			SELECT "Preencha o modelo do veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-		else
-			if (id_c = "") then
-				SELECT "Preencha o proprietário do veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-			else
-				insert into veiculo (placa, modelo, id_cliente, status) values (p, m, id_c, st);
-			end if;
-		end if;
-	end if;
-end */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `inserirPessoas` */
@@ -493,6 +497,30 @@ begin
 						end if;
 					end if;
 				end if;
+			end if;
+		end if;
+	end if;
+end */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `inserirVeiculos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirVeiculos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirVeiculos`(in p varchar(8), m varchar(20), id_c int, st char(1))
+begin
+	if(p = "") then
+		SELECT "Preencha a placa do veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+	else
+		if (m = "") then
+			SELECT "Preencha o modelo do veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+		else
+			if (id_c = "") then
+				SELECT "Preencha o proprietário do veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+			else
+				insert into veiculo (placa, modelo, id_cliente, status) values (p, m, id_c, st);
 			end if;
 		end if;
 	end if;

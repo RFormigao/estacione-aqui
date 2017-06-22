@@ -13,8 +13,9 @@
         hora = $(this).siblings('.hora');
         numero = $(this).siblings('.descricao').children('.numero');
         var n = numero[0].innerText;
-
+        var oper = "I";
         document.getElementById("vaga").value = n;
+        document.getElementById("oper").value = oper;
 
         status = $(this).siblings('.descricao').children('.status');
        
