@@ -17,18 +17,19 @@
 
                 <?php include "menu.php" ?>
                 <?php
+
+                require_once "auto.php";
+
                 if($_POST){
                     $oper = $_POST["oper"];
 
                     switch ($oper){
                         case "I":
                             $veiculo = new Veiculo($_POST["idveiculo"]);
-                            $alocar = new Alocar(null,$_POST["vaga"],$_POST["horai"],$_POST["data"],$veiculo);
+                            $alocar = new Alocar(null,$_POST["vaga"], $_POST["horai"],null,$_POST["datae"],null,null, $veiculo);
+
                             $alocarDAO = new AlocarDAO();
                             $retorno = $alocarDAO->inserirAlocacao($alocar);
-                            if($retorno[0] -> msg){
-                                echo $retorno[0] -> msg ;
-                            }
                             break;
                     }
                 }
@@ -229,7 +230,7 @@
                             </div>
                             
                             
-                            <form id="alocar" class="modal" method="post" action="#">
+                            <form id="alocar" class="modal" method="post">
                                 <div class="modal-content">
                                     <div class="row">
                                         <div class="input-field col s12 l10">
@@ -259,10 +260,10 @@
                                         
                                         <div class="row">
                                             <div class="input-field col offset-l1 l5 s12">
-                                                <input disabled id="data" name="data" type="date">
+                                                <input id="datae" name="datae" type="text">
                                             </div>
                                             <div class="input-field col l5 s12">
-                                                <input disabled id="horai" name="horai" type="time">
+                                                <input id="horai" name="horai" type="text">
                                             </div>
                                         </div>
                                         
@@ -273,7 +274,7 @@
                                     <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
                                 </div>
                             </form>
-                            
+
                             <form id="liberar" class="modal">
                                 <div class="modal-content">
                                     <h4>Liberar vaga</h4>
@@ -294,13 +295,13 @@
                                             <label for="placa">Placa:</label>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="input-field col l10 s12">
                                             <input disabled id="data" type="date">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="input-field col l5 s12">
                                             <input disabled id="horai" type="text">
@@ -311,7 +312,7 @@
                                             <label for="horaf">Hora Final:</label>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="input-field col s12 valor">
                                             <input disabled value="100,00" id="valor" type="text">
@@ -322,7 +323,7 @@
                                     </div>
                                 <div class="modal-footer">
                                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-liberar">Ok</a>
-                                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a> 
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                                 </div>
                             </form>
                             
@@ -409,7 +410,7 @@
                     var alocar = JSON.parse(resposta);
                     document.getElementById("nome").value = alocar[0].nome;
                     document.getElementById("veiculo").value = alocar[0].modelo;
-                    document.getElementById("data").value = alocar[0].datai;
+                    document.getElementById("datae").value = alocar[0].datai;
                     document.getElementById("horai").value = alocar[0].horai;
                     document.getElementById("idveiculo").value = alocar[0].id_veiculo;
 
