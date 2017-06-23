@@ -2,38 +2,18 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta charset="UTF-8">    
+        <link type="text/css" rel="stylesheet" href="../css/icones.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8">
         <title>Home</title>
-
     </head>
 
     <body class="bg-home">
         
         <div class="row">
             <div class="z-depth-5">
-
                 <?php include "menu.php" ?>
-                <?php
-
-                require_once "auto.php";
-
-                if($_POST){
-                    $oper = $_POST["oper"];
-
-                    switch ($oper){
-                        case "I":
-                            $veiculo = new Veiculo($_POST["idveiculo"]);
-                            $alocar = new Alocar(null,$_POST["vaga"], $_POST["horai"],null,$_POST["datae"],null,null, $veiculo);
-
-                            $alocarDAO = new AlocarDAO();
-                            $retorno = $alocarDAO->inserirAlocacao($alocar);
-                            break;
-                    }
-                }
-                ?>
                 <div class="col l10 s12 bg-main">
                     <div class="row">
                         <header class="col s12 cabecalho">
@@ -260,18 +240,18 @@
                                         
                                         <div class="row">
                                             <div class="input-field col offset-l1 l5 s12">
-                                                <input id="datae" name="datae" type="text">
+                                                <input disabled id="datae" name="datae" type="date">
                                             </div>
                                             <div class="input-field col l5 s12">
-                                                <input id="horai" name="horai" type="text">
+                                                <input disabled id="horai" name="horai" type="time">
                                             </div>
                                         </div>
                                         
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="submit" value="Ok" class="modal-action waves-effect waves-green btn-flat confirmar-alocar"/>
-                                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-alocar" onclick="f2()" >Ok</a>
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                                 </div>
                             </form>
 
@@ -280,8 +260,8 @@
                                     <h4>Liberar vaga</h4>
                                     <div class="row">
                                         <div class="input-field col s12 l10 ">
-                                            <input disabled id="proprietario" placeholder="João da Silva" type="text">
-                                            <label for="proprietario">Proprietário:</label>
+                                            <input disabled id="nome" placeholder="João da Silva" type="text">
+                                            <label for="nome">Proprietário:</label>
                                         </div>
                                     </div>
 
@@ -298,7 +278,7 @@
 
                                     <div class="row">
                                         <div class="input-field col l10 s12">
-                                            <input disabled id="data" type="date">
+                                            <input disabled id="datae" type="date">
                                         </div>
                                     </div>
 
@@ -370,34 +350,15 @@
             </div>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../lib/jquery/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
-        <script type="text/javascript" src="../lib/materialize/main.js"></script>
-        <script src="https://use.fontawesome.com/f79af210b2.js"></script>
+        <script type="text/javascript" src="../lib/jquery/main.js"></script>
+        <script type="text/javascript" src="../lib/fontawsome/font.js"></script>
 
         <script>
             function f1() {
 
                 var placa = document.getElementById("pesquisar").value;
-
-                $(function(){
-                    $.ajax({
-                        //Tipo de envio POST ou GET
-                        type: "POST",
-                        //Caminho do arquivo
-                        url: "carregarVeiculo.php",
-                        //dados passados via POST
-                        data: "placa="+placa,
-                        //Se der tudo ok
-
-                        success: function(resposta){
-                            var peri = JSON.parse(resposta);
-                            document.getElementById("nome").value = peri[0].nome;
-
-                        }
-                    });
-                });
 
                 $.ajax({
                     url: "carregarVeiculo.php",
@@ -421,6 +382,34 @@
                     console.log("completou");
                 });
             }
+
+            function f2() {
+
+                var vaga = document.getElementById("vaga").value;
+                var oper = document.getElementById("oper").value;
+                var nome = document.getElementById("nome").value;
+                var idveiculo = document.getElementById("idveiculo").value;
+                var horai = document.getElementById("horai").value;
+                var datae = document.getElementById("datae").value;
+
+                $.ajax({
+                    url: "inserirAlocar.php",
+                    type: "POST",
+                    data: "vaga="+vaga+"&oper="+oper+"&nome="+nome+"&idveiculo="+idveiculo+"&horai="+horai+"&datae="+datae,
+                    dataType: "html"
+
+                }).done(function(resposta) {
+                    console.log(resposta);
+
+                }).fail(function(jqXHR, textStatus ) {
+                    console.log("Request failed: " + textStatus);
+
+                }).always(function() {
+                    console.log("completou");
+                });
+
+            }
+
         </script>
     </body>
   </html>

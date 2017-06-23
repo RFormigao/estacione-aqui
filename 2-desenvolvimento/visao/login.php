@@ -39,10 +39,10 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta charset="UTF-8">
+        <link type="text/css" rel="stylesheet" href="../css/icones.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8">
         <title>Login - Estacione Aqui</title>
     </head>
 
@@ -75,10 +75,9 @@
                 </div>
             </form>
         </div>
-      
-        
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+        <script type="text/javascript" src="../lib/jquery/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
-        <script type="text/javascript" src="../lib/materialize/main.js"></script>
+        <script type="text/javascript" src="../lib/jquery/main.js"></script>
     </body>
   </html>

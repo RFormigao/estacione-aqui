@@ -40,13 +40,11 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta charset="UTF-8">    
+        <link type="text/css" rel="stylesheet" href="../css/icones.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8">
         <title>Gerenciar Veiculo</title>
-
-
     </head>
 
     <body class="bg-home">
@@ -222,14 +220,12 @@
         </div>
 
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../lib/jquery/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
-        <script type="text/javascript" src="../lib/materialize/main.js"></script>
-        <script src="https://use.fontawesome.com/f79af210b2.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <script type="text/javascript" src="../lib/jquery/main.js"></script>
+        <script type="text/javascript" src="../lib/jquery/tabelas.js"></script>
+        <script type="text/javascript" src="../lib/fontawsome/font.js"></script>
 
         <script>
             function f1(){
@@ -290,8 +286,6 @@
             }
 
         </script>
-
-
     </body>
   </html>
 
