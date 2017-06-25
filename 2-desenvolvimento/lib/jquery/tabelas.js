@@ -7,7 +7,7 @@ $(document).ready(function() {
     });
 
 //option
-    $('select').material_select();
+
 
 //Tabela
 

@@ -11,8 +11,9 @@ final class Alocar
     private $valor;
     private $periodo;
     private $veiculo;
+    private $status;
 
-    public function __construct($id_alocar=null, $vaga=null, $hora_entrada=null, $hora_saida=null, $dataa=null, $valor=null, $periodo=null, $veiculo=null)
+    public function __construct($id_alocar=null, $vaga=null, $hora_entrada=null, $hora_saida=null, $dataa=null, $valor=null, $periodo=null, $veiculo=null, $status=null)
     {
         $this->id_alocar = $id_alocar;
         $this->vaga = $vaga;
@@ -22,6 +23,7 @@ final class Alocar
         $this->valor = $valor;
         $this->periodo = $periodo;
         $this->veiculo = $veiculo;
+        $this->status = $status;
     }
 
     public function getIdAlocar()
@@ -95,5 +97,16 @@ final class Alocar
     {
         $this->veiculo = $veiculo;
     }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
 
 }

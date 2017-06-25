@@ -22,290 +22,140 @@
                                   <div class="determinate" style="width: 70%" ></div>
                               </div>
                             <div class="col s2">
-                                <span>0/20</span>
+                                <span id="disp">1</span>
                             </div>
                         </header>
                     </div>
-                    
                     <div class="row">
                         <main class="col s12 bg-vagas">
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">1</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">2</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">3</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">4</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">5</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                             <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">6</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">7</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">8</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">9</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">10</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">11</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">12</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">13</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">14</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">15</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                             <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">16</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">17</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">18</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">19</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                          
-                            <div class="col l3 s12 vaga center-align z-depth-2">
-                                <div class="descricao">
-                                    <p class="numero">20</p>
-                                    <span class="status">Ocupada</span>
-                                </div>
-                                <span class="hora">HH:MM:SS</span>
-                                <a class="waves-effect waves-light btn alocar" href="#alocar">Alocar</a>
-                            </div>
-                            
-                            
-                            <form id="alocar" class="modal" method="post">
-                                <div class="modal-content">
-                                    <div class="row">
-                                        <div class="input-field col s12 l10">
-                                            <input id="vaga" name="vaga" type="hidden">
-                                            <input id="oper" name="oper" type="hidden">
-                                            <input id="idveiculo" name="idveiculo" type="hidden">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <h4 class="col s12">buscar veículo (placa) </h4>
-                                        <div class="input-field offset-l1 col l9 s10">
-                                              <input id="pesquisar" type="text">
-                                        </div>
-                                        <a class="waves-effect waves-light btn col l1 s2 pesquisar" onclick="f1()" ><i class="material-icons center">search</i></a>
-                                        
-                                        <div class="row">
-                                            <div class="input-field offset-l1 col s12 l10">
-                                                <input disabled id="nome" type="text" placeholder="Proprietario">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="input-field offset-l1 col l10 s12">
-                                                <input disabled id="veiculo" type="text" placeholder="Veículo">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="input-field col offset-l1 l5 s12">
-                                                <input disabled id="datae" name="datae" type="date">
-                                            </div>
-                                            <div class="input-field col l5 s12">
-                                                <input disabled id="horai" name="horai" type="time">
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-alocar" onclick="f2()" >Ok</a>
-                                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
-                                </div>
-                            </form>
+                    <?php
+                    $alocarDAO = new AlocarDAO();
+                    $listarAlocacao = $alocarDAO->listarAlocacao();
 
-                            <form id="liberar" class="modal">
-                                <div class="modal-content">
-                                    <h4>Liberar vaga</h4>
+                    foreach($listarAlocacao as $dado){
+                        echo"<div class='col l3 s12 {$dado->status} center-align z-depth-2'>";
+                            echo "<div class='descricao'>";
+                                echo "<p class='numero'>$dado->vaga</p>";
+                                echo "<span class='status'>Ocupada</span>" ;
+                            echo "</div>" ;
+                                echo "<span class='hora'>HH:MM:SS</span>" ;
+                                ?>
+                                <a class='waves-effect waves-light btn' onclick='f3()' <?php echo "id='{$dado->status}' href='#{$dado->status}'>{$dado->status}</a>" ;
+                        echo "</div>" ;
+                    }
+                    ?>
+
+                        <form id="alocar" class="modal" method="post">
+                            <div class="modal-content">
+                                <div class="row">
+                                    <div class="input-field col s12 l10">
+                                        <input id="vaga" name="vaga" type="text">
+                                        <input id="oper" name="oper" type="text">
+                                        <input id="idveiculo" name="idveiculo" type="text">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h4 class="col s12">buscar veículo (placa) </h4>
+                                    <div class="input-field offset-l1 col l9 s10">
+                                          <input id="pesquisar" type="text">
+                                    </div>
+                                    <a class="waves-effect waves-light btn col l1 s2 pesquisar" onclick="f1()" ><i class="material-icons center">search</i></a>
+
                                     <div class="row">
-                                        <div class="input-field col s12 l10 ">
-                                            <input disabled id="nome" placeholder="João da Silva" type="text">
-                                            <label for="nome">Proprietário:</label>
+                                        <div class="input-field offset-l1 col s12 l10">
+                                            <input disabled id="nome" type="text" placeholder="Proprietario">
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="input-field col s12 l5">
-                                            <input disabled id="veiculo" type="text">
-                                            <label for="veiculo">Veículo:</label>
-                                        </div>
-                                        <div class="input-field col s12 l5">
-                                            <input disabled id="placa" type="text">
-                                            <label for="placa">Placa:</label>
+                                        <div class="input-field offset-l1 col l10 s12">
+                                            <input disabled id="veiculo" type="text" placeholder="Veículo">
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="input-field col l10 s12">
-                                            <input disabled id="datae" type="date">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="input-field col l5 s12">
-                                            <input disabled id="horai" type="text">
-                                            <label for="horai">Hora Inicial:</label>
+                                        <div class="input-field col offset-l1 l5 s12">
+                                            <input disabled id="datae" name="datae" type="date">
                                         </div>
                                         <div class="input-field col l5 s12">
-                                            <input disabled id="horaf" type="text">
-                                            <label for="horaf">Hora Final:</label>
+                                            <input disabled id="horai" name="horai" type="time">
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="input-field col s12 valor">
-                                            <input disabled value="100,00" id="valor" type="text">
-                                            <label for="valor">Valor:</label>
-                                        </div>
-                                    </div>
-
-                                    </div>
-                                <div class="modal-footer">
-                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-liberar">Ok</a>
-                                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-alocar" onclick="f2()" >Ok</a>
+                                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                            </div>
+                        </form>
+
+                        <form id="liberar" class="modal">
+                            <div class="modal-content">
+                                <h4>Liberar vaga</h4>
+                                <div class="row">
+                                    <div class="input-field col s12 l10">
+                                        <input id="vagal" name="vagal" type="text">
+                                        <input id="operl" name="operl" type="text">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field offset-l1 col s12 l10 ">
+                                        <input disabled id="nomel" placeholder="João da Silva" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field offset-l1 col s12 l5">
+                                        <input disabled id="veiculol" type="text" placeholder="Veículo">
+                                    </div>
+                                    <div class="input-field col s12 l5">
+                                        <input disabled id="placal" type="text" placeholder="Placa">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field offset-l1 col l10 s12">
+                                        <input disabled id="datael" type="date">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field offset-l1 col l5 s12">
+                                        <input disabled id="horail" type="time">
+                                    </div>
+                                    <div class="input-field col l5 s12">
+                                        <input disabled id="horaf" type="time">
+                                    </div>
+                                </div>
+                                <div class="input-field offset-l1 col l10 s12">
+                                    <input disabled id="tempo" type="time" >
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field offset-l1 col l5 s12">
+                                        <select name="tipo" id="op">
+                                            <?php
+                                            $periodoDAO = new PeriodoDAO();
+                                            $listarPeriodo = $periodoDAO->listarPeriodos();
+
+                                            foreach($listarPeriodo as $dado) {
+                                                echo"<option id='{}' value='{$dado-> id_periodo}'>{$dado-> periodo}</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="input-field col l5 s12">
+                                        <input disabled id="valor" type="text" placeholder="Valor">
+                                    </div>
+                                </div>
+
+                                </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-liberar">Ok</a>
+                                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                            </div>
+                        </form>
                             
                         </main>
                     </div>
@@ -333,13 +183,10 @@
                                 <a class="social" href="https://www.facebook.com"target="_blank"><i class="fa fa-facebook" ></i></a>  
                                 <a class="social" href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
                                 <a class="social" href="mailto:rformigao.gomes@gmail.com"><i class="fa fa-envelope"></i></a> 
-                                <a class="social" href="https://www.twitter.com"target="_blank"><i class="fa fa-twitter"></i></a> 
-                          
+                                <a class="social" href="https://www.twitter.com"target="_blank"><i class="fa fa-twitter"></i></a
                             </div>
-                       
                         </div>
-                        
-                    </div>                    
+                    </div>
                     <div class="footer-copyright">
                     <div class="container">
                         © 2017 Copyright Estacione aqui
@@ -375,6 +222,7 @@
                     document.getElementById("horai").value = alocar[0].horai;
                     document.getElementById("idveiculo").value = alocar[0].id_veiculo;
 
+
                 }).fail(function(jqXHR, textStatus ) {
                     console.log("Request failed: " + textStatus);
 
@@ -400,6 +248,13 @@
 
                 }).done(function(resposta) {
                     console.log(resposta);
+                    document.getElementById("nome").value = "";
+                    document.getElementById("idveiculo").value = "";
+                    document.getElementById("horai").value = "";
+                    document.getElementById("datae").value = "";
+                    document.getElementById("veiculo").value = "";
+                    document.getElementById("oper").value = "";
+                    window.location.reload();
 
                 }).fail(function(jqXHR, textStatus ) {
                     console.log("Request failed: " + textStatus);
@@ -410,6 +265,9 @@
 
             }
 
+            function f3() {
+
+            }
         </script>
     </body>
   </html>
