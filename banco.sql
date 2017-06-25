@@ -1,6 +1,6 @@
 /*
 SQLyog Enterprise - MySQL GUI v8.12 
-MySQL - 5.5.5-10.1.22-MariaDB : Database - estacione_aqui
+MySQL - 5.5.5-10.1.16-MariaDB : Database - estacione_aqui
 *********************************************************************
 */
 
@@ -47,16 +47,17 @@ CREATE TABLE `alocacao` (
   `valor` float DEFAULT NULL,
   `id_periodo` int(10) unsigned DEFAULT NULL,
   `id_veiculo` int(10) unsigned DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_alocacao`),
   KEY `locacao_FKPeriodo` (`id_periodo`),
   KEY `locacao_FKVeiculo` (`id_veiculo`),
   CONSTRAINT `alocacao_ibfk_1` FOREIGN KEY (`id_periodo`) REFERENCES `periodo` (`id_periodo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `alocacao_ibfk_2` FOREIGN KEY (`id_veiculo`) REFERENCES `veiculo` (`id_veiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
 
 /*Data for the table `alocacao` */
 
-insert  into `alocacao`(`id_alocacao`,`vaga`,`hora_entrada`,`hora_saida`,`dataa`,`valor`,`id_periodo`,`id_veiculo`) values (1,2,'13:00:00','13:20:00','2017-06-11',NULL,NULL,1);
+insert  into `alocacao`(`id_alocacao`,`vaga`,`hora_entrada`,`hora_saida`,`dataa`,`valor`,`id_periodo`,`id_veiculo`,`status`) values (57,1,NULL,NULL,NULL,NULL,NULL,NULL,'liberar'),(58,2,'00:00:00',NULL,'0000-00-00',NULL,NULL,1,'liberar'),(59,3,'00:00:00',NULL,'0000-00-00',NULL,NULL,1,'liberar'),(60,4,NULL,NULL,NULL,NULL,NULL,NULL,'liberar'),(61,5,'14:55:15',NULL,'2017-06-25',NULL,NULL,3,'liberar'),(62,6,'19:07:36',NULL,'2017-06-25',NULL,NULL,1,'liberar'),(63,7,'19:15:05',NULL,'2017-06-25',NULL,NULL,1,'liberar'),(64,8,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(65,9,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(66,10,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(67,11,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(68,12,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(69,13,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(70,14,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(71,15,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(72,16,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(73,17,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(74,18,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(75,19,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(76,20,NULL,NULL,NULL,NULL,NULL,NULL,'alocar');
 
 /*Table structure for table `cliente` */
 
@@ -69,11 +70,11 @@ CREATE TABLE `cliente` (
   `telefone` varchar(15) DEFAULT NULL,
   `status` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 /*Data for the table `cliente` */
 
-insert  into `cliente`(`id_cliente`,`nome`,`cpf`,`telefone`,`status`) values (2,'Robson Formigão Gomes','460.706.578-17','(14) 99742-5938','A'),(3,'Roberto da Silva','283.292.990-80','(14) 3657-3839','a'),(6,'Roberta Maria ','178.190.180-10','(19) 3647-2920','A'),(23,'nhjhjhu','454','54454','I'),(24,'Robson Formigão Gomes','460.706.578-11','(14) 99742-5938','A'),(25,'dvf','283.292.990-90','12','I'),(26,'dsdsds','283.292.990-90','(14) 3674-9080','I');
+insert  into `cliente`(`id_cliente`,`nome`,`cpf`,`telefone`,`status`) values (2,'Robson Formigão Gomes','460.706.578-17','(14) 99742-5938','A'),(3,'Roberto da Silva','283.292.990-80','(14) 3657-3839','a'),(6,'Roberta Maria ','178.190.180-10','(19) 3647-2920','A'),(23,'nhjhjhu','454','54454','I'),(24,'Robson Formigão Gomes','460.706.578-11','(14) 99742-5938','A'),(25,'dvf','283.292.990-90','12','I'),(26,'dsdsds','283.292.990-90','(14) 3674-9080','I'),(27,'testee','111111','11111','I');
 
 /*Table structure for table `menu` */
 
@@ -132,7 +133,7 @@ CREATE TABLE `pessoa` (
 
 /*Data for the table `pessoa` */
 
-insert  into `pessoa`(`id_pessoa`,`nome`,`cpf`,`cel`,`tel`,`logradouro`,`bairro`,`cep`,`cidade`,`uf`,`usuario`,`senha`,`id_tipo`,`status`) values (2,'Maria dos Santos','497.793.130-74','(14) 99746-1367','(14) 3624-8514','16470-670','Rua Luiz Augusto 679','Jardim Od','Jau','SP','maria','maria123',2,'A'),(5,'bulinar','asasa','as','as','as','as','as','as','as','jaq','as',1,'I'),(12,'Robson Formigão Gomes','178.190.200-10','(14) 9983-9083','(14) 3674-9080','Centro','13289-000','Rua Pache','Jaú','SP','rob','rob123',1,'I'),(13,'oi','oi','oi','oi','oi','oi','oi','oi','oi','oi','oi',1,'I'),(14,'jdsjidsj','111','11','11','111','111','11','111','11','1111','1111',1,'I'),(15,'Robson Formigão Gomes','465.212.508-90','(14) 9983-9083','(14) 3674-9080','13289-000','Rua Pachedo Soares 123','Deolindo','Jaú','SP','admin','admin',1,'A');
+insert  into `pessoa`(`id_pessoa`,`nome`,`cpf`,`cel`,`tel`,`logradouro`,`bairro`,`cep`,`cidade`,`uf`,`usuario`,`senha`,`id_tipo`,`status`) values (2,'Maria dos Santos','497.793.130-74','(14) 99746-1367','(14) 3624-8514','Rua Luiz','Jardim Od','16470-670','Jau','SP','maria','maria123',1,'A'),(5,'bulinar','asasa','as','as','as','as','as','as','as','jaq','as',1,'I'),(12,'Robson Formigão Gomes','178.190.200-10','(14) 9983-9083','(14) 3674-9080','Centro','13289-000','Rua Pache','Jaú','SP','rob','rob123',1,'I'),(13,'oi','oi','oi','oi','oi','oi','oi','oi','oi','oi','oi',1,'I'),(14,'jdsjidsj','111','11','11','111','111','11','111','11','1111','1111',1,'I'),(15,'Robson Formigão Gomes','465.212.508-90','(14) 9983-9083','(14) 3674-9080','13289-000','Rua Pachedo Soares 123','Deolindo','Jaú','SP','admin','admin',1,'A');
 
 /*Table structure for table `tipo` */
 
@@ -293,6 +294,21 @@ begin
 end */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `buscarAlocacao` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `buscarAlocacao` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarAlocacao`(in vaga int)
+begin
+	select c.nome, v.modelo, v.placa, a.dataa, a.hora_entrada, current_time "horaf" from alocacao a 
+	inner join veiculo v on (v.id_veiculo = a.id_veiculo)
+	inner join cliente c on (v.id_cliente = c.id_cliente)
+	where a.vaga = vaga and a.status = "liberar";
+end */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `buscarPermissoes` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `buscarPermissoes` */;
@@ -372,34 +388,6 @@ begin
 end */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `inserirAlocacao` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `inserirAlocacao` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirAlocacao`(in vaga int, horae time, dataa date, idveiculo int)
-begin
-	if(vaga = "") then
-		SELECT "Preencha a vaga. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-	else 
-		if(horae = "")then
-			SELECT "Preencha a hora de entrada. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-		else 
-			if(dataa = "")then
-				SELECT "Preencha a data. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-			else 
-				if(idveiculo = "")then
-					SELECT "Preencha o veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-				else
-					insert into alocacao (vaga,hora_entrada,dataa,id_veiculo) values (vaga,horae,dataa,idveiculo);
-				end if;
-			end if;
-		end if;
-	end if;
-end */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `inserirClientes` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `inserirClientes` */;
@@ -443,6 +431,34 @@ BEGIN
 	end if;
 	
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `inserirAlocacao` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirAlocacao` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirAlocacao`(in v int, horae time, dataa date, idveiculo int)
+begin
+	if(v = "") then
+		SELECT "Preencha a vaga. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+	else 
+		if(horae = "")then
+			SELECT "Preencha a hora de entrada. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+		else 
+			if(dataa = "")then
+				SELECT "Preencha a data. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+			else 
+				if(idveiculo = "")then
+					SELECT "Preencha o veículo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+				else
+					UPDATE alocacao SET hora_entrada = horae, dataa = dataa, id_veiculo = idveiculo, status = "liberar" where vaga = v;
+				end if;
+			end if;
+		end if;
+	end if;
+end */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `inserirPessoas` */
@@ -539,6 +555,25 @@ begin
 end */$$
 DELIMITER ;
 
+/*Table structure for table `vw_listaralocacao` */
+
+DROP TABLE IF EXISTS `vw_listaralocacao`;
+
+/*!50001 DROP VIEW IF EXISTS `vw_listaralocacao` */;
+/*!50001 DROP TABLE IF EXISTS `vw_listaralocacao` */;
+
+/*!50001 CREATE TABLE `vw_listaralocacao` (
+  `id_alocacao` int(10) unsigned NOT NULL,
+  `vaga` int(10) DEFAULT NULL,
+  `hora_entrada` time DEFAULT NULL,
+  `hora_saida` time DEFAULT NULL,
+  `dataa` date DEFAULT NULL,
+  `valor` float DEFAULT NULL,
+  `id_periodo` int(10) unsigned DEFAULT NULL,
+  `id_veiculo` int(10) unsigned DEFAULT NULL,
+  `status` varchar(10) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
+
 /*Table structure for table `vw_listarclientes` */
 
 DROP TABLE IF EXISTS `vw_listarclientes`;
@@ -614,6 +649,13 @@ DROP TABLE IF EXISTS `vw_listarveiculos`;
   `modelo` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
   `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
+
+/*View structure for view vw_listaralocacao */
+
+/*!50001 DROP TABLE IF EXISTS `vw_listaralocacao` */;
+/*!50001 DROP VIEW IF EXISTS `vw_listaralocacao` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listaralocacao` AS select `alocacao`.`id_alocacao` AS `id_alocacao`,`alocacao`.`vaga` AS `vaga`,`alocacao`.`hora_entrada` AS `hora_entrada`,`alocacao`.`hora_saida` AS `hora_saida`,`alocacao`.`dataa` AS `dataa`,`alocacao`.`valor` AS `valor`,`alocacao`.`id_periodo` AS `id_periodo`,`alocacao`.`id_veiculo` AS `id_veiculo`,`alocacao`.`status` AS `status` from `alocacao` */;
 
 /*View structure for view vw_listarclientes */
 
