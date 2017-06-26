@@ -40,7 +40,7 @@
                             echo "</div>" ;
                                 echo "<span class='hora'>HH:MM:SS</span>" ;
                                 ?>
-                                <a class='waves-effect waves-light btn' onclick='f3()' <?php echo "id='{$dado->status}' href='#{$dado->status}'>{$dado->status}</a>" ;
+                                <a class='waves-effect waves-light btn' <?php echo "id='{$dado->status}' href='#{$dado->status}'>{$dado->status}</a>" ;
                         echo "</div>" ;
                     }
                     ?>
@@ -49,9 +49,9 @@
                             <div class="modal-content">
                                 <div class="row">
                                     <div class="input-field col s12 l10">
-                                        <input id="vaga" name="vaga" type="text">
-                                        <input id="oper" name="oper" type="text">
-                                        <input id="idveiculo" name="idveiculo" type="text">
+                                        <input id="vaga" name="vaga" type="hidden">
+                                        <input id="oper" name="oper" type="hidden">
+                                        <input id="idveiculo" name="idveiculo" type="hidden">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -95,8 +95,8 @@
                                 <h4>Liberar vaga</h4>
                                 <div class="row">
                                     <div class="input-field col s12 l10">
-                                        <input id="vagal" name="vagal" type="text">
-                                        <input id="operl" name="operl" type="text">
+                                        <input id="vagal" name="vagal" type="hidden">
+                                        <input id="operl" name="operl" type="hidden">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -122,25 +122,26 @@
 
                                 <div class="row">
                                     <div class="input-field offset-l1 col l5 s12">
-                                        <input disabled id="horail" type="time">
+                                        <input disabled id="horail" type="time" placeholder="">
                                     </div>
                                     <div class="input-field col l5 s12">
                                         <input disabled id="horaf" type="time">
                                     </div>
                                 </div>
                                 <div class="input-field offset-l1 col l10 s12">
-                                    <input disabled id="tempo" type="time" >
+                                    <input disabled id="tempo" type="time">
                                 </div>
 
                                 <div class="row">
                                     <div class="input-field offset-l1 col l5 s12">
                                         <select name="tipo" id="op">
+                                            <option value="0">Selecione um período</option>
                                             <?php
                                             $periodoDAO = new PeriodoDAO();
                                             $listarPeriodo = $periodoDAO->listarPeriodos();
 
                                             foreach($listarPeriodo as $dado) {
-                                                echo"<option id='{}' value='{$dado-> id_periodo}'>{$dado-> periodo}</option>";
+                                              ?>  "<option onclick='f3()'  <?php echo "value='{$dado-> id_periodo}'>{$dado-> periodo}</option>";
                                             }
                                             ?>
                                         </select>
@@ -265,9 +266,6 @@
 
             }
 
-            function f3() {
-
-            }
         </script>
     </body>
   </html>

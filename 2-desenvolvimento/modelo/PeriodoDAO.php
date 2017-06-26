@@ -118,4 +118,26 @@ final class PeriodoDAO extends Conexao
             die ($e->getMessage());
         }
     }
+
+    public function buscarValor($peri){
+        $sql = "CALL buscarValor(?) ";
+
+        try
+        {
+            $f = $this->db->prepare($sql);
+            $f->bindValue(1, $peri->getIdPeriodo());
+            $ret = $f->execute();
+
+            $this -> db = null;
+
+            if(!$ret){
+                die ("Erro ao buscar um valor.");
+            } else {
+                return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
+            }
+        }
+        catch (Exception $e) {
+            die ($e->getMessage());
+        }
+    }
 }
