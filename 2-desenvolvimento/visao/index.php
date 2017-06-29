@@ -216,13 +216,14 @@
 
                 }).done(function(resposta) {
                     console.log(resposta);
-                    var alocar = JSON.parse(resposta);
-                    document.getElementById("nome").value = alocar[0].nome;
-                    document.getElementById("veiculo").value = alocar[0].modelo;
-                    document.getElementById("datae").value = alocar[0].datai;
-                    document.getElementById("horai").value = alocar[0].horai;
-                    document.getElementById("idveiculo").value = alocar[0].id_veiculo;
 
+
+                        var alocar = JSON.parse(resposta);
+                        document.getElementById("nome").value = alocar[0].nome;
+                        document.getElementById("veiculo").value = alocar[0].modelo;
+                        document.getElementById("datae").value = alocar[0].datai;
+                        document.getElementById("horai").value = alocar[0].horai;
+                        document.getElementById("idveiculo").value = alocar[0].id_veiculo;
 
                 }).fail(function(jqXHR, textStatus ) {
                     console.log("Request failed: " + textStatus);

@@ -1,6 +1,6 @@
 /*
 SQLyog Enterprise - MySQL GUI v8.12 
-MySQL - 5.5.5-10.1.16-MariaDB : Database - estacione_aqui
+MySQL - 5.5.5-10.1.22-MariaDB : Database - estacione_aqui
 *********************************************************************
 */
 
@@ -57,7 +57,7 @@ CREATE TABLE `alocacao` (
 
 /*Data for the table `alocacao` */
 
-insert  into `alocacao`(`id_alocacao`,`vaga`,`hora_entrada`,`hora_saida`,`dataa`,`valor`,`id_periodo`,`id_veiculo`,`status`) values (57,1,NULL,NULL,NULL,NULL,NULL,NULL,'liberar'),(58,2,'00:00:00',NULL,'0000-00-00',NULL,NULL,1,'liberar'),(59,3,'00:00:00',NULL,'0000-00-00',NULL,NULL,1,'liberar'),(60,4,NULL,NULL,NULL,NULL,NULL,NULL,'liberar'),(61,5,'14:55:15',NULL,'2017-06-25',NULL,NULL,3,'liberar'),(62,6,'19:07:36',NULL,'2017-06-25',NULL,NULL,1,'liberar'),(63,7,'19:15:05',NULL,'2017-06-25',NULL,NULL,1,'liberar'),(64,8,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(65,9,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(66,10,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(67,11,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(68,12,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(69,13,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(70,14,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(71,15,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(72,16,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(73,17,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(74,18,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(75,19,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(76,20,NULL,NULL,NULL,NULL,NULL,NULL,'alocar');
+insert  into `alocacao`(`id_alocacao`,`vaga`,`hora_entrada`,`hora_saida`,`dataa`,`valor`,`id_periodo`,`id_veiculo`,`status`) values (57,1,'08:36:53',NULL,'2017-06-26',NULL,NULL,1,'liberar'),(58,2,'08:37:04',NULL,'2017-06-26',NULL,NULL,3,'liberar'),(59,3,'09:15:20',NULL,'2017-06-26',NULL,NULL,6,'liberar'),(60,4,'08:31:49',NULL,'2017-06-27',NULL,NULL,2,'liberar'),(61,5,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(62,6,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(63,7,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(64,8,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(65,9,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(66,10,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(67,11,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(68,12,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(69,13,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(70,14,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(71,15,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(72,16,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(73,17,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(74,18,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(75,19,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(76,20,NULL,NULL,NULL,NULL,NULL,NULL,'alocar');
 
 /*Table structure for table `cliente` */
 
@@ -154,7 +154,7 @@ insert  into `tipo`(`id_tipo`,`descritivo`) values (1,'Administrador'),(2,'Funci
 DROP TABLE IF EXISTS `veiculo`;
 
 CREATE TABLE `veiculo` (
-  `id_veiculo` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_veiculo` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `placa` char(8) DEFAULT NULL,
   `modelo` varchar(20) DEFAULT NULL,
   `id_cliente` int(10) unsigned DEFAULT NULL,
@@ -302,7 +302,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarAlocacao`(in vaga int)
 begin
-	select c.nome, v.modelo, v.placa, a.dataa, a.hora_entrada, current_time "horaf" from alocacao a 
+	select c.nome, v.modelo, v.placa, a.dataa, a.hora_entrada, current_time "horaf", TIMEDIFF(CURRENT_TIME, hora_entrada) "diferenca" from alocacao a 
 	inner join veiculo v on (v.id_veiculo = a.id_veiculo)
 	inner join cliente c on (v.id_cliente = c.id_cliente)
 	where a.vaga = vaga and a.status = "liberar";
@@ -321,6 +321,22 @@ begin
 	FROM menu m 
 	INNER JOIN acesso a ON (m.id_menu = a.id_menu) 
 	WHERE a.id_tipo = id;
+end */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `buscarValor` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `buscarValor` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarValor`(in idperiodo int)
+begin
+	if(idperiodo <= 0 || idperiodo is null )then
+		select "Periodo inválido !" as msg;
+	else
+		select concat("R$", format(valor, 2, "de_DE")) "valor" from periodo where id_periodo = idperiodo;
+	end if;
 end */$$
 DELIMITER ;
 
@@ -412,27 +428,6 @@ BEGIN
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `inserirPeriodos` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `inserirPeriodos` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirPeriodos`(in periodo time, valor float, st char(1))
-BEGIN
-	if(periodo = "") then
-		SELECT "Preencha o periodo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-	else
-		if(valor = "") then
-			SELECT "Preencha o valor. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-		else
-			INSERT INTO periodo (periodo,valor,STATUS) VALUES (periodo,valor,st);
-		end if;
-	end if;
-	
-END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `inserirAlocacao` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `inserirAlocacao` */;
@@ -459,6 +454,27 @@ begin
 		end if;
 	end if;
 end */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `inserirPeriodos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirPeriodos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirPeriodos`(in periodo time, valor float, st char(1))
+BEGIN
+	if(periodo = "") then
+		SELECT "Preencha o periodo. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+	else
+		if(valor = "") then
+			SELECT "Preencha o valor. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+		else
+			INSERT INTO periodo (periodo,valor,STATUS) VALUES (periodo,valor,st);
+		end if;
+	end if;
+	
+END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `inserirPessoas` */
@@ -644,7 +660,7 @@ DROP TABLE IF EXISTS `vw_listarveiculos`;
 /*!50001 DROP TABLE IF EXISTS `vw_listarveiculos` */;
 
 /*!50001 CREATE TABLE `vw_listarveiculos` (
-  `id_veiculo` int(10) unsigned NOT NULL,
+  `id_veiculo` int(11) unsigned NOT NULL,
   `placa` char(8) CHARACTER SET latin1 DEFAULT NULL,
   `modelo` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
   `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL
