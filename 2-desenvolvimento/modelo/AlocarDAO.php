@@ -94,4 +94,51 @@ final class AlocarDAO extends conexao
             die ($e->getMessage());
         }
     }
+
+    public function inserirRegistro($alocacao){
+        $sql = "call inserirRegistro (?,?,?,?,?,?,?)";
+        try
+        {
+            $f = $this->db->prepare($sql);
+            $f->bindValue(1, $alocacao->getVaga());
+            $f->bindValue(2, $alocacao->getDataa());
+            $f->bindValue(3, $alocacao->getHoraEntrada());
+            $f->bindValue(4, $alocacao->getHoraSaida());
+            $f->bindValue(5, $alocacao->getPeriodo()->getIdPeriodo());
+            $f->bindValue(6, $alocacao->getVeiculo()->getPlaca());
+            $f->bindValue(7, $alocacao->getVeiculo()->getModelo());
+            $ret = $f->execute();
+
+            $this -> db = null;
+
+            if(!$ret){
+                die ("Erro ao inserir registro.");
+            } else {
+                return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
+            }
+        }
+        catch (Exception $e) {
+            die ($e->getMessage());
+        }
+    }
+
+    public function contarAlocacoes(){
+        $sql = "SELECT * FROM  vw_contarAlocacoes;";
+        try
+        {
+            $f = $this->db->prepare($sql);;
+            $ret = $f->execute();
+
+            $this -> db = null;
+
+            if(!$ret){
+                die ("Erro contar alocações.");
+            } else {
+                return $retorno = $f->fetchAll(PDO::FETCH_OBJ);
+            }
+        }
+        catch (Exception $e) {
+            die ($e->getMessage());
+        }
+    }
 }

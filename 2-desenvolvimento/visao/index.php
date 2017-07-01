@@ -7,6 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="UTF-8">
         <title>Home</title>
+        <?php
+            require_once "auto.php";
+            $alocarDAO = new AlocarDAO();
+            $retorno = $alocarDAO ->contarAlocacoes();
+            $contagem = $retorno[0] -> contagem;
+        ?>
     </head>
 
     <body class="bg-home">
@@ -22,7 +28,11 @@
                                   <div class="determinate" style="width: 70%" ></div>
                               </div>
                             <div class="col s2">
-                                <span id="disp">1</span>
+                                <span id="disp">
+                                    <?php
+                                        echo $contagem;
+                                    ?> / 20
+                                </span>
                             </div>
                         </header>
                     </div>
@@ -153,7 +163,7 @@
 
                                 </div>
                             <div class="modal-footer">
-                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-liberar">Ok</a>
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-liberar" onclick="f4()">Ok</a>
                                 <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                             </div>
                         </form>
@@ -250,12 +260,7 @@
 
                 }).done(function(resposta) {
                     console.log(resposta);
-                    document.getElementById("nome").value = "";
-                    document.getElementById("idveiculo").value = "";
-                    document.getElementById("horai").value = "";
-                    document.getElementById("datae").value = "";
-                    document.getElementById("veiculo").value = "";
-                    document.getElementById("oper").value = "";
+
                     window.location.reload();
 
                 }).fail(function(jqXHR, textStatus ) {
@@ -265,6 +270,36 @@
                     console.log("completou");
                 });
 
+            }
+            function f4(){
+
+                var vagal = document.getElementById("vagal").value;
+                var operl = document.getElementById("operl").value;
+                var nomel = document.getElementById("nomel").value;
+                var veiculol = document.getElementById("veiculol").value;
+                var placal = document.getElementById("placal").value;
+                var horail = document.getElementById("horail").value;
+                var horaf = document.getElementById("horaf").value;
+                var datael = document.getElementById("datael").value;
+                var periodo = document.getElementById("op").value;
+
+                $.ajax({
+                    url: "inserirRegistro.php",
+                    type: "POST",
+                    data: "vagal="+vagal+"&operl="+operl+"&placal="+placal+"&nomel="+nomel+"&veiculol="+veiculol+"&horail="+horail+"&datael="+datael+"&horaf="+horaf+"&periodo="+periodo,
+                    dataType: "html"
+
+                }).done(function(resposta) {
+                    console.log(resposta);
+
+                    window.location.reload();
+
+                }).fail(function(jqXHR, textStatus ) {
+                    console.log("Request failed: " + textStatus);
+
+                }).always(function() {
+                    console.log("completou");
+                });
             }
 
         </script>

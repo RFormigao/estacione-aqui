@@ -42,22 +42,17 @@ CREATE TABLE `alocacao` (
   `id_alocacao` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `vaga` int(10) DEFAULT NULL,
   `hora_entrada` time DEFAULT NULL,
-  `hora_saida` time DEFAULT NULL,
   `dataa` date DEFAULT NULL,
-  `valor` float DEFAULT NULL,
-  `id_periodo` int(10) unsigned DEFAULT NULL,
   `id_veiculo` int(10) unsigned DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_alocacao`),
-  KEY `locacao_FKPeriodo` (`id_periodo`),
   KEY `locacao_FKVeiculo` (`id_veiculo`),
-  CONSTRAINT `alocacao_ibfk_1` FOREIGN KEY (`id_periodo`) REFERENCES `periodo` (`id_periodo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `alocacao_ibfk_2` FOREIGN KEY (`id_veiculo`) REFERENCES `veiculo` (`id_veiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
 
 /*Data for the table `alocacao` */
 
-insert  into `alocacao`(`id_alocacao`,`vaga`,`hora_entrada`,`hora_saida`,`dataa`,`valor`,`id_periodo`,`id_veiculo`,`status`) values (57,1,'08:36:53',NULL,'2017-06-26',NULL,NULL,1,'liberar'),(58,2,'08:37:04',NULL,'2017-06-26',NULL,NULL,3,'liberar'),(59,3,'09:15:20',NULL,'2017-06-26',NULL,NULL,6,'liberar'),(60,4,'08:31:49',NULL,'2017-06-27',NULL,NULL,2,'liberar'),(61,5,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(62,6,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(63,7,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(64,8,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(65,9,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(66,10,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(67,11,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(68,12,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(69,13,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(70,14,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(71,15,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(72,16,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(73,17,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(74,18,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(75,19,NULL,NULL,NULL,NULL,NULL,NULL,'alocar'),(76,20,NULL,NULL,NULL,NULL,NULL,NULL,'alocar');
+insert  into `alocacao`(`id_alocacao`,`vaga`,`hora_entrada`,`dataa`,`id_veiculo`,`status`) values (57,1,'15:52:38','2017-06-30',1,'liberar'),(58,2,'16:16:26','2017-06-30',2,'liberar'),(59,3,NULL,NULL,NULL,'alocar'),(60,4,NULL,NULL,NULL,'alocar'),(61,5,NULL,NULL,NULL,'alocar'),(62,6,NULL,NULL,NULL,'alocar'),(63,7,NULL,NULL,NULL,'alocar'),(64,8,NULL,NULL,NULL,'alocar'),(65,9,NULL,NULL,NULL,'alocar'),(66,10,NULL,NULL,NULL,'alocar'),(67,11,NULL,NULL,NULL,'alocar'),(68,12,NULL,NULL,NULL,'alocar'),(69,13,NULL,NULL,NULL,'alocar'),(70,14,NULL,NULL,NULL,'alocar'),(71,15,NULL,NULL,NULL,'alocar'),(72,16,NULL,NULL,NULL,'alocar'),(73,17,NULL,NULL,NULL,'alocar'),(74,18,NULL,NULL,NULL,'alocar'),(75,19,NULL,NULL,NULL,'alocar'),(76,20,NULL,NULL,NULL,'alocar');
 
 /*Table structure for table `cliente` */
 
@@ -135,6 +130,28 @@ CREATE TABLE `pessoa` (
 
 insert  into `pessoa`(`id_pessoa`,`nome`,`cpf`,`cel`,`tel`,`logradouro`,`bairro`,`cep`,`cidade`,`uf`,`usuario`,`senha`,`id_tipo`,`status`) values (2,'Maria dos Santos','497.793.130-74','(14) 99746-1367','(14) 3624-8514','Rua Luiz','Jardim Od','16470-670','Jau','SP','maria','maria123',1,'A'),(5,'bulinar','asasa','as','as','as','as','as','as','as','jaq','as',1,'I'),(12,'Robson Formigão Gomes','178.190.200-10','(14) 9983-9083','(14) 3674-9080','Centro','13289-000','Rua Pache','Jaú','SP','rob','rob123',1,'I'),(13,'oi','oi','oi','oi','oi','oi','oi','oi','oi','oi','oi',1,'I'),(14,'jdsjidsj','111','11','11','111','111','11','111','11','1111','1111',1,'I'),(15,'Robson Formigão Gomes','465.212.508-90','(14) 9983-9083','(14) 3674-9080','13289-000','Rua Pachedo Soares 123','Deolindo','Jaú','SP','admin','admin',1,'A');
 
+/*Table structure for table `registro_alocacao` */
+
+DROP TABLE IF EXISTS `registro_alocacao`;
+
+CREATE TABLE `registro_alocacao` (
+  `id_registro` int(11) NOT NULL AUTO_INCREMENT,
+  `vaga` int(11) DEFAULT NULL,
+  `dataa` date DEFAULT NULL,
+  `horai` time DEFAULT NULL,
+  `horaf` time DEFAULT NULL,
+  `id_periodo` int(10) unsigned DEFAULT NULL,
+  `placa` char(9) DEFAULT NULL,
+  `modelo` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id_registro`),
+  KEY `FK_registro_alocacao` (`id_periodo`),
+  CONSTRAINT `FK_registro_alocacao` FOREIGN KEY (`id_periodo`) REFERENCES `periodo` (`id_periodo`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+/*Data for the table `registro_alocacao` */
+
+insert  into `registro_alocacao`(`id_registro`,`vaga`,`dataa`,`horai`,`horaf`,`id_periodo`,`placa`,`modelo`) values (4,3,'2017-06-26','09:15:20','12:25:21',2,'FDI-4593','Cruze LT'),(5,2,'2017-06-30','11:53:00','12:28:06',4,'FND-1226','Palio'),(6,3,'2017-06-26','09:15:20','12:29:43',4,'FDI-4593','Cruze LT'),(7,3,'2017-06-30','12:30:14','12:31:11',5,'FND-1226','Palio'),(8,4,'2017-06-27','08:31:49','12:31:26',7,'FGB-4679','Fiesta');
+
 /*Table structure for table `tipo` */
 
 DROP TABLE IF EXISTS `tipo`;
@@ -167,6 +184,20 @@ CREATE TABLE `veiculo` (
 /*Data for the table `veiculo` */
 
 insert  into `veiculo`(`id_veiculo`,`placa`,`modelo`,`id_cliente`,`status`) values (1,'FND-1226','Palio',3,'A'),(2,'FGB-4679','Fiesta',2,'A'),(3,'FND-2020','Fusion',2,'A'),(4,'KDL-5930','Uno',6,'I'),(5,'KGK-1493','Fusca',3,'A'),(6,'FDI-4593','Cruze LT',3,'A'),(7,'FND-1226','Fiestaa',2,'I');
+
+/* Trigger structure for table `registro_alocacao` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `atualizarAlocacao` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `atualizarAlocacao` AFTER INSERT ON `registro_alocacao` FOR EACH ROW BEGIN
+		update alocacao set hora_entrada = null, dataa = null, id_veiculo = null, status = "alocar" where vaga = new.vaga;
+	
+	END */$$
+
+
+DELIMITER ;
 
 /* Procedure structure for procedure `alterarClientes` */
 
@@ -535,6 +566,18 @@ begin
 end */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `inserirRegistro` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirRegistro` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirRegistro`(in vaga int, dataa date, horai time, horaf time, id_periodo int,placa char(9),modelo varchar(30))
+BEGIN
+	insert into registro_alocacao (vaga,dataa,horai,horaf,id_periodo,placa,modelo) values (vaga,dataa,horai,current_time,id_periodo,placa,modelo);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `inserirVeiculos` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `inserirVeiculos` */;
@@ -559,6 +602,18 @@ begin
 end */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `inserir_registro` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserir_registro` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserir_registro`(in vaga int, dataa date, horai time, horaf time, id_periodo int,placa char(9),modelo varchar(30))
+BEGIN
+	insert into registro_alocacao (vaga,dataa,horai,horaf,id_periodo,placa,modelo) values (vaga,dataa,horai,horaf,id_periodo,placa,modelo);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `login` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `login` */;
@@ -571,6 +626,17 @@ begin
 end */$$
 DELIMITER ;
 
+/*Table structure for table `vw_contaralocacoes` */
+
+DROP TABLE IF EXISTS `vw_contaralocacoes`;
+
+/*!50001 DROP VIEW IF EXISTS `vw_contaralocacoes` */;
+/*!50001 DROP TABLE IF EXISTS `vw_contaralocacoes` */;
+
+/*!50001 CREATE TABLE `vw_contaralocacoes` (
+  `contagem` bigint(21) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
+
 /*Table structure for table `vw_listaralocacao` */
 
 DROP TABLE IF EXISTS `vw_listaralocacao`;
@@ -582,10 +648,7 @@ DROP TABLE IF EXISTS `vw_listaralocacao`;
   `id_alocacao` int(10) unsigned NOT NULL,
   `vaga` int(10) DEFAULT NULL,
   `hora_entrada` time DEFAULT NULL,
-  `hora_saida` time DEFAULT NULL,
   `dataa` date DEFAULT NULL,
-  `valor` float DEFAULT NULL,
-  `id_periodo` int(10) unsigned DEFAULT NULL,
   `id_veiculo` int(10) unsigned DEFAULT NULL,
   `status` varchar(10) CHARACTER SET latin1 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
@@ -666,12 +729,19 @@ DROP TABLE IF EXISTS `vw_listarveiculos`;
   `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
+/*View structure for view vw_contaralocacoes */
+
+/*!50001 DROP TABLE IF EXISTS `vw_contaralocacoes` */;
+/*!50001 DROP VIEW IF EXISTS `vw_contaralocacoes` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_contaralocacoes` AS select count(`alocacao`.`status`) AS `contagem` from `alocacao` where (`alocacao`.`status` = 'liberar') */;
+
 /*View structure for view vw_listaralocacao */
 
 /*!50001 DROP TABLE IF EXISTS `vw_listaralocacao` */;
 /*!50001 DROP VIEW IF EXISTS `vw_listaralocacao` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listaralocacao` AS select `alocacao`.`id_alocacao` AS `id_alocacao`,`alocacao`.`vaga` AS `vaga`,`alocacao`.`hora_entrada` AS `hora_entrada`,`alocacao`.`hora_saida` AS `hora_saida`,`alocacao`.`dataa` AS `dataa`,`alocacao`.`valor` AS `valor`,`alocacao`.`id_periodo` AS `id_periodo`,`alocacao`.`id_veiculo` AS `id_veiculo`,`alocacao`.`status` AS `status` from `alocacao` */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_listaralocacao` AS select `alocacao`.`id_alocacao` AS `id_alocacao`,`alocacao`.`vaga` AS `vaga`,`alocacao`.`hora_entrada` AS `hora_entrada`,`alocacao`.`dataa` AS `dataa`,`alocacao`.`id_veiculo` AS `id_veiculo`,`alocacao`.`status` AS `status` from `alocacao` */;
 
 /*View structure for view vw_listarclientes */
 
