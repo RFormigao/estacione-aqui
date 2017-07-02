@@ -12,6 +12,8 @@
             $alocarDAO = new AlocarDAO();
             $retorno = $alocarDAO ->contarAlocacoes();
             $contagem = $retorno[0] -> contagem;
+
+             $tamanho= 100*$contagem / 20;
         ?>
     </head>
 
@@ -25,7 +27,7 @@
                         <header class="col s12 cabecalho">
                             <h5>Vagas</h5>
                              <div class=" col l4 s10 progress">
-                                  <div class="determinate" style="width: 70%" ></div>
+                                  <div class="determinate" style="width: <?php echo $tamanho?>% " ></div>
                               </div>
                             <div class="col s2">
                                 <span id="disp">

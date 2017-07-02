@@ -13,7 +13,8 @@
                 $pessoaDAO = new PessoaDAO();
                 $retorno = $pessoaDAO->inserirPessoas($pessoa);
                 if ($retorno[0]->msg) {
-                    echo $retorno[0]->msg;
+                    $msg = $retorno[0] -> msg;
+                    echo "<script>alert('$msg');</script>";
                 }
                 break;
             case "A":
@@ -26,7 +27,8 @@
                 $retorno =  $pessoaDAO->alterarPessoas($pessoa);
 
                 if($retorno[0] -> msg){
-                    echo $retorno[0] -> msg ;
+                    $msg = $retorno[0] -> msg;
+                    echo "<script>alert('$msg');</script>";
                 }
 
                 break;
@@ -37,14 +39,14 @@
                 $retorno = $pessoaDAO->excluirPessoas($pessoa);
 
                 if($retorno[0] -> msg){
-                    echo $retorno[0] -> msg ;
+                    $msg = $retorno[0] -> msg;
+                    echo "<script>alert('$msg');</script>";
                 }
 
                 break;
 
         }
 
-        header("Location:funcionario.php");
     }
 
 ?>
@@ -56,6 +58,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="UTF-8">
         <title>Gerenciar Funcionários</title>
+        <?php
+        require_once "auto.php";
+        $alocarDAO = new AlocarDAO();
+        $retorno = $alocarDAO ->contarAlocacoes();
+        $contagem = $retorno[0] -> contagem;
+
+        $tamanho= 100*$contagem / 20;
+        ?>
     </head>
 
     <body class="bg-home">
@@ -70,10 +80,14 @@
                         <header class="col s12 cabecalho">
                             <h5>Vagas</h5>
                              <div class=" col l4 s10 progress">
-                                  <div class="determinate" style="width: 70%" ></div>
+                                  <div class="determinate" style="width: <?php echo $tamanho?>%" ></div>
                               </div>
                             <div class="col s2">
-                                <span>0/20</span>
+                                <span>
+                                       <?php
+                                            echo $contagem;
+                                       ?>/20
+                                </span>
                             </div>
                         </header>
                     </div>
@@ -302,7 +316,7 @@
         <script type="text/javascript" src="../lib/jquery/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
-        <script type="text/javascript" src="../lib/jquery/main.js"></script>
+        <script type="text/javascript" src="../lib/jquery/cadastro-modal.js"></script>
         <script type="text/javascript" src="../lib/jquery/tabelas.js"></script>
         <script type="text/javascript" src="../lib/fontawsome/font.js"></script>
 

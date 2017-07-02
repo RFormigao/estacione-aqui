@@ -12,7 +12,8 @@
                 $veiculoDAO = new VeiculoDAO();
                 $retorno = $veiculoDAO->inserirVeiculos($veiculo);
                 if ($retorno[0]->msg) {
-                    echo $retorno[0]->msg;
+                    $msg = $retorno[0] -> msg;
+                    echo "<script>alert('$msg');</script>";
                 }
                 break;
 
@@ -22,18 +23,23 @@
                 $veiculoDAO = new VeiculoDAO();
                 $retorno = $veiculoDAO->alterarVeiculos($veiculo);
                 if ($retorno[0]->msg) {
-                    echo $retorno[0]->msg;
+                    $msg = $retorno[0] -> msg;
+                    echo "<script>alert('$msg');</script>";
                 }
+
+
                 break;
 
             case "E":
                 $veiculo = new Veiculo($_POST["id"]);
                 $veiculoDAO = new VeiculoDAO();
                 $retorno = $veiculoDAO->excluirVeiculos($veiculo);
-
+                if ($retorno[0]->msg) {
+                    $msg = $retorno[0] -> msg;
+                    echo "<script>alert('$msg');</script>";
+                }
                 break;
         }
-        header("Location:veiculo.php");
 
     }
 ?>
@@ -45,6 +51,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="UTF-8">
         <title>Gerenciar Veiculo</title>
+        <?php
+        require_once "auto.php";
+        $alocarDAO = new AlocarDAO();
+        $retorno = $alocarDAO ->contarAlocacoes();
+        $contagem = $retorno[0] -> contagem;
+
+        $tamanho= 100*$contagem / 20;
+        ?>
     </head>
 
     <body class="bg-home">
@@ -59,10 +73,14 @@
                         <header class="col s12 cabecalho">
                             <h5>Vagas</h5>
                              <div class=" col l4 s10 progress">
-                                  <div class="determinate" style="width: 70%" ></div>
+                                  <div class="determinate" style="width:<?php echo $tamanho?>%" ></div>
                               </div>
                             <div class="col s2">
-                                <span>0/20</span>
+                                <span>
+                                       <?php
+                                            echo $contagem;
+                                       ?>/20
+                                </span>
                             </div>
                         </header>
                     </div>
@@ -123,8 +141,9 @@
                                             <br>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="oper" name="oper" type="hidden">
-                                                    <input id="id" name="id" type="hidden">
+                                                    <input id="oper" name="oper" type="text">
+                                                    <input id="id" name="id" type="text">
+                                                    <input id="teste" name="teste" type="text">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -145,7 +164,14 @@
                                                         $listarCliente = $clienteDAO->listarClientes();
 
                                                         foreach($listarCliente as $dado) {
-                                                            echo"<option value='{$dado-> id_cliente}'>{$dado-> nome}</option>";
+                                                            if(  3!= "" & 3 == $dado->id_cliente){
+                                                                echo "<option value='{$dado->id_cliente}' selected>{$dado->nome}</option>";
+
+                                                            }
+                                                            else{
+                                                                echo"<option value='{$dado-> id_cliente}'>{$dado-> nome}</option>";
+
+                                                            }
                                                         }
                                                         ?>
                                                     </select>
@@ -223,7 +249,7 @@
         <script type="text/javascript" src="../lib/jquery/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/materialize.min.js"></script>
         <script type="text/javascript" src="../lib/materialize/tablesorter.min.js"></script>
-        <script type="text/javascript" src="../lib/jquery/main.js"></script>
+        <script type="text/javascript" src="../lib/jquery/cadastro-modal.js"></script>
         <script type="text/javascript" src="../lib/jquery/tabelas.js"></script>
         <script type="text/javascript" src="../lib/fontawsome/font.js"></script>
 
@@ -261,9 +287,11 @@
                             document.getElementById("id").value = veiculo[0].id_veiculo;
                             document.getElementById("placa").value = veiculo[0].placa;
                             document.getElementById("modelo").value = veiculo[0].modelo;
+                            document.getElementById("teste").value = veiculo[0].id_cliente;
                         }
                     });
                 });
+
             }
 
             function f3()

@@ -18,9 +18,11 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="55" lean-forward="true" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
-              <folding />
+            <state relative-caret-position="4019">
+              <caret line="285" column="66" lean-forward="true" selection-start-line="285" selection-start-column="66" selection-end-line="285" selection-end-column="66" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -28,52 +30,61 @@
       <file leaf-file-name="periodo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/periodo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="18" column="21" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+            <state relative-caret-position="1249">
+              <caret line="74" column="95" lean-forward="false" selection-start-line="74" selection-start-column="95" selection-end-line="74" selection-end-column="95" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inserirRegistro.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/inserirRegistro.php">
+      <file leaf-file-name="cliente.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/cliente.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="56" lean-forward="false" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+            <state relative-caret-position="328">
+              <caret line="77" column="95" lean-forward="false" selection-start-line="77" selection-start-column="95" selection-end-line="77" selection-end-column="95" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlocarDAO.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-desenvolvimento/modelo/AlocarDAO.php">
+      <file leaf-file-name="funcionario.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/funcionario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="136" column="61" lean-forward="false" selection-start-line="136" selection-start-column="61" selection-end-line="136" selection-end-column="61" />
+            <state relative-caret-position="277">
+              <caret line="82" column="72" lean-forward="false" selection-start-line="82" selection-start-column="72" selection-end-line="82" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="veiculo.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/veiculo.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="165" column="86" lean-forward="false" selection-start-line="165" selection-start-column="86" selection-end-line="165" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PessoaDAO.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-desenvolvimento/modelo/PessoaDAO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1275">
+              <caret line="15" column="45" lean-forward="true" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
               <folding>
-                <marker date="1498850048941" expanded="true" signature="185:216" ph="SELECT * FRO... vw_listarAlocacao" />
-                <marker date="1498850048941" expanded="true" signature="3398:3411" ph="SELECT * FRO... " />
-                <marker date="1498850048941" expanded="true" signature="3398:3431" ph="SELECT * FRO... vw_contarAlocacoes" />
+                <marker date="1497551065013" expanded="true" signature="762:797" ph="SELECT * FRO... vw_listarfuncionarios" />
+                <marker date="1497551065013" expanded="true" signature="3636:3676" ph="SELECT * FRO... pessoa" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Alocar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-desenvolvimento/modelo/Alocar.php">
+      <file leaf-file-name="TipoDAO.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-desenvolvimento/modelo/TipoDAO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
-              <caret line="80" column="5" lean-forward="false" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inserirAlocar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/inserirAlocar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="2" lean-forward="false" selection-start-line="1" selection-start-column="2" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="459">
+              <caret line="51" column="5" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="51" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -133,10 +144,6 @@
         <option value="$PROJECT_DIR$/2-desenvolvimento/lib/fontawsome/font.js" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/lib/jquery/jquery-3.2.1.min.js" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/visao/login.php" />
-        <option value="$PROJECT_DIR$/2-desenvolvimento/visao/cliente.php" />
-        <option value="$PROJECT_DIR$/2-desenvolvimento/visao/funcionario.php" />
-        <option value="$PROJECT_DIR$/2-desenvolvimento/visao/periodo.php" />
-        <option value="$PROJECT_DIR$/2-desenvolvimento/visao/veiculo.php" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/visao/inserirAlocar.php" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/modelo/Alocar.php" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/visao/carregarAlocacao.php" />
@@ -144,10 +151,15 @@
         <option value="$PROJECT_DIR$/2-desenvolvimento/lib/jquery/tabelas.js" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/modelo/PeriodoDAO.php" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/visao/carregarValor.php" />
-        <option value="$PROJECT_DIR$/2-desenvolvimento/lib/jquery/main.js" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/visao/inserirRegistro.php" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/modelo/AlocarDAO.php" />
+        <option value="$PROJECT_DIR$/2-desenvolvimento/lib/jquery/main.js" />
+        <option value="$PROJECT_DIR$/2-desenvolvimento/lib/jquery/cadastro-modal.js" />
         <option value="$PROJECT_DIR$/2-desenvolvimento/visao/index.php" />
+        <option value="$PROJECT_DIR$/2-desenvolvimento/visao/periodo.php" />
+        <option value="$PROJECT_DIR$/2-desenvolvimento/visao/cliente.php" />
+        <option value="$PROJECT_DIR$/2-desenvolvimento/visao/funcionario.php" />
+        <option value="$PROJECT_DIR$/2-desenvolvimento/visao/veiculo.php" />
       </list>
     </option>
   </component>
@@ -179,7 +191,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -307,10 +318,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Desenvolvimento1/P2/loja" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../agendamento" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -405,6 +417,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3ce35778-772b-4415-bc31-1cb08055dd9d" name="Default" comment="" />
@@ -452,25 +467,27 @@
       <workItem from="1498819928847" duration="1168000" />
       <workItem from="1498832327707" duration="3007000" />
       <workItem from="1498848497770" duration="1914000" />
+      <workItem from="1499019221695" duration="12572000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150694000" />
+    <option name="totallyTimeSpent" value="163266000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16764276" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20189275" sideWeight="0.50293684" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.49706313" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -510,8 +527,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/css/sass/main.scss" />
-    <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Conexao.php" />
     <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/excluir.php" />
     <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/visao/atualizarPeriodo.php" />
     <entry file="file://$PROJECT_DIR$/2 - desenvolvimento/modelo/Menu.php" />
@@ -551,13 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/cliente.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="8" lean-forward="false" selection-start-line="49" selection-start-column="8" selection-end-line="50" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1394">
@@ -588,13 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/veiculo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="246" column="21" lean-forward="true" selection-start-line="246" selection-start-column="21" selection-end-line="246" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-desenvolvimento/css/icones.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -606,21 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/modelo/TipoDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="26" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/lib/jquery/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="80" column="20" lean-forward="false" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -647,14 +633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/funcionario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="341" column="62" lean-forward="false" selection-start-line="341" selection-start-column="28" selection-end-line="341" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -698,17 +676,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/periodo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="18" column="21" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-desenvolvimento/modelo/AlocarDAO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
+        <state relative-caret-position="2312">
           <caret line="136" column="61" lean-forward="false" selection-start-line="136" selection-start-column="61" selection-end-line="136" selection-end-column="61" />
           <folding>
             <marker date="1498850048941" expanded="true" signature="185:216" ph="SELECT * FRO... vw_listarAlocacao" />
@@ -718,11 +688,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/lib/jquery/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="74" column="35" lean-forward="false" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/lib/jquery/cadastro-modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/cliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="77" column="95" lean-forward="false" selection-start-line="77" selection-start-column="95" selection-end-line="77" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/funcionario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="82" column="72" lean-forward="false" selection-start-line="82" selection-start-column="72" selection-end-line="82" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/periodo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1249">
+          <caret line="74" column="95" lean-forward="false" selection-start-line="74" selection-start-column="95" selection-end-line="74" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/veiculo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="165" column="86" lean-forward="false" selection-start-line="165" selection-start-column="86" selection-end-line="165" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/modelo/PessoaDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1275">
+          <caret line="15" column="45" lean-forward="true" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding>
+            <marker date="1497551065013" expanded="true" signature="762:797" ph="SELECT * FRO... vw_listarfuncionarios" />
+            <marker date="1497551065013" expanded="true" signature="3636:3676" ph="SELECT * FRO... pessoa" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-desenvolvimento/modelo/TipoDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="51" column="5" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="51" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/2-desenvolvimento/visao/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="55" lean-forward="true" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="4019">
+          <caret line="285" column="66" lean-forward="true" selection-start-line="285" selection-start-column="66" selection-end-line="285" selection-end-column="66" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
