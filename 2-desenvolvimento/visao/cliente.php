@@ -167,7 +167,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <input type="submit" value="Ok" class="modal-action waves-effect waves-green btn-flat inserir-cliente"/>
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                                        <a href="#!" onclick="limpar()" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                                     </div>
                                 </form>
                                 
@@ -247,6 +247,7 @@
             {
                 var operacao = document.getElementsByName("oper");
                 operacao[0].value = "I";
+                limpar();
             }
             function f2() {
 
@@ -300,6 +301,14 @@
                 var identificador = document.getElementsByName("id");
                 identificador[1].value = id;
             }
+
+            function limpar(){
+                document.getElementById("id").value = "";
+                document.getElementById("proprietario").value = "";
+                document.getElementById("cpf").value = "";
+                document.getElementById("telefone").value = "";
+            }
+
         </script>
     </body>
   </html>

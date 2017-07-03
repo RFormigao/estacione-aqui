@@ -128,7 +128,9 @@
                                     </tbody>
                                     </table>
                                 </div>
-                                
+
+
+
                                 <a class="waves-effect waves-light btn green alocar col s12 l2 inserir" onclick="f1()" href="#inserir">Inserir</a>
                                 <a class="waves-effect waves-light btn alocar col s12 l2 alterar disabled" onclick="f2()" href="#inserir">Alterar</a>
                                 <a class="waves-effect waves-light btn red alocar col s12 l2 remover disabled" onclick="f3()" href="#remover">Remover</a>
@@ -141,9 +143,8 @@
                                             <br>
                                             <div class="row">
                                                 <div class="input-field col s12 l10">
-                                                    <input id="oper" name="oper" type="text">
-                                                    <input id="id" name="id" type="text">
-                                                    <input id="teste" name="teste" type="text">
+                                                    <input id="oper" name="oper" type="hidden">
+                                                    <input id="id" name="id" type="hidden">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -158,22 +159,16 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l10 s12">
-                                                    <select name="cliente">
+                                                    <select name="cli" id="cli" class="browser-default">
                                                         <?php
-                                                        $clienteDAO = new ClienteDAO();
-                                                        $listarCliente = $clienteDAO->listarClientes();
+                                                            $clienteDAO = new ClienteDAO();
+                                                            $listarCliente = $clienteDAO->listarClientes();
 
-                                                        foreach($listarCliente as $dado) {
-                                                            if(  3!= "" & 3 == $dado->id_cliente){
-                                                                echo "<option value='{$dado->id_cliente}' selected>{$dado->nome}</option>";
-
+                                                            foreach($listarCliente as $dado) {
+                                                                echo"<option id='$dado->id_cliente' value='{$dado-> id_cliente}'>{$dado-> nome}</option>";
                                                             }
-                                                            else{
-                                                                echo"<option value='{$dado-> id_cliente}'>{$dado-> nome}</option>";
+                                                            ?>
 
-                                                            }
-                                                        }
-                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -181,7 +176,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <input type="submit" value="Ok" class="modal-action waves-effect waves-green btn-flat inserir-veiculo"/>
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>   
+                                        <a href="#!" onclick="limpar()" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                                     </div>
                                 </form>
                                 <form id="remover" class="modal" method="post" action="#">
@@ -257,6 +252,7 @@
             function f1(){
                 var operacao = document.getElementsByName("oper");
                 operacao[0].value = "I";
+                limpar();
             }
             
             function f2() {
@@ -272,6 +268,10 @@
                         break;
                     }
                 }
+
+
+
+
                 $(function(){
                     $.ajax({
                         //Tipo de envio POST ou GET
@@ -287,7 +287,7 @@
                             document.getElementById("id").value = veiculo[0].id_veiculo;
                             document.getElementById("placa").value = veiculo[0].placa;
                             document.getElementById("modelo").value = veiculo[0].modelo;
-                            document.getElementById("teste").value = veiculo[0].id_cliente;
+                            document.getElementById('cli').value = veiculo[0].id_cliente;
                         }
                     });
                 });
@@ -311,6 +311,12 @@
                 document.getElementById("id").value = id;
                 var identificador = document.getElementsByName("id");
                 identificador[1].value = id;
+            }
+
+            function limpar() {
+                document.getElementById("id").value = "";
+                document.getElementById("placa").value = "";
+                document.getElementById("modelo").value = "";
             }
 
         </script>

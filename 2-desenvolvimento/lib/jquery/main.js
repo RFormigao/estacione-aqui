@@ -3,7 +3,7 @@
     //Modal
      $('.modal').modal({
 
-             ready: function(modal, trigger) {
+             ready: function() {
                  if(document.getElementById("operl").value=="L"){
 
                      var vagal = document.getElementById("vagal").value;

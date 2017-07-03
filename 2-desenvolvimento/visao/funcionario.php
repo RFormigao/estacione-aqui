@@ -249,7 +249,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col l10 s12">
-                                                    <select name="tipo" id="op">
+                                                    <select name="tipo" id="tipo" class="browser-default">
                                                         <?php
                                                         $tipoDAO = new TipoDAO();
                                                         $listarTipo = $tipoDAO->listarTipo();
@@ -265,7 +265,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <input type="submit" value="Ok" class="modal-action waves-effect waves-green btn-flat inserir-cliente"/>
-                                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                                        <a href="#!" onclick="limpar()" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                                     </div>
                                 </form>
 
@@ -325,6 +325,8 @@
             {
                 var operacao = document.getElementsByName("oper");
                 operacao[1].value = "I";
+
+                limpar();
             }
 
             function f2() {
@@ -367,8 +369,7 @@
                             document.getElementById("uf").value = pessoa[0].uf;
                             document.getElementById("usuario").value = pessoa[0].usuario;
                             document.getElementById("senha").value = pessoa[0].senha;
-                            var op = pessoa[0].id_tipo;
-                            document.getElementById("op").selected = op;
+                            document.getElementById("tipo").value = pessoa[0].id_tipo;
 
                         }
                     });
@@ -392,6 +393,22 @@
                 var identificador = document.getElementsByName("id");
                 identificador[0].value = id;
             }
+
+            function limpar(){
+                document.getElementById("id").value = "";
+                document.getElementById("nome").value = "";
+                document.getElementById("cpf").value = "";
+                document.getElementById("celular").value = "";
+                document.getElementById("telefone").value = "";
+                document.getElementById("cep").value = "";
+                document.getElementById("logradouro").value = "";
+                document.getElementById("bairro").value = "";
+                document.getElementById("cidade").value = "";
+                document.getElementById("uf").value = "";
+                document.getElementById("usuario").value = "";
+                document.getElementById("senha").value = "";
+            }
+
         </script>
 
     </body>
