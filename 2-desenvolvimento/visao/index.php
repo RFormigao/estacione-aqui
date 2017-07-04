@@ -97,7 +97,7 @@
                             </div>
                             <div class="modal-footer">
                                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-alocar" onclick="f2()" >Ok</a>
-                                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat" onclick="limpar()">Cancelar</a>
                             </div>
                         </form>
 
@@ -215,6 +215,7 @@
         <script type="text/javascript" src="../lib/fontawsome/font.js"></script>
 
         <script>
+
             function f1() {
 
                 var placa = document.getElementById("pesquisar").value;
@@ -228,13 +229,20 @@
                 }).done(function(resposta) {
                     console.log(resposta);
 
-
                         var alocar = JSON.parse(resposta);
-                        document.getElementById("nome").value = alocar[0].nome;
-                        document.getElementById("veiculo").value = alocar[0].modelo;
-                        document.getElementById("datae").value = alocar[0].datai;
-                        document.getElementById("horai").value = alocar[0].horai;
-                        document.getElementById("idveiculo").value = alocar[0].id_veiculo;
+
+                        if(alocar[0].msg){
+                                alert(alocar[0].msg);
+                        }
+                        else {
+                            document.getElementById("nome").value = alocar[0].nome;
+                            document.getElementById("veiculo").value = alocar[0].modelo;
+                            document.getElementById("datae").value = alocar[0].datai;
+                            document.getElementById("horai").value = alocar[0].horai;
+                            document.getElementById("idveiculo").value = alocar[0].id_veiculo;
+                        }
+
+
 
                 }).fail(function(jqXHR, textStatus ) {
                     console.log("Request failed: " + textStatus);
@@ -302,7 +310,14 @@
                 });
             }
 
-
+            function limpar(){
+                document.getElementById("nome").value = "";
+                document.getElementById("veiculo").value = "";
+                document.getElementById("datae").value = "";
+                document.getElementById("horai").value = "";
+                document.getElementById("idveiculo").value = "";
+                document.getElementById("pesquisar").value = "";
+            }
 
         </script>
     </body>

@@ -1,6 +1,6 @@
 /*
 SQLyog Enterprise - MySQL GUI v8.12 
-MySQL - 5.5.5-10.1.22-MariaDB : Database - estacione_aqui
+MySQL - 5.5.5-10.1.16-MariaDB : Database - estacione_aqui
 *********************************************************************
 */
 
@@ -52,7 +52,7 @@ CREATE TABLE `alocacao` (
 
 /*Data for the table `alocacao` */
 
-insert  into `alocacao`(`id_alocacao`,`vaga`,`hora_entrada`,`dataa`,`id_veiculo`,`status`) values (57,1,'16:34:42','2017-07-02',1,'liberar'),(58,2,NULL,NULL,NULL,'alocar'),(59,3,NULL,NULL,NULL,'alocar'),(60,4,NULL,NULL,NULL,'alocar'),(61,5,NULL,NULL,NULL,'alocar'),(62,6,NULL,NULL,NULL,'alocar'),(63,7,NULL,NULL,NULL,'alocar'),(64,8,NULL,NULL,NULL,'alocar'),(65,9,NULL,NULL,NULL,'alocar'),(66,10,NULL,NULL,NULL,'alocar'),(67,11,NULL,NULL,NULL,'alocar'),(68,12,NULL,NULL,NULL,'alocar'),(69,13,NULL,NULL,NULL,'alocar'),(70,14,NULL,NULL,NULL,'alocar'),(71,15,NULL,NULL,NULL,'alocar'),(72,16,NULL,NULL,NULL,'alocar'),(73,17,NULL,NULL,NULL,'alocar'),(74,18,NULL,NULL,NULL,'alocar'),(75,19,NULL,NULL,NULL,'alocar'),(76,20,NULL,NULL,NULL,'alocar');
+insert  into `alocacao`(`id_alocacao`,`vaga`,`hora_entrada`,`dataa`,`id_veiculo`,`status`) values (57,1,NULL,NULL,NULL,'alocar'),(58,2,NULL,NULL,NULL,'alocar'),(59,3,NULL,NULL,NULL,'alocar'),(60,4,NULL,NULL,NULL,'alocar'),(61,5,NULL,NULL,NULL,'alocar'),(62,6,NULL,NULL,NULL,'alocar'),(63,7,NULL,NULL,NULL,'alocar'),(64,8,NULL,NULL,NULL,'alocar'),(65,9,NULL,NULL,NULL,'alocar'),(66,10,NULL,NULL,NULL,'alocar'),(67,11,NULL,NULL,NULL,'alocar'),(68,12,NULL,NULL,NULL,'alocar'),(69,13,NULL,NULL,NULL,'alocar'),(70,14,NULL,NULL,NULL,'alocar'),(71,15,NULL,NULL,NULL,'alocar'),(72,16,NULL,NULL,NULL,'alocar'),(73,17,NULL,NULL,NULL,'alocar'),(74,18,NULL,NULL,NULL,'alocar'),(75,19,NULL,NULL,NULL,'alocar'),(76,20,NULL,NULL,NULL,'alocar');
 
 /*Table structure for table `cliente` */
 
@@ -65,11 +65,11 @@ CREATE TABLE `cliente` (
   `telefone` varchar(15) DEFAULT NULL,
   `status` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 /*Data for the table `cliente` */
 
-insert  into `cliente`(`id_cliente`,`nome`,`cpf`,`telefone`,`status`) values (2,'Robson Formigão Gomes','460.706.578-17','(14) 99742-5937','A'),(3,'Roberto da Silva','283.292.990-80','(14) 3657-3839','a'),(6,'Roberta Maria ','178.190.180-10','(19) 3647-2920','A'),(23,'nhjhjhu','454','54454','I'),(24,'Robson Formigão Gomes','460.706.578-11','(14) 99742-5938','I'),(25,'dvf','283.292.990-90','12','I'),(26,'dsdsds','283.292.990-90','(14) 3674-9080','I'),(27,'testee','111111','11111','I'),(28,'Maria','11111','1111','I'),(29,'xuca','1111','1111','A'),(30,'dssdd','44444','4444','I'),(31,'sasas','4444','4444','A'),(32,'dssdd','41114','1000','A'),(33,'dssdd','41114','1000','A'),(34,'dsnjshd','4544','1110','A'),(35,'shduhshu','444','4444','A'),(36,'shduhshu','444','4444','A'),(37,'wsq','as','sas','A');
+insert  into `cliente`(`id_cliente`,`nome`,`cpf`,`telefone`,`status`) values (38,'Vanessa Formigão','720.137.479-10','(14) 99747-2014','A'),(39,'Jonathan Gomes','173.200.654-25','(14) 99743-2147','A');
 
 /*Table structure for table `menu` */
 
@@ -100,7 +100,7 @@ CREATE TABLE `periodo` (
 
 /*Data for the table `periodo` */
 
-insert  into `periodo`(`id_periodo`,`periodo`,`valor`,`status`) values (1,'00:10:00','2.00','A'),(2,'00:15:00','3.00','A'),(3,'00:20:00','4.00','A'),(4,'00:25:00','5.00','A'),(5,'00:30:00','6.00','A'),(6,'00:35:00','7.00','A'),(7,'00:40:00','8.00','A'),(8,'00:45:00','9.00','A'),(9,'00:00:10','10.00','I'),(10,'00:45:30','120.00','I'),(11,'12:12:12','12.08','I');
+insert  into `periodo`(`id_periodo`,`periodo`,`valor`,`status`) values (1,'00:10:00','2.00','A'),(2,'00:15:00','3.00','A'),(3,'00:20:00','4.00','A'),(4,'00:25:00','5.00','A'),(5,'00:30:00','6.00','A'),(6,'00:35:00','7.00','A'),(7,'00:40:00','8.00','A'),(8,'00:45:00','9.00','A');
 
 /*Table structure for table `pessoa` */
 
@@ -124,11 +124,11 @@ CREATE TABLE `pessoa` (
   PRIMARY KEY (`id_pessoa`),
   KEY `pessoa_FKTipo` (`id_tipo`),
   CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipo` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pessoa` */
 
-insert  into `pessoa`(`id_pessoa`,`nome`,`cpf`,`cel`,`tel`,`logradouro`,`bairro`,`cep`,`cidade`,`uf`,`usuario`,`senha`,`id_tipo`,`status`) values (2,'Maria dos Santos','497.793.130-74','(14) 99746-1367','(14) 3624-8514','Rua Luiz','Jardim Od','16470-670','Jau','SP','maria','maria123',1,'I'),(5,'bulinar','asasa','as','as','as','as','as','as','as','jaq','as',1,'I'),(12,'Robson Formigão Gomes','178.190.200-10','(14) 9983-9083','(14) 3674-9080','Centro','13289-000','Rua Pache','Jaú','SP','rob','rob123',1,'I'),(13,'oi','oi','oi','oi','oi','oi','oi','oi','oi','oi','oi',1,'I'),(14,'jdsjidsj','111','11','11','111','111','11','111','11','1111','1111',1,'I'),(15,'Robson Formigão Gomes','465.212.508-99','(14) 9983-9083','(14) 3674-9080','13289-000','Rua Pache','Deolindo','Jaú','SP','admin','admin',1,'A'),(16,'Roberta da Cruz','132.903.390-00','(14) 9 9080-908','(14) 3443-3454','17304-000','Rua José Alberto 190','Centro','Jaú','SP','robertinha','ro123',2,'A');
+insert  into `pessoa`(`id_pessoa`,`nome`,`cpf`,`cel`,`tel`,`logradouro`,`bairro`,`cep`,`cidade`,`uf`,`usuario`,`senha`,`id_tipo`,`status`) values (17,'Robson Formigão','460.706.578-10','(14) 99742-5930','(14) 3624-7391','Deolindo de Oliveira e Souza 201','Jardim Sanzovo','17204-670','Jau','SP','admin','admin',1,'A'),(18,'Jaqueline Pachoal','674.472.247-17','(14) 99743-4791','(14) 3626-3263','Abolição 70','Centro','17200-001','Mineiros do Tiete','SP','func','func',2,'A');
 
 /*Table structure for table `registro_alocacao` */
 
@@ -146,11 +146,9 @@ CREATE TABLE `registro_alocacao` (
   PRIMARY KEY (`id_registro`),
   KEY `FK_registro_alocacao` (`id_periodo`),
   CONSTRAINT `FK_registro_alocacao` FOREIGN KEY (`id_periodo`) REFERENCES `periodo` (`id_periodo`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 /*Data for the table `registro_alocacao` */
-
-insert  into `registro_alocacao`(`id_registro`,`vaga`,`dataa`,`horai`,`horaf`,`id_periodo`,`placa`,`modelo`) values (4,3,'2017-06-26','09:15:20','12:25:21',2,'FDI-4593','Cruze LT'),(5,2,'2017-06-30','11:53:00','12:28:06',4,'FND-1226','Palio'),(6,3,'2017-06-26','09:15:20','12:29:43',4,'FDI-4593','Cruze LT'),(7,3,'2017-06-30','12:30:14','12:31:11',5,'FND-1226','Palio'),(8,4,'2017-06-27','08:31:49','12:31:26',7,'FGB-4679','Fiesta'),(9,3,'2017-07-02','15:32:15','15:32:27',1,'FND-1226','Palio');
 
 /*Table structure for table `tipo` */
 
@@ -179,11 +177,11 @@ CREATE TABLE `veiculo` (
   PRIMARY KEY (`id_veiculo`),
   KEY `veiculo_FKCliente` (`id_cliente`),
   CONSTRAINT `veiculo_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 /*Data for the table `veiculo` */
 
-insert  into `veiculo`(`id_veiculo`,`placa`,`modelo`,`id_cliente`,`status`) values (1,'FND-1226','Celta',3,'A'),(2,'FGB-4679','Fiesta',2,'A'),(3,'FND-2020','Fusion',2,'A'),(4,'KDL-5930','Uno',6,'I'),(5,'KGK-1493','Fusca',3,'A'),(6,'FDI-4593','Cruze LT',3,'A'),(7,'FND-1226','Fiestaa',2,'I'),(8,'fnd-1921','gol',2,'I'),(9,'TBN-1451','Gol',29,'A'),(10,'TBN-1451','Gol',29,'A');
+insert  into `veiculo`(`id_veiculo`,`placa`,`modelo`,`id_cliente`,`status`) values (14,'FND-1226','Palio',38,'A'),(15,'FND-2020','Fiesta',39,'A');
 
 /* Trigger structure for table `registro_alocacao` */
 
@@ -375,18 +373,6 @@ begin
 end */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `buscarVeiculos` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `buscarVeiculos` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarVeiculos`(in p char(8))
-begin
-	select c.nome, v.modelo,v.id_veiculo,current_date "datai", current_time "horai" from veiculo v inner join cliente c on (v.id_cliente = c.id_cliente) where v.placa = p and v.status = "A";
-end */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `excluirClientes` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `excluirClientes` */;
@@ -444,6 +430,55 @@ begin
 end */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `inserirClientes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `inserirClientes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirClientes`(IN nome VARCHAR(50), cpf CHAR(14) ,telefone VARCHAR(15), st char(1))
+BEGIN
+	if(nome = "") then
+		select "Preencha o nome. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+	else 
+		if (cpf = "") then
+			select "Preencha o CPF. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+		else 
+			if(telefone = "") then
+				SELECT "Preencha o telefone. (Atenção: Todos os campos devem ser preenchidos!)" msg;
+			else
+				INSERT INTO cliente  (nome,cpf,telefone,status) VALUES (nome,cpf,telefone,st);
+				select "Cliente inserido com sucesso =)" as msg;
+			end if;
+		end if;
+	end if;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `buscarVeiculos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `buscarVeiculos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarVeiculos`(in p char(8))
+begin
+	if (p = "" || p is null)then
+		select "Modelo de placa Inválido." as msg; 
+	else
+		if (p not in (select placa from veiculo where placa = p AND status = "A")) then
+			select "Está placa não está cadastrada." as msg;
+		else
+			if (p in (SELECT ve.placa FROM alocacao a INNER JOIN veiculo ve ON (a.id_veiculo = ve.id_veiculo) WHERE ve.placa = p)) then
+				select "Esse veiculo já está alocado." as msg;
+			else
+				SELECT c.nome, v.modelo,v.id_veiculo,CURRENT_DATE "datai", CURRENT_TIME "horai" FROM veiculo v INNER JOIN cliente c ON (v.id_cliente = c.id_cliente) WHERE v.placa = p AND v.status = "A";
+			end if;
+		end if;
+	end if;
+end */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `inserirAlocacao` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `inserirAlocacao` */;
@@ -470,31 +505,6 @@ begin
 		end if;
 	end if;
 end */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `inserirClientes` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `inserirClientes` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirClientes`(IN nome VARCHAR(50), cpf CHAR(14) ,telefone VARCHAR(15), st char(1))
-BEGIN
-	if(nome = "") then
-		select "Preencha o nome. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-	else 
-		if (cpf = "") then
-			select "Preencha o CPF. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-		else 
-			if(telefone = "") then
-				SELECT "Preencha o telefone. (Atenção: Todos os campos devem ser preenchidos!)" msg;
-			else
-				INSERT INTO cliente  (nome,cpf,telefone,status) VALUES (nome,cpf,telefone,st);
-				select "Cliente inserido com sucesso =)" as msg;
-			end if;
-		end if;
-	end if;
-END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `inserirPeriodos` */
