@@ -17,7 +17,7 @@
         ?>
     </head>
 
-    <body class="bg-home">
+    <body class="bg-home" >
         
         <div class="row">
             <div class="z-depth-5">
@@ -50,8 +50,7 @@
                                 echo "<p class='numero'>$dado->vaga</p>";
                                 echo "<span class='status'>Ocupada</span>" ;
                             echo "</div>" ;
-                                echo "<span class='hora'>HH:MM:SS</span>" ;
-                                ?>
+                    ?>
                                 <a class='waves-effect waves-light btn' <?php echo "id='{$dado->status}' href='#{$dado->status}'>{$dado->status}</a>" ;
                         echo "</div>" ;
                     }
@@ -271,7 +270,6 @@
                 }).always(function() {
                     console.log("completou");
                 });
-
             }
             function f4(){
 
@@ -303,6 +301,8 @@
                     console.log("completou");
                 });
             }
+
+
 
         </script>
     </body>
